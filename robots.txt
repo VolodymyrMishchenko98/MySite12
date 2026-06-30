@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sportbot.pages.dev/sitemap.xml

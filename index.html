@@ -1,0 +1,1613 @@
+﻿<!doctype html>
+<html lang="uk" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="google-site-verification"
+      content="Cw4g1ZBwwFXu2vGkZpLj6xKL8fAFHWAiSWq-K-KgzjA"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="SportBot — безкоштовний Telegram-бот для запису тренувань, аналітики прогресу та мотивації. Тренуйся розумно з наочними графіками прямо у месенджері."
+    />
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sportbot.pages.dev/" />
+    <meta property="og:title" content="SportBot | Твій особистий тренер" />
+    <meta
+      property="og:description"
+      content="Тренуйся розумно: статистика, графіки та мотивація прямо у твоєму Telegram."
+    />
+    <meta property="og:image" content="https://sportbot.pages.dev/logo.png" />
+    <meta name="twitter:title" content="SportBot | Твій особистий тренер" />
+    <meta
+      name="twitter:description"
+      content="Статистика та графіки тренувань у Telegram."
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <title>
+      SportBot | Твій особистий тренер та щоденник тренувань у Telegram
+    </title>
+    <link rel="canonical" href="https://sportbot.pages.dev/" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" sizes="48x48" href="logo.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="logo.png" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { darkMode: "class" };
+    </script>
+
+    <style>
+      .nav-link {
+        position: relative;
+        padding: 0.5rem 0;
+        transition: color 0.3s ease;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #978bd0;
+        transform: scaleX(0);
+        transform-origin: bottom center;
+        transition: transform 0.3s ease;
+      }
+      /* Активное состояние кнопки */
+      .nav-link.active-nav {
+        color: #978bd0 !important;
+      }
+      .nav-link.active-nav::after {
+        transform: scaleX(1);
+      }
+      /* Сховати кнопку "Вгору" при відкритому мобільному меню */
+      .mobile-menu-open #back-to-top {
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+      /* Кастомний скроллбар */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #f97316;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #ea580c;
+      }
+      /* Стилі для команд (code) */
+      code {
+        cursor: pointer;
+        transition: color 0.2s ease;
+      }
+      code:hover {
+        color: #b0a5ec !important;
+      }
+      /* Тінь хедера при скролі */
+      .nav-scrolled {
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        border-bottom-color: transparent;
+      }
+    </style>
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld-json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Чи безкоштовний цей Telegram-бот?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Так! Базовий функціонал бота (запис тренувань, фіксація ваги та перегляд профілю) повністю безкоштовний. Ви також можете заробляти внутрішні монети за активність і відкривати додаткові фічі без реальних витрат."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Чи підійде бот для домашніх тренувань?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Абсолютно. Команда /workout розроблена так, щоб ви могли записувати будь-які вправи: від підтягувань на турніку та віджимань вдома до професійних жимів у тренажерному залі. Бот адаптується під ваш формат підходів та повторень."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Як працює аналітика прогресу?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Коли ви регулярно записуєте підходи, алгоритм автоматично вираховує сумарний тоннаж, кількість робочих серій та вашу робочу вагу. Використовуючи команду /chart, ви зможете миттєво згенерувати наочний візуальний графік вашого прогресу прямо в чаті."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Чи безпечні мої персональні дані?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Так, ми серйозно ставимося до конфіденційності. Усі дані вашого профілю (вага, зріст, історія занять) використовуються виключно для розрахунку вашої особистої статистики всередині бота і ніколи не передаються третім особам. Ви в будь-який момент можете змінити або видалити їх."
+            }
+          }
+        ]
+      }
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-WY7BQKG0NT"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-WY7BQKG0NT");
+    </script>
+    <!-- AOS Scroll Animations CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  </head>
+  <body
+    class="bg-gray-50 dark:bg-[#050505] text-gray-900 dark:text-white transition-colors duration-300"
+  >
+    <div
+      id="scroll-progress"
+      class="fixed top-0 left-0 h-1 bg-orange-500 z-[60] w-0 transition-all duration-300"
+    ></div>
+    <div
+      id="mouse-glow"
+      class="fixed top-0 left-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none z-[-1] opacity-0 transition-opacity duration-500"
+    ></div>
+
+    <!-- Мобільний фон для меню -->
+    <div
+      id="menu-backdrop"
+      class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300 pointer-events-none"
+    ></div>
+
+    <nav
+      id="main-nav"
+      class="fixed top-0 left-0 w-full z-50 bg-gray-50/90 dark:bg-[#050505]/95 backdrop-blur-md border-b border-gray-200 dark:border-white/10 rounded-3xl md:rounded-full transition-all duration-200"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 md:px-6 py-3 flex items-center justify-between"
+      >
+        <a
+          href="#"
+          class="flex items-center gap-2 shrink-0"
+          aria-label="SportBot home"
+        >
+          <img src="logo.png" alt="SportBot logo" class="h-9 md:h-12 w-auto" />
+          <div class="text-2xl md:text-4xl font-bold italic whitespace-nowrap">
+            Sport<span class="text-indigo-500">Bot</span>
+          </div>
+        </a>
+
+        <div class="hidden md:flex items-center gap-6 font-semibold text-sm">
+          <a
+            href="#quick-start"
+            class="nav-link i18n text-gray-600 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-indigo-500"
+            data-key="nav-quick"
+            >Quick Start</a
+          >
+          <a
+            href="#features"
+            class="nav-link i18n text-gray-600 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-indigo-500"
+            data-key="nav-features"
+            >Функції</a
+          >
+          <a
+            href="#game-format"
+            class="nav-link i18n text-gray-600 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-indigo-500"
+            data-key="nav-novelty"
+            >Гейміфікація</a
+          >
+          <a
+            href="#how-it-works"
+            class="nav-link i18n text-gray-600 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-indigo-500"
+            data-key="nav-how"
+            >Як працює</a
+          >
+          <a
+            href="#faq-section"
+            class="nav-link text-sm font-medium hover:text-indigo-500 transition-colors duration-200"
+          >
+            <span class="i18n" data-key="nav-faq">FAQ</span>
+          </a>
+        </div>
+
+        <div class="flex items-center gap-3 md:gap-4">
+          <div
+            class="hidden md:flex items-center gap-1.5 text-sm font-bold"
+            aria-label="Language switcher"
+          >
+            <button
+              class="lang-btn lang-ua transition hover:scale-110"
+              type="button"
+              aria-label="Перемкнути на українську"
+              data-lang="ua"
+            >
+              UA
+            </button>
+            <button
+              class="lang-btn lang-en transition hover:scale-110"
+              type="button"
+              aria-label="Switch to English"
+              data-lang="en"
+            >
+              EN
+            </button>
+          </div>
+          <button
+            id="theme-button"
+            type="button"
+            class="theme-btn"
+            aria-label="Switch theme"
+          >
+            <img id="theme-icon" src="sun.png" alt="" class="theme-btn-icon" />
+          </button>
+          <a
+            href="https://t.me/SportsForYou_bot"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="i18n hidden sm:block bg-gradient-to-r from-indigo-600 to-indigo-500 text-white px-3 md:px-5 py-2 rounded-full font-bold hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300 text-sm md:text-base whitespace-nowrap active:scale-95 pulse-btn"
+            data-key="btn-bot"
+            >Відкрити в Telegram</a
+          >
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            class="theme-btn flex w-10 h-10 items-center justify-center text-2xl text-black dark:text-white transition-all"
+            aria-controls="mobile-menu"
+            aria-label="Open menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      id="mobile-menu"
+      class="menu-transition menu-hidden w-full max-w-[600px] backdrop-blur-2xl rounded-b-3xl border-x border-b border-white/10 p-4 pb-6 space-y-5 md:hidden z-40 shadow-[0_20px_50px_rgba(0,0,0,0.3)] max-h-[calc(100dvh-3.5rem)] transition-all duration-200"
+    >
+      <a
+        href="#quick-start"
+        class="mobile-close i18n block text-lg font-semibold hover:text-white/80 transition-colors"
+        data-key="nav-quick"
+        >Quick Start</a
+      >
+      <a
+        href="#features"
+        class="mobile-close i18n block text-lg font-semibold hover:text-white/80 transition-colors"
+        data-key="nav-features"
+        >Функції</a
+      >
+      <a
+        href="#game-format"
+        class="mobile-close i18n block text-lg font-semibold hover:text-white/80 transition-colors"
+        data-key="nav-novelty"
+        >Гейміфікація</a
+      >
+      <a
+        href="#how-it-works"
+        class="mobile-close i18n block text-lg font-semibold hover:text-white/80 transition-colors"
+        data-key="nav-how"
+        >Як працює</a
+      >
+      <a
+        href="#faq-section"
+        class="mobile-close block text-xl font-bold hover:text-white/80 transition-colors py-2"
+      >
+        <span class="i18n" data-key="nav-faq">FAQ</span>
+      </a>
+      <div class="pt-6 border-t border-white/20 space-y-4">
+        <div class="mob-lang-switcher" aria-label="Language switcher">
+          <button class="lang-btn lang-ua i18n" type="button" data-lang="ua">
+            Українська
+          </button>
+          <button class="lang-btn lang-en" type="button" data-lang="en">
+            English
+          </button>
+        </div>
+        <a
+          href="https://t.me/SportsForYou_bot"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mobile-close mobile-menu-cta i18n"
+          data-key="btn-bot"
+          >Відкрити в Telegram</a
+        >
+      </div>
+    </div>
+
+    <main class="pt-20">
+      <header
+        id="hero"
+        class="relative w-full h-[350px] md:h-[550px] flex items-center justify-center overflow-hidden hero-background"
+      >
+        <canvas id="hero-canvas" class="absolute inset-0 z-0"></canvas>
+        <div
+          class="absolute inset-0 bg-black/40 dark:bg-black/60 transition-colors duration-500"
+        ></div>
+        <div class="hero-content" data-aos="fade-up">
+          <p class="i18n hero-kicker" data-key="hero-kicker">Telegram-бот</p>
+          <h1 class="i18n" data-key="hero-title">
+            Тренуйся розумно з <span class="text-indigo-500">SportBot</span>
+          </h1>
+          <p class="i18n hero-subtitle" data-key="hero-subtitle">
+            Telegram-бот для запису тренувань, графіків прогресу та мотивації —
+            без установки додатків.
+          </p>
+          <div class="hero-actions">
+            <a
+              href="https://t.me/SportsForYou_bot"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="i18n hero-primary-cta pulse-btn"
+              data-key="btn-bot"
+              >Відкрити в Telegram</a
+            >
+            <a
+              href="#quick-start"
+              class="i18n hero-secondary-cta"
+              data-key="hero-secondary-cta"
+              >Як це працює</a
+            >
+          </div>
+          <div class="hero-chips" aria-label="SportBot advantages">
+            <span class="i18n" data-key="hero-chip-1">Без установки</span>
+            <span class="i18n" data-key="hero-chip-2">Запис за 10 секунд</span>
+            <span class="i18n" data-key="hero-chip-3">Графіки в чаті</span>
+            <span class="i18n" data-key="hero-chip-4">Без реклами</span>
+          </div>
+        </div>
+
+        <div
+          class="hero-visual"
+          data-aos="fade-left"
+          aria-label="SportBot Telegram preview"
+        >
+          <div class="hero-chat-card">
+            <div class="hero-chat-top">
+              <span class="hero-chat-avatar">SB</span>
+              <div>
+                <strong class="i18n" data-key="hero-card-title"
+                  >SportBot у Telegram</strong
+                >
+                <span
+                  class="i18n hero-card-subtitle"
+                  data-key="hero-card-subtitle"
+                  >бот онлайн</span
+                >
+              </div>
+            </div>
+            <div class="tg-chat"></div>
+          </div>
+        </div>
+      </header>
+
+      <section class="proof-section px-6 py-8" aria-label="SportBot statistics">
+        <div class="proof-grid max-w-5xl mx-auto">
+          <div class="proof-item reveal-on-scroll reveal-delay-1">
+<strong class="proof-number" data-count="1000" data-suffix="+"
+               >1000+</strong
+             >
+             <span class="i18n proof-label" data-key="proof-athletes"
+               >активних атлетів</span
+             >
+           </div>
+           <div class="proof-item reveal-on-scroll reveal-delay-2">
+             <strong class="proof-number" data-count="50000" data-suffix="+"
+               >50 000+</strong
+             >
+             <span class="i18n proof-label" data-key="proof-workouts"
+               >записаних тренувань</span
+             >
+           </div>
+           <div class="proof-item reveal-on-scroll reveal-delay-3">
+             <strong class="proof-number" data-count="98" data-suffix="%"
+               >98%</strong
+             >
+             <span class="i18n proof-label" data-key="proof-reviews"
+               >позитивних відгуків</span
+             >
+           </div>
+         </div>
+<p class="proof-date">станом на червень 2025</p>
+       </section>
+
+      <section
+        class="pain-points-section px-6 py-12 bg-white dark:bg-[#050505] transition-colors overflow-hidden"
+      >
+        <div class="max-w-5xl mx-auto text-center" data-aos="fade-up">
+          <p
+            class="i18n text-sm font-bold uppercase tracking-wide text-indigo-500 mb-2"
+            data-key="pain-kicker"
+          >
+            Знайомо?
+          </p>
+          <h2
+            class="i18n text-3xl md:text-4xl font-bold mb-6"
+            data-key="pain-title"
+          >
+            Без щоденників і зайвих меню
+          </h2>
+<div class="pain-grid">
+             <article class="pain-card reveal-on-scroll reveal-delay-1">
+               <h3 class="i18n" data-key="pain-card-1-title">
+                 Підходи губляться
+               </h3>
+               <p class="i18n" data-key="pain-card-1-text">
+                 Не треба пам'ятати, що робив минулого разу.
+               </p>
+             </article>
+             <article class="pain-card reveal-on-scroll reveal-delay-2">
+               <h3 class="i18n" data-key="pain-card-2-title">
+                 Прогрес не видно
+               </h3>
+               <p class="i18n" data-key="pain-card-2-text">
+                 Бот показує динаміку графіками прямо в чаті.
+               </p>
+             </article>
+             <article class="pain-card reveal-on-scroll reveal-delay-3">
+               <h3 class="i18n" data-key="pain-card-3-title">Додатки зайві</h3>
+               <p class="i18n" data-key="pain-card-3-text">
+                 Все працює в Telegram, без завантажень і реклами.
+               </p>
+             </article>
+           </div>
+        </div>
+</section>
+
+       <section id="quick-start" class="quick-start-section px-6 py-12">
+         <div class="max-w-5xl mx-auto">
+           <div class="text-center mb-8">
+             <p
+               class="i18n text-sm font-bold uppercase tracking-wide text-indigo-500 mb-2"
+               data-key="quick-kicker"
+             >
+               Quick Start
+             </p>
+             <h2
+               class="i18n text-3xl md:text-4xl font-bold"
+               data-key="quick-title"
+             >
+               Почни за 3 прості кроки
+             </h2>
+           </div>
+           <div class="quick-grid">
+             <article class="quick-card reveal-on-scroll reveal-delay-1">
+               <span class="quick-step">1</span>
+               <span class="quick-icon" aria-hidden="true">↗</span>
+               <h3 class="i18n quick-title" data-key="quick-1-title">Connect</h3>
+               <p class="i18n quick-text" data-key="quick-1-text">
+                 Натисни "Відкрити в Telegram" і відкрий SportBot у Telegram.
+               </p>
+             </article>
+             <article class="quick-card reveal-on-scroll reveal-delay-2">
+               <span class="quick-step">2</span>
+               <span class="quick-icon" aria-hidden="true">⚙</span>
+               <h3 class="i18n quick-title" data-key="quick-2-title">Setup</h3>
+               <p class="i18n quick-text" data-key="quick-2-text">
+                 Налаштуй профіль через <code>/edit_profile</code>.
+               </p>
+             </article>
+             <article class="quick-card reveal-on-scroll reveal-delay-3">
+               <span class="quick-step">3</span>
+               <span class="quick-icon" aria-hidden="true">✓</span>
+               <h3 class="i18n quick-title" data-key="quick-3-title">Train</h3>
+               <p class="i18n quick-text" data-key="quick-3-text">
+                 Запиши перше тренування через <code>/workout</code>.
+               </p>
+             </article>
+           </div>
+         </div>
+       </section>
+
+       <section id="bot-demo">
+         <p>Бот в дії</p>
+         <h2>Як це виглядає в Telegram</h2>
+         <p>Просто пишеш команду — бот робить решту</p>
+
+         <div class="demo-grid">
+
+           <div class="demo-card">
+             <div class="demo-tag">/workout</div>
+             <div class="demo-chat">
+               <div class="dm user">Біг 30 хвилин, Віджимання 4х20</div>
+               <div class="dm bot">Збережено: 2<br>🌙 +20 монет<br>Баланс: 55<br>⭐ +20 XP</div>
+             </div>
+             <p class="demo-label">Запис тренування</p>
+           </div>
+
+           <div class="demo-card">
+             <div class="demo-tag">/stats</div>
+             <div class="demo-chat">
+               <div class="dm user">/stats</div>
+               <div class="dm bot">📊 Статистика<br>Днів тренування: 1<br>🔥 Серія: 0 днів<br>🔥 Калорій всього: ~136<br>⭐ Рівень: 1<br>🥇 Ранг: Новачок<br>XP: 15 / 100 ░░░░░░░░░░ 15%</div>
+             </div>
+             <p class="demo-label">Статистика та прогрес</p>
+           </div>
+
+           <div class="demo-card">
+             <div class="demo-tag">/chart</div>
+             <div class="demo-chat">
+               <div class="dm user">/chart</div>
+               <div class="dm bot">📊 Оберіть графік:<br>⚖️ Weight  🏆 Workouts<br>🔥 Streak  📦 Volume<br><br>Workouts → показує графік тренувань по датах</div>
+             </div>
+             <p class="demo-label">Графіки прогресу</p>
+           </div>
+
+         </div>
+       </section>
+
+       <section id="features" class="max-w-4xl mx-auto px-6 py-10">
+         <h2
+           class="i18n text-3xl font-bold mb-6 text-center"
+           data-key="features-title"
+         >
+           Функціонал бота
+         </h2>
+
+         <div class="feature-chips mb-10" aria-label="Ключові переваги SportBot">
+           <span class="i18n" data-key="feature-chip-1">Запис в 1 клік</span>
+           <span class="i18n" data-key="feature-chip-2">Авто-статистика</span>
+           <span class="i18n" data-key="feature-chip-3">Графіки прогресу</span>
+           <span class="i18n" data-key="feature-chip-4">Монети та бонуси</span>
+         </div>
+
+         <div
+           class="core-feature-highlight text-center mb-10 w-full"
+           data-aos="zoom-in"
+           data-aos-delay="100"
+         >
+           <div
+             class="inline-block p-1 rounded-2xl glowing-border-card w-full max-w-3xl"
+           >
+             <div
+               class="bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl p-6 md:p-8 rounded-[15px] border border-white/20 dark:border-white/5"
+             >
+               <h3
+                 class="text-xl md:text-2xl font-extrabold mb-4 text-gray-900 dark:text-white i18n"
+                 data-key="value-title-short"
+               >
+                 Персональний фітнес-щоденник прямо в Telegram
+               </h3>
+               <p
+                 class="text-gray-700 dark:text-gray-300 md:text-lg i18n"
+                 data-key="value-desc-short"
+               >
+                 Записуй підходи, вагу та повторення в Telegram. Бот сам рахує
+                 статистику і показує прогрес графіками.
+               </p>
+             </div>
+           </div>
+         </div>
+
+         <div class="space-y-4">
+           <article
+             class="feature-card popup-card p-6 cursor-pointer overflow-hidden"
+           >
+             <button
+               type="button"
+               class="feature-header w-full flex justify-between items-center text-left font-bold text-xl"
+             >
+               <span class="i18n" data-key="f1-title"
+                 >👤 Профіль та налаштування</span
+               >
+               <span class="toggle-icon text-gray-400" aria-hidden="true"
+                 >▼</span
+               >
+             </button>
+             <div
+               class="feature-content i18n space-y-3"
+               data-key="f1-body"
+             ></div>
+           </article>
+           <article
+             class="feature-card popup-card p-6 cursor-pointer overflow-hidden"
+           >
+             <button
+               type="button"
+               class="feature-header w-full flex justify-between items-center text-left font-bold text-xl"
+             >
+               <span class="i18n" data-key="f2-title">💪 Тренування</span>
+               <span class="toggle-icon text-gray-400" aria-hidden="true"
+                 >▼</span
+               >
+             </button>
+             <div
+               class="feature-content i18n space-y-3"
+               data-key="f2-body"
+             ></div>
+           </article>
+           <article
+             class="feature-card popup-card p-6 cursor-pointer overflow-hidden"
+           >
+             <button
+               type="button"
+               class="feature-header w-full flex justify-between items-center text-left font-bold text-xl"
+             >
+               <span class="i18n" data-key="f3-title">📊 Статистика</span>
+               <span class="toggle-icon text-gray-400" aria-hidden="true"
+                 >▼</span
+               >
+             </button>
+             <div
+               class="feature-content i18n space-y-3"
+               data-key="f3-body"
+             ></div>
+           </article>
+           <article
+             class="feature-card popup-card p-6 cursor-pointer overflow-hidden"
+           >
+             <button
+               type="button"
+               class="feature-header w-full flex justify-between items-center text-left font-bold text-xl"
+             >
+               <span class="i18n" data-key="f4-title">🔥 Мотивація</span>
+               <span class="toggle-icon text-gray-400" aria-hidden="true"
+                 >▼</span
+               >
+             </button>
+             <div
+               class="feature-content i18n space-y-3"
+               data-key="f4-body"
+             ></div>
+           </article>
+           <article
+             class="feature-card popup-card p-6 cursor-pointer overflow-hidden"
+           >
+             <button
+               type="button"
+               class="feature-header w-full flex justify-between items-center text-left font-bold text-xl"
+             >
+               <span class="i18n" data-key="f5-title">🪙 Монети та бонуси</span>
+               <span class="toggle-icon text-gray-400" aria-hidden="true"
+                 >▼</span
+               >
+             </button>
+             <div
+               class="feature-content i18n space-y-3"
+               data-key="f5-body"
+             ></div>
+           </article>
+         </div>
+       </section>
+
+       <section id="try-it">
+         <p>Інтерактивно</p>
+         <h2>Спробуй команду прямо тут</h2>
+         <p>Введи команду як у Telegram і побач відповідь</p>
+         
+         <div id="tryChat" class="try-chat">
+           <div class="tr-bubble bot">
+             👋 Привіт! Спробуй одну з команд:<br>
+             <span>/workout /stats /chart /help</span>
+           </div>
+         </div>
+
+         <div class="try-input-row">
+           <input id="tryInput" type="text" placeholder="Введи /workout або /stats..." />
+           <button id="tryBtn">→</button>
+         </div>
+
+         <div class="try-chip-row">
+           <button class="try-chip" data-cmd="/workout">/workout</button>
+           <button class="try-chip" data-cmd="/stats">/stats</button>
+           <button class="try-chip" data-cmd="/chart">/chart</button>
+           <button class="try-chip" data-cmd="/help">/help</button>
+         </div>
+       </section>
+
+       <section id="testimonials" class="testimonials-section px-6 py-14">
+         <div class="max-w-5xl mx-auto">
+           <div class="text-center mb-10">
+             <p
+               class="i18n text-sm font-bold uppercase tracking-wide text-indigo-500 mb-2"
+               data-key="testimonials-kicker"
+             >
+               Реальні відгуки
+             </p>
+             <h2
+               class="i18n text-3xl md:text-4xl font-bold"
+               data-key="testimonials-title"
+             >
+               Що кажуть справжні користувачі SportBot
+             </h2>
+           </div>
+           <div class="testimonials-grid">
+             <article class="testimonial-card">
+               <p class="testimonial-mark" aria-hidden="true">"</p>
+               <p class="i18n testimonial-text" data-key="testimonial-1-text">
+                 Раніше закидав тренування через тиждень, бо забував, що робив
+                 минулого разу. З SportBot все в телефоні — бачу свій прогрес у
+                 цифрах, і це реально заводить.
+               </p>
+               <div class="testimonial-user">
+                 <img
+                   src="user-1.jpg"
+                   alt="User avatar: Максим, SportBot user"
+                   class="testimonial-avatar"
+                 />
+                 <div>
+                   <p
+                     class="i18n testimonial-name"
+                     data-key="testimonial-1-name"
+                   >
+                     Максим
+                   </p>
+                   <p
+                     class="i18n testimonial-meta"
+                     data-key="testimonial-1-meta"
+                   >
+                     Тренується в залі · 4 місяці з SportBot
+                   </p>
+                 </div>
+               </div>
+             </article>
+             <article class="testimonial-card">
+               <p class="testimonial-mark" aria-hidden="true">"</p>
+               <p class="i18n testimonial-text" data-key="testimonial-2-text">
+                 Найзручніше — це статистика. Коли бот малює графік твого успіху,
+                 лінуватися стає соромно. Рекомендую усім, хто хоче бачити
+                 реальні зміни.
+               </p>
+               <div class="testimonial-user">
+                 <img
+                   src="user-2.jpg"
+                   alt="User avatar: Марія, SportBot user"
+                   class="testimonial-avatar"
+                 />
+                 <div>
+                   <p
+                     class="i18n testimonial-name"
+                     data-key="testimonial-2-name"
+                   >
+                     Марія
+                   </p>
+                   <p
+                     class="i18n testimonial-meta"
+                     data-key="testimonial-2-meta"
+                   >
+                     Домашні тренування · 2 місяці з SportBot
+                   </p>
+                 </div>
+               </div>
+             </article>
+             <article class="testimonial-card">
+               <p class="testimonial-mark" aria-hidden="true">"</p>
+               <p class="i18n testimonial-text" data-key="testimonial-3-text">
+                 Бот замінив мені паперовий щоденник і навіть частково тренера.
+                 Все чітко, лаконічно і завжди під рукою. Бот — вогонь! 🔥
+               </p>
+               <div class="testimonial-user">
+                 <img
+                   src="user-3.jpg"
+                   alt="User avatar: Дмитро, SportBot user"
+                   class="testimonial-avatar"
+                 />
+                 <div>
+                   <p
+                     class="i18n testimonial-name"
+                     data-key="testimonial-3-name"
+                   >
+                     Дмитро
+                   </p>
+                   <p
+                     class="i18n testimonial-meta"
+                     data-key="testimonial-3-meta"
+                   >
+                     Силові тренування · 6 місяців з SportBot
+                   </p>
+                 </div>
+               </div>
+             </article>
+           </div>
+         </div>
+       </section>
+
+       <section id="comparison">
+         <p>Порівняння</p>
+         <h2>SportBot vs інші рішення</h2>
+         <div>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Критерій</th>
+              <th>Паперовий щоденник</th>
+              <th>Фітнес-додаток</th>
+              <th class="highlight-col">SportBot ✓</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Потрібне встановлення</td><td><span class="emoji-cell">❌</span></td><td><span class="emoji-cell">✅</span></td><td class="highlight-col"><span class="emoji-cell">❌</span></td></tr>
+            <tr><td>Реклама</td><td><span class="emoji-cell">❌</span></td><td><span class="emoji-cell">✅</span></td><td class="highlight-col"><span class="emoji-cell">❌</span></td></tr>
+            <tr><td>Графіки прогресу</td><td><span class="emoji-cell">❌</span></td><td><span class="emoji-cell">✅</span></td><td class="highlight-col"><span class="emoji-cell">✅</span></td></tr>
+            <tr><td>Завжди під рукою</td><td><span class="emoji-cell">⚠️</span></td><td><span class="emoji-cell">⚠️</span></td><td class="highlight-col"><span class="emoji-cell">✅</span></td></tr>
+            <tr><td>Безкоштовно</td><td><span class="emoji-cell">✅</span></td><td><span class="emoji-cell">⚠️</span></td><td class="highlight-col"><span class="emoji-cell">✅</span></td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p>
+          * Порівняння станом на червень 2025. Дані базуються на публічній інформації.
+        </p>
+      </section>
+
+      <section
+        id="game-format"
+        class="px-4 md:px-6 py-16 bg-gray-50 dark:bg-[#050505]/40 transition-colors"
+      >
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-10">
+            <p
+              class="i18n text-sm font-bold uppercase tracking-wide text-indigo-500 mb-2"
+              data-key="game-kicker"
+            >
+              Ігровий формат
+            </p>
+            <h2
+              class="i18n text-3xl md:text-4xl font-extrabold mb-4"
+              data-key="game-title"
+            >
+              Мотивація та досягнення
+            </h2>
+            <p
+              class="i18n text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+              data-key="game-desc"
+            >
+              Тренуйтеся із задоволенням, отримуйте нагороди та покращуйте свої
+              результати щодня.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <article
+              class="game-card reveal-on-scroll reveal-delay-1 flex flex-col sm:flex-row items-start sm:items-center gap-5 p-6 rounded-2xl border border-indigo-500/20 bg-white dark:bg-[#0a0a0a] hover:border-indigo-500/50 hover:shadow-md transition duration-300"
+            >
+              <div
+                class="text-3xl p-3 bg-indigo-500/10 text-indigo-500 rounded-xl shrink-0"
+              >
+                🪙
+              </div>
+              <div class="space-y-1">
+                <h3 class="i18n text-lg font-bold" data-key="game-card-1-title">
+                  Заробляйте монети
+                </h3>
+                <p
+                  class="i18n text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                  data-key="game-card-1-text"
+                >
+                  Виконуйте тренування та збирайте бонусні монети за кожен
+                  активний день.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="game-card reveal-on-scroll reveal-delay-2 flex flex-col sm:flex-row items-start sm:items-center gap-5 p-6 rounded-2xl border border-indigo-500/20 bg-white dark:bg-[#0a0a0a] hover:border-indigo-500/50 hover:shadow-md transition duration-300"
+            >
+              <div
+                class="text-3xl p-3 bg-indigo-500/10 text-indigo-500 rounded-xl shrink-0"
+              >
+                🎯
+              </div>
+              <div class="space-y-1">
+                <h3 class="i18n text-lg font-bold" data-key="game-card-2-title">
+                  Щоденні завдання
+                </h3>
+                <p
+                  class="i18n text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                  data-key="game-card-2-text"
+                >
+                  Комплітуйте завдання через <code>/daily</code> та отримуйте
+                  цінні нагороди.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="game-card reveal-on-scroll reveal-delay-3 flex flex-col sm:flex-row items-start sm:items-center gap-5 p-6 rounded-2xl border border-indigo-500/20 bg-white dark:bg-[#0a0a0a] hover:border-indigo-500/50 hover:shadow-md transition duration-300"
+            >
+              <div
+                class="text-3xl p-3 bg-indigo-500/10 text-indigo-500 rounded-xl shrink-0"
+              >
+                🛒
+              </div>
+              <div class="space-y-1">
+                <h3 class="i18n text-lg font-bold" data-key="game-card-3-title">
+                  Магазин бонусів
+                </h3>
+                <p
+                  class="i18n text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                  data-key="game-card-3-text"
+                >
+                  Обмінюйте монети на корисні інсайти, підказки та ексклюзивні
+                  фічі.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="game-card reveal-on-scroll reveal-delay-1 flex flex-col sm:flex-row items-start sm:items-center gap-5 p-6 rounded-2xl border border-indigo-500/20 bg-white dark:bg-[#0a0a0a] hover:border-indigo-500/50 hover:shadow-md transition duration-300"
+            >
+              <div
+                class="text-3xl p-3 bg-indigo-500/10 text-indigo-500 rounded-xl shrink-0"
+              >
+                📊
+              </div>
+              <div class="space-y-1">
+                <h3 class="i18n text-lg font-bold" data-key="game-card-4-title">
+                  Графіки прогресу
+                </h3>
+                <p
+                  class="i18n text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                  data-key="game-card-4-text"
+                >
+                  Команда <code>/chart</code> показує обсяг, вагу, серії та
+                  динаміку тренувань.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="calculator-section"
+        class="px-4 md:px-6 py-16 bg-gray-50 dark:bg-[#050505]/40 transition-colors"
+      >
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-10">
+            <p
+              class="i18n text-sm font-bold uppercase tracking-wide text-indigo-500 mb-2"
+              data-key="calc-kicker"
+            >
+              Швидкий тест
+            </p>
+            <h2
+              class="i18n text-3xl md:text-4xl font-extrabold mb-4"
+              data-key="calc-section-title"
+            >
+              Розрахуй свої базові параметри
+            </h2>
+          </div>
+
+          <article class="fitness-calculator">
+            <div class="fitness-calculator__header">
+              <div class="fitness-calculator__title-row">
+                <div class="fitness-calculator__icon">🧮</div>
+                <div class="fitness-calculator__title-block">
+                  <h3
+                    class="i18n fitness-calculator__title"
+                    data-key="calc-block-title"
+                  >
+                    Фітнес Калькулятор
+                  </h3>
+                  <p
+                    class="i18n fitness-calculator__subtitle"
+                    data-key="calc-block-desc"
+                  >
+                    Рухай слайдери — результат миттєво
+                  </p>
+                </div>
+              </div>
+
+              <div class="fitness-calculator__sliders">
+                <div class="fitness-calculator__slider-group">
+                  <div class="fitness-calculator__slider-header">
+                    <span
+                      class="i18n fitness-calculator__slider-label"
+                      data-key="calc-height"
+                      >Зріст</span
+                    >
+                    <span class="fitness-calculator__slider-value"
+                      ><span id="calc-height-val">175</span> см</span
+                    >
+                  </div>
+                  <input
+                    type="range"
+                    id="input-height"
+                    min="120"
+                    max="220"
+                    value="175"
+                    class="fitness-calculator__range"
+                  />
+                </div>
+
+                <div class="fitness-calculator__slider-group">
+                  <div class="fitness-calculator__slider-header">
+                    <span
+                      class="i18n fitness-calculator__slider-label"
+                      data-key="calc-weight"
+                      >Вага</span
+                    >
+                    <span class="fitness-calculator__slider-value"
+                      ><span id="calc-weight-val">70</span> кг</span
+                    >
+                  </div>
+                  <input
+                    type="range"
+                    id="input-weight"
+                    min="40"
+                    max="150"
+                    value="70"
+                    class="fitness-calculator__range"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="fitness-calculator__results">
+              <div class="fitness-calculator__result-card">
+                <span
+                  class="i18n fitness-calculator__result-label"
+                  data-key="calc-bmi"
+                  >Твій ІМТ:</span
+                >
+                <span id="result-bmi" class="fitness-calculator__result-value"
+                  >22.9</span
+                >
+                <p id="result-bmi-status" class="fitness-calculator__result-status">
+                  НОРМА
+                </p>
+              </div>
+
+              <div class="fitness-calculator__result-card">
+                <span
+                  class="i18n fitness-calculator__result-label"
+                  data-key="calc-calories"
+                  >Норма калорій:</span
+                >
+                <span
+                  id="result-calories"
+                  class="fitness-calculator__result-value"
+                  >2100</span
+                >
+                <p class="fitness-calculator__result-status">ккал / день</p>
+              </div>
+            </div>
+          </article>
+
+          <div class="mt-6 text-center">
+            <a
+              href="https://t.me/SportsForYou_bot"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="i18n inline-flex items-center justify-center calculator-cta"
+              data-key="calc-btn"
+              >Скласти план у боті</a
+            >
+            <p
+              class="i18n mt-3 text-sm text-gray-500 dark:text-gray-400"
+              data-key="calc-note"
+            >
+              Отримай персональні цілі в Telegram
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="how-it-works" class="max-w-5xl mx-auto px-6 py-16">
+        <h2
+          class="i18n text-3xl md:text-4xl font-bold mb-16 text-center"
+          data-key="how-title"
+        >
+          Як працюють команди
+        </h2>
+
+        <div class="mb-12 text-center max-w-3xl mx-auto" data-aos="fade-up">
+          <div
+            class="glass-card p-6 md:p-8 rounded-2xl relative overflow-hidden"
+          >
+            <div
+              class="absolute -inset-2 bg-gradient-to-r from-indigo-500 to-purple-600 blur-2xl opacity-10"
+            ></div>
+            <p
+              class="i18n text-gray-700 dark:text-gray-300 text-lg relative z-10 leading-relaxed"
+              data-key="how-intro"
+            >
+              Записуй тренування в звичному месенджері. Бот рахує статистику,
+              показує прогрес і допомагає не пропускати цілі.
+            </p>
+            <div class="how-mini-points mt-5">
+              <span class="i18n" data-key="how-point-1"
+                >10 секунд на запис</span
+              >
+              <span class="i18n" data-key="how-point-2"
+                >Графіки без таблиць</span
+              >
+              <span class="i18n" data-key="how-point-3"
+                >Цілі з прогрес-баром</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-12 md:space-y-20">
+          <div class="popup-grid reverse">
+            <div class="popup-card p-8">
+              <h3
+                class="i18n text-2xl font-bold text-indigo-500 mb-4"
+                data-key="step4-t"
+              ></h3>
+              <div class="i18n" data-key="step4-d"></div>
+            </div>
+            <div
+              class="popup-card command-preview overflow-hidden p-0 shadow-2xl"
+            >
+              <img
+                src="set language.png"
+                alt="Telegram bot interface: Set language command preview"
+                class="block w-full"
+              />
+            </div>
+          </div>
+
+          <div class="popup-grid">
+            <div class="popup-card p-8">
+              <h3
+                class="i18n text-2xl font-bold text-indigo-500 mb-4"
+                data-key="step1-t"
+              ></h3>
+              <div class="i18n" data-key="step1-d"></div>
+              <div class="mt-6 border-t border-gray-700/50 pt-4">
+                <button
+                  class="sub-toggle flex items-center gap-2 text-sm text-gray-500 hover:text-indigo-500 transition-colors"
+                  type="button"
+                >
+                  <span class="i18n" data-key="sub-btn">Додаткові команди</span>
+                  <span class="toggle-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="sub-list">
+                  <div
+                    class="flex flex-col gap-3 pl-3 border-l-2 border-indigo-500/40"
+                  >
+                    <div>
+                      <code class="text-xs">/profile_visibility</code>
+                      <p
+                        class="i18n text-xs text-gray-500 mt-1"
+                        data-key="sub-visibility"
+                      ></p>
+                    </div>
+                    <div>
+                      <code class="text-xs">/edit_profile</code>
+                      <p
+                        class="i18n text-xs text-gray-500 mt-1"
+                        data-key="sub-edit"
+                      ></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="popup-card command-preview overflow-hidden p-0 shadow-2xl"
+            >
+              <img
+                src="profile.png"
+                alt="Telegram bot interface: User profile setup and edit commands"
+                class="block w-full"
+              />
+            </div>
+          </div>
+
+          <div class="popup-grid reverse">
+            <div class="popup-card p-8">
+              <h3
+                class="i18n text-2xl font-bold text-indigo-500 mb-4"
+                data-key="step2-t"
+              ></h3>
+              <div class="i18n" data-key="step2-d"></div>
+              <div class="mt-6 border-t border-gray-700/50 pt-4">
+                <button
+                  class="sub-toggle flex items-center gap-2 text-sm text-gray-500 hover:text-indigo-500 transition-colors"
+                  type="button"
+                >
+                  <span class="i18n" data-key="sub-btn">Додаткові команди</span>
+                  <span class="toggle-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="sub-list">
+                  <div
+                    class="flex flex-col gap-3 pl-3 border-l-2 border-indigo-500/40"
+                  >
+                    <div>
+                      <code class="text-xs">/today</code>
+                      <p
+                        class="i18n text-xs text-gray-500 mt-1"
+                        data-key="sub-today"
+                      ></p>
+                    </div>
+                    <div>
+                      <code class="text-xs">/stats</code>
+                      <p
+                        class="i18n text-xs text-gray-500 mt-1"
+                        data-key="sub-stats-mini"
+                      ></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="popup-card command-preview overflow-hidden p-0 shadow-2xl"
+            >
+              <img
+                src="workout.png"
+                alt="Telegram bot interface: Workout tracking command demonstration"
+                class="block w-full"
+              />
+            </div>
+          </div>
+
+          <div class="popup-grid">
+            <div class="popup-card p-8">
+              <h3
+                class="i18n text-2xl font-bold text-indigo-500 mb-4"
+                data-key="step3-t"
+              ></h3>
+              <div class="i18n" data-key="step3-d"></div>
+              <div class="mt-6 border-t border-gray-700/50 pt-4">
+                <button
+                  class="sub-toggle flex items-center gap-2 text-sm text-gray-500 hover:text-indigo-500 transition-colors"
+                  type="button"
+                >
+                  <span class="i18n" data-key="sub-btn">Додаткові команди</span>
+                  <span class="toggle-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="sub-list">
+                  <div
+                    class="flex flex-col gap-3 pl-3 border-l-2 border-indigo-500/40"
+                  >
+                    <div>
+                      <code class="text-xs">/set_goal</code>
+                      <p
+                        class="i18n text-xs text-gray-500 mt-1"
+                        data-key="sub-set-goal"
+                      ></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="popup-card command-preview overflow-hidden p-0 shadow-2xl"
+            >
+              <img
+                src="goal.png"
+                alt="Telegram bot interface: Goal setting and progress tracking command"
+                class="block w-full"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="faq-section"
+        class="px-4 md:px-6 py-16 bg-white dark:bg-[#080808]/60 border-t border-b border-gray-100 dark:border-white/5 transition-colors"
+      >
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-10">
+            <p
+              class="i18n text-sm font-bold uppercase tracking-wide text-indigo-500 mb-2"
+              data-key="faq-kicker"
+            >
+              Часті питання
+            </p>
+            <h2
+              class="i18n text-3xl md:text-4xl font-extrabold mb-4"
+              data-key="faq-section-title"
+            >
+              Відповіді на популярні запитання
+            </h2>
+            <div class="flex flex-wrap justify-center gap-3 mb-8">
+              <button
+                id="faq-expand-all"
+                type="button"
+                class="rounded-full border border-indigo-500/30 bg-indigo-50 text-indigo-700 dark:bg-white/5 dark:text-indigo-300 px-4 py-2 text-sm font-semibold transition hover:bg-indigo-500/10"
+                data-key="faq-btn-expand"
+              >
+                Expand All
+              </button>
+              <button
+                id="faq-collapse-all"
+                type="button"
+                class="rounded-full border border-gray-300/70 bg-white text-gray-700 dark:bg-[#111111] dark:text-gray-200 px-4 py-2 text-sm font-semibold transition hover:bg-gray-100 dark:hover:bg-white/10"
+                data-key="faq-btn-collapse"
+              >
+                Collapse All
+              </button>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div
+              class="faq-item rounded-2xl border border-gray-200 dark:border-white/5 bg-gray-50/50 dark:bg-[#0a0a0a] transition duration-300"
+            >
+              <button
+                class="faq-toggle w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-base md:text-lg hover:text-indigo-500 transition-colors focus:outline-none"
+              >
+                <span class="i18n" data-key="faq-q1"
+                  >Чи безкоштовний цей Telegram-бот?</span
+                >
+                <span
+                  class="faq-icon text-xl text-indigo-500 transition-transform duration-300"
+                  >＋</span
+                >
+              </button>
+              <div
+                class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+              >
+                <p
+                  class="i18n p-6 pt-0 text-sm md:text-base text-gray-600 dark:text-gray-400 border-t border-gray-150 dark:border-white/5 leading-relaxed"
+                  data-key="faq-a1"
+                >
+                  Так! Базовий функціонал бота (запис тренувань, фіксація ваги
+                  та перегляд профілю) повністю безкоштовний. Ви також можете
+                  заробляти внутрішні монети за активність і відкривати
+                  додаткові фічі без реальних витрат.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="faq-item rounded-2xl border border-gray-200 dark:border-white/5 bg-gray-50/50 dark:bg-[#0a0a0a] transition duration-300"
+            >
+              <button
+                class="faq-toggle w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-base md:text-lg hover:text-indigo-500 transition-colors focus:outline-none"
+              >
+                <span class="i18n" data-key="faq-q2"
+                  >Чи підійде бот для домашніх тренувань?</span
+                >
+                <span
+                  class="faq-icon text-xl text-indigo-500 transition-transform duration-300"
+                  >＋</span
+                >
+              </button>
+              <div
+                class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+              >
+                <p
+                  class="i18n p-6 pt-0 text-sm md:text-base text-gray-600 dark:text-gray-400 border-t border-gray-150 dark:border-white/5 leading-relaxed"
+                  data-key="faq-a2"
+                >
+                  Абсолютно. Команда <code>/workout</code> розроблена так, щоб
+                  ви могли записувати будь-які вправи: від підтягувань на
+                  турніку та віджимань вдома до професійних жимів у тренажерному
+                  залі. Бот адаптується під ваш формат підходів та повторень.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="faq-item rounded-2xl border border-gray-200 dark:border-white/5 bg-gray-50/50 dark:bg-[#0a0a0a] transition duration-300"
+            >
+              <button
+                class="faq-toggle w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-base md:text-lg hover:text-indigo-500 transition-colors focus:outline-none"
+              >
+                <span class="i18n" data-key="faq-q3"
+                  >Як працює аналітика прогресу?</span
+                >
+                <span
+                  class="faq-icon text-xl text-indigo-500 transition-transform duration-300"
+                  >＋</span
+                >
+              </button>
+              <div
+                class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+              >
+                <p
+                  class="i18n p-6 pt-0 text-sm md:text-base text-gray-600 dark:text-gray-400 border-t border-gray-150 dark:border-white/5 leading-relaxed"
+                  data-key="faq-a3"
+                >
+                  Коли ви регулярно записуєте підходи, алгоритм автоматично
+                  вираховує сумарний тоннаж, кількість робочих серій та вашу
+                  робочу вагу. Використовуючи команду <code>/chart</code>, ви
+                  зможете миттєво згенерувати наочний візуальний графік вашого
+                  прогресу прямо в чаті.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="faq-item rounded-2xl border border-gray-200 dark:border-white/5 bg-gray-50/50 dark:bg-[#0a0a0a] transition duration-300"
+            >
+              <button
+                class="faq-toggle w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-base md:text-lg hover:text-indigo-500 transition-colors focus:outline-none"
+              >
+                <span class="i18n" data-key="faq-q4"
+                  >Чи безпечні мої персональні дані?</span
+                >
+                <span
+                  class="faq-icon text-xl text-indigo-500 transition-transform duration-300"
+                  >＋</span
+                >
+              </button>
+              <div
+                class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+              >
+                <p
+                  class="i18n p-6 pt-0 text-sm md:text-base text-gray-600 dark:text-gray-400 border-t border-gray-150 dark:border-white/5 leading-relaxed"
+                  data-key="faq-a4"
+                >
+                  Так, ми серйозно ставимося до конфіденційності. Усі дані
+                  вашого профілю (вага, зріст, історія занять) використовуються
+                  виключно для розрахунку вашої особистої статистики всередині
+                  бота і ніколи не передаються третім особам. Ви в будь-який
+                  момент можете змінити або видалити їх.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer border-t border-gray-200 dark:border-white/10">
+      <div class="max-w-5xl mx-auto px-6 py-10">
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="privacy.html" class="footer-link">
+            <span class="footer-link-title i18n" data-key="footer-privacy"
+              >Конфіденційність</span
+            >
+            <span class="footer-link-note i18n" data-key="footer-privacy-note"
+              >Як ми працюємо з даними</span
+            >
+          </a>
+          <a href="terms.html" class="footer-link">
+            <span class="footer-link-title i18n" data-key="footer-terms"
+              >Умови використання</span
+            >
+            <span class="footer-link-note i18n" data-key="footer-terms-note"
+              >Правила користування ботом</span
+            >
+          </a>
+          <a href="copyright.html" class="footer-link">
+            <span class="footer-link-title i18n" data-key="footer-copyright"
+              >All rights reserved</span
+            >
+            <span class="footer-link-note i18n" data-key="footer-copyright-note"
+              >Права та матеріали SportBot</span
+            >
+          </a>
+        </nav>
+        <p class="i18n footer-copy" data-key="footer-text"></p>
+      </div>
+    </footer>
+
+    <div
+      class="mobile-cta-dock fixed bottom-6 left-0 w-full px-4 z-50 md:hidden pointer-events-none flex justify-center"
+    >
+      <a
+        href="https://t.me/SportsForYou_bot"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mobile-sticky-cta i18n pointer-events-auto inline-block bg-gradient-to-r from-indigo-600 to-indigo-500 text-white px-8 py-4 rounded-full font-bold shadow-2xl shadow-indigo-500/40 active:scale-95 transition-all duration-300 backdrop-blur-md border border-white/10 text-xl"
+        data-key="btn-bot"
+        >Відкрити в Telegram</a
+      >
+    </div>
+
+    <button
+      id="back-to-top"
+      class="fixed bottom-28 right-6 w-12 h-12 flex items-center justify-center bg-indigo-600/90 text-white rounded-full shadow-2xl backdrop-blur-md border border-white/10 opacity-0 translate-y-10 pointer-events-none transition-all duration-300 z-50 hover:bg-indigo-500 hover:-translate-y-1 active:scale-95"
+      aria-label="Back to top"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2.5"
+          d="M5 15l7-7 7 7"
+        ></path>
+      </svg>
+    </button>
+
+    <!-- Social Proof Toast -->
+    <div id="social-toast" class="hidden md:block">
+      <div
+        class="glass-toast flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-medium"
+      >
+        <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+        <span id="toast-text" class="text-gray-800 dark:text-gray-200"></span>
+      </div>
+    </div>
+
+    <!-- AOS Scroll Animations JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+function runTgChat(){
+  const chat=document.querySelector('.tg-chat');
+  if(!chat)return;
+  chat.innerHTML='';
+  [{cls:'user',text:'/workout chest 💪',at:400},
+   {cls:'typing',at:1000},
+   {cls:'bot',text:'✅ Жим лежачи — 80кг × 8\nЗаписано! Рекорд +5% 🔥',at:2000}
+  ].forEach(({cls,text,at})=>{
+    setTimeout(()=>{
+      const b=document.createElement('div');
+      b.className='tg-bubble '+cls;
+      if(cls==='typing'){
+        b.innerHTML='<span></span><span></span><span></span>';
+        chat.appendChild(b);
+        setTimeout(()=>b.remove(),800);
+      }else{
+        b.innerText=text;
+        chat.appendChild(b);
+      }
+    },at);
+  });
+  setTimeout(runTgChat,5000);
+}
+document.addEventListener('DOMContentLoaded',runTgChat);
+</script>
+    <script>
+(function(){
+  const replies={
+    '/workout':'✅ Збережено!\nБіг 30 хв, Віджимання 4×20\n🌙 +20 монет  ⭐ +20 XP',
+    '/stats':'📊 Статистика\nДнів тренування: 12\n🔥 Серія: 5 днів\n⭐ Рівень: 3\n🥇 Ранг: Атлет\nXP: 340 / 500',
+    '/chart':'📈 Оберіть графік:\n⚖️ Weight  🏆 Workouts\n🔥 Streak  📦 Volume\n\n→ Команда відкриває графік у реальному боті',
+    '/help':'📋 Команди SportBot:\n/workout — записати тренування\n/stats — статистика\n/chart — графіки\n/goal — встановити ціль\n/daily — щоденне завдання',
+    'default':'🤔 Команда не розпізнана.\nСпробуй: /workout /stats /chart /help'
+  };
+  
+  function addBubble(text,type){
+    const chat=document.getElementById('tryChat');
+    const b=document.createElement('div');
+    b.style.cssText=`padding:10px 14px;border-radius:${type==='user'?'14px 14px 4px 14px':'14px 14px 14px 4px'};
+      font-size:13px;color:#fff;align-self:${type==='user'?'flex-end':'flex-start'};
+      max-width:85%;white-space:pre-line;opacity:0;transition:opacity 0.3s;
+      background:${type==='user'?'#5865F2':'#1e1e3a'};`;
+    b.textContent=text;
+    chat.appendChild(b);
+    setTimeout(()=>b.style.opacity='1',10);
+    chat.scrollTop=chat.scrollHeight;
+  }
+
+  function handleCmd(cmd){
+    const c=cmd.trim().toLowerCase();
+    addBubble(cmd,'user');
+    setTimeout(()=>{
+      addBubble(replies[c]||replies['default'],'bot');
+    },600);
+  }
+
+  document.getElementById('tryBtn').addEventListener('click',()=>{
+    const v=document.getElementById('tryInput').value;
+    if(v.trim()){handleCmd(v);document.getElementById('tryInput').value='';}
+  });
+  document.getElementById('tryInput').addEventListener('keydown',e=>{
+    if(e.key==='Enter'){
+      const v=e.target.value;
+      if(v.trim()){handleCmd(v);e.target.value='';}
+    }
+  });
+  document.querySelectorAll('.try-chip').forEach(btn=>{
+    btn.addEventListener('click',()=>handleCmd(btn.dataset.cmd));
+  });
+})();
+    </script>
+  </body>
+</html>

@@ -649,13 +649,39 @@ html.transition body {
 }
 
 .fitness-calculator__range {
+  display: block;
   width: 100%;
-  height: 6px;
+  height: 1.5rem;
+  margin: 0;
   accent-color: var(--sb-orange);
   cursor: pointer;
-  appearance: none;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 999px;
+  appearance: auto;
+  -webkit-appearance: auto;
+  background: transparent;
+  border: 0;
+  opacity: 1;
+  filter: none;
+}
+
+html:not(.dark) .fitness-calculator__range {
+  color-scheme: light;
+}
+
+.dark .fitness-calculator__range {
+  color-scheme: dark;
+}
+
+.fitness-calculator__range:hover {
+  accent-color: var(--sb-orange-2);
+}
+
+.fitness-calculator__range:active {
+  cursor: grabbing;
+}
+
+.fitness-calculator__range:focus-visible {
+  outline: 2px solid var(--sb-orange-2);
+  outline-offset: 2px;
 }
 
 .fitness-calculator__results {
@@ -3178,10 +3204,6 @@ code {
 #how-it-works img,
 .command-preview img {
   border-radius: calc(var(--sb-radius) - 0.25rem);
-}
-
-input[type="range"] {
-  accent-color: var(--sb-orange);
 }
 
 #result-bmi,

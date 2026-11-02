@@ -1,9 +1,7 @@
 const tr = {
   ua: {
-    "nav-main": "Навігація",
     "nav-quick": "Quick Start",
     "nav-features": "Функції",
-    "nav-testimonials": "Відгуки",
     "nav-how": "Як працює",
     "nav-novelty": "Гейміфікація",
     "nav-faq": "FAQ",
@@ -19,16 +17,6 @@ const tr = {
     "hero-chip-2": "Запис за 10 секунд",
     "hero-chip-3": "Графіки в чаті",
     "hero-chip-4": "Без реклами",
-    "why-kicker": "Порівняння",
-    "why-title": "Чому саме ми?",
-    "why-1-title": "Завжди під рукою",
-    "why-1-text":
-      "Не треба встановлювати окремий додаток - достатньо Telegram.",
-    "why-2-title": "Аналітика в реальному часі",
-    "why-2-text": "Бот сам рахує тоннаж, прогрес і тренувальну статистику.",
-    "why-3-title": "Без реклами",
-    "why-3-text":
-      "Фокус тільки на тренуваннях, без зайвого шуму та відволікань.",
     "quick-kicker": "Quick Start",
     "quick-title": "Почни за 3 прості кроки",
     "quick-1-title": "Connect",
@@ -76,12 +64,6 @@ const tr = {
     "game-card-4-title": "Графіки прогресу",
     "game-card-4-text":
       "Команда <code>/chart</code> показує обсяг, вагу, серії та динаміку тренувань.",
-
-    "chart-kicker": "Аналітика",
-    "chart-section-title": "Графіки прогресу",
-    "novelty-tag": "Новинка",
-    "chart-text":
-      "Я додав у свій телеграм-бот команду <code>/chart</code>, яка допомагає створювати графік об'єму тренувань, серій, ваги та занять. Повну динаміку вашого тіла та сили тепер видно наочно!",
 
     "calc-kicker": "Швидкий тест",
     "calc-section-title": "Розрахуй свої базові параметри",
@@ -145,8 +127,6 @@ const tr = {
     "footer-terms-note": "Правила користування ботом",
     "footer-copyright": "All rights reserved",
     "footer-copyright-note": "Права та матеріали SportBot",
-    "footer-blog": "База знань",
-    "footer-blog-note": "Практичні статті про тренування",
     "footer-text": "© 2026 SportBot. Всі права захищені.",
     "pain-kicker": "Знайомо?",
     "pain-title": "Без щоденників і зайвих меню",
@@ -156,32 +136,12 @@ const tr = {
     "pain-card-2-text": "Бот показує динаміку графіками прямо в чаті.",
     "pain-card-3-title": "Додатки зайві",
     "pain-card-3-text": "Все працює в Telegram, без завантажень і реклами.",
-    "pain-problem-title": "Проблема",
-    "pain-problem-text": "Важко вести облік тренувань вручную: підходи губляться, прогрес не помітний, а паперовий щоденник тільки заважає в залі.",
-    "pain-audience-title": "Наша аудиторія",
-    "pain-audience-text": "Набридли перевантажені фітнес-додатки, що вимагають ручного введення? Наш бот створений для новачків, любителів домашніх тренувань та всіх користувачів Telegram, яким важлива швидкість запису.",
-    "value-kicker": "Головна перевага",
-    "value-title": "Персональний фітнес-щоденник прямо в Telegram",
     "value-title-short": "Персональний фітнес-щоденник прямо в Telegram",
     "value-desc-short": "Записуй підходи, вагу та повторення в Telegram. Бот сам рахує статистику і показує прогрес графіками.",
-    "value-desc": "Автоматичний трекер в 1 клік: записуй підходи, вагу та повторення без встановлення додаткових застосунків. Швидко, безкоштовно на старті та з інтелектуальною аналітикою прогресу.",
-    "value-badge-1": "Швидко",
-    "value-badge-2": "Безкоштовно на старті",
-    "value-badge-3": "Інтелектуальна аналітика",
-    "adv-kicker": "Наші переваги",
-    "adv-title": "Чому обирають саме нас",
-    "adv-1-title": "Звичний месенджер",
-    "adv-1-text": "Мінімальний поріг входу через звичний месенджер. Не потрібно нічого завантажувати — достатньо Telegram.",
-    "adv-2-title": "Гейміфікація та аналітика",
-    "adv-2-text": "Гейміфікація монетами та аналітика, яка стає точнішою з кожним тренуванням.",
-    "adv-3-title": "Ком'юніті та бонуси",
-    "adv-3-text": "Фітнес-ком'юніті, реферальні бонуси та швидкі команди на кшталт <code>/workout</code>.",
   },
   en: {
-    "nav-main": "Navigation",
     "nav-quick": "Quick Start",
     "nav-features": "Features",
-    "nav-testimonials": "Reviews",
     "nav-how": "How it works",
     "nav-novelty": "Gamification",
     "nav-faq": "FAQ",
@@ -197,15 +157,6 @@ const tr = {
     "hero-chip-2": "Log in 10 seconds",
     "hero-chip-3": "Charts in chat",
     "hero-chip-4": "No ads",
-    "why-kicker": "Comparison",
-    "why-title": "Why choose us?",
-    "why-1-title": "Always at hand",
-    "why-1-text": "No separate app is needed - Telegram is enough.",
-    "why-2-title": "Real-time analytics",
-    "why-2-text":
-      "The bot calculates volume, progress, and workout stats automatically.",
-    "why-3-title": "Ad-free",
-    "why-3-text": "Only training focus, without extra noise or distractions.",
     "quick-title": "Start in 3 simple steps",
     "quick-kicker": "Quick Start",
     "quick-1-title": "Connect",
@@ -253,12 +204,6 @@ const tr = {
     "game-card-4-title": "Progress charts",
     "game-card-4-text":
       "The <code>/chart</code> command shows volume, weight, sets, and workout dynamics.",
-
-    "chart-kicker": "Our Novelty",
-    "chart-section-title": "Progress Charts",
-    "novelty-tag": "New",
-    "chart-text":
-      "I added the <code>/chart</code> command to my Telegram bot, which helps generate graphs of training volume, streaks, weights, and workouts. Your body and strength dynamics are now perfectly visible!",
 
     "calc-kicker": "Quick Test",
     "calc-section-title": "Calculate Your Basic Parameters",
@@ -321,8 +266,6 @@ const tr = {
     "footer-terms-note": "Rules for using the bot",
     "footer-copyright": "All rights reserved",
     "footer-copyright-note": "SportBot rights and materials",
-    "footer-blog": "Knowledge base",
-    "footer-blog-note": "Practical guides to training",
     "footer-text": "© 2026 SportBot. All rights reserved.",
     "pain-kicker": "Sound familiar?",
     "pain-title": "No journals or extra menus",
@@ -332,26 +275,8 @@ const tr = {
     "pain-card-2-text": "The bot shows your dynamics with charts right in chat.",
     "pain-card-3-title": "Apps are extra",
     "pain-card-3-text": "Everything works in Telegram, without downloads or ads.",
-    "pain-problem-title": "The Problem",
-    "pain-problem-text": "Tracking workouts manually is hard: sets get lost, progress is invisible, and a paper journal just gets in the way at the gym.",
-    "pain-audience-title": "Our Audience",
-    "pain-audience-text": "Tired of bloated fitness apps that require manual input? Our bot is built for beginners, home workout lovers, and all Telegram users who value speed of logging.",
-    "value-kicker": "Core Advantage",
-    "value-title": "Your personal fitness diary right in Telegram",
     "value-title-short": "Your personal fitness diary right in Telegram",
     "value-desc-short": "Log sets, weight, and reps in Telegram. The bot calculates stats and shows progress with charts.",
-    "value-desc": "1-click auto-tracker: log sets, weight, and reps without installing extra apps. Fast, free to start, and with intelligent progress analytics.",
-    "value-badge-1": "Fast",
-    "value-badge-2": "Free to start",
-    "value-badge-3": "Smart analytics",
-    "adv-kicker": "Our Edge",
-    "adv-title": "Why people choose us",
-    "adv-1-title": "Familiar messenger",
-    "adv-1-text": "Minimal entry barrier through a messenger you already use. No downloads needed — just Telegram.",
-    "adv-2-title": "Gamification & analytics",
-    "adv-2-text": "Coin-based gamification and analytics that gets smarter with every workout.",
-    "adv-3-title": "Community & bonuses",
-    "adv-3-text": "Fitness community, referral bonuses, and quick commands like <code>/workout</code>.",
   },
 };
 
@@ -946,6 +871,20 @@ function initHeroParticles() {
   const heroSection = document.getElementById("hero");
   if (!canvas || !heroSection) return;
 
+  const desktopMotion = window.matchMedia(
+    "(min-width: 901px) and (prefers-reduced-motion: no-preference)",
+  );
+  if (!desktopMotion.matches) {
+    desktopMotion.addEventListener(
+      "change",
+      (event) => {
+        if (event.matches) initHeroParticles();
+      },
+      { once: true },
+    );
+    return;
+  }
+
   const ctx = canvas.getContext("2d");
   let particles = [];
   const mouse = { x: null, y: null, radius: 150 };
@@ -1111,45 +1050,3 @@ document.addEventListener("click", (e) => {
     }, 800);
   });
 });
-
-// ===== Investor Modal =====
-(function () {
-  const modal = document.getElementById('investor-modal');
-  const closeBtn = document.getElementById('close-investor-modal');
-  const openBtn = document.getElementById('open-investor-modal');
-  const modalBackdrop = modal?.querySelector('.modal-backdrop');
-
-  if (!modal || !openBtn) return;
-
-  function toggleModal(e) {
-    if (e) e.preventDefault();
-    const isOpen = modal.classList.contains('modal-open');
-    if (!isOpen) {
-      modal.classList.add('modal-open');
-      document.body.style.overflow = 'hidden';
-    } else {
-      modal.classList.remove('modal-open');
-      document.body.style.overflow = '';
-    }
-  }
-
-  openBtn.addEventListener('click', toggleModal);
-  if (closeBtn) closeBtn.addEventListener('click', toggleModal);
-  if (modalBackdrop) modalBackdrop.addEventListener('click', toggleModal);
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal.classList.contains('modal-open')) {
-      toggleModal();
-    }
-  });
-})();
-
-// ===== AOS Init =====
-if (typeof AOS !== 'undefined') {
-  AOS.init({
-    duration: 700,
-    once: true,
-    offset: 80,
-    easing: 'ease-out-cubic',
-  });
-}

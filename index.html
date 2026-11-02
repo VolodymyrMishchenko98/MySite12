@@ -37,7 +37,7 @@
     <link
       rel="preload"
       as="image"
-      href="hero-collage.webp"
+      href="assets/video/hero-poster.webp"
       type="image/webp"
       fetchpriority="high"
     />
@@ -347,6 +347,23 @@
         id="hero"
         class="relative w-full h-[350px] md:h-[550px] flex items-center justify-center overflow-hidden hero-background"
       >
+        <div class="hero-video-frame" aria-hidden="true">
+          <video
+            class="hero-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="none"
+            poster="assets/video/hero-poster.webp"
+            tabindex="-1"
+          >
+            <source
+              data-src="assets/video/hero-video.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
         <canvas id="hero-canvas" class="absolute inset-0 z-0"></canvas>
         <div
           class="absolute inset-0 bg-black/40 dark:bg-black/60 transition-colors duration-500"
@@ -384,28 +401,6 @@
           </div>
         </div>
 
-        <div
-          class="hero-visual"
-          data-aos="fade-left"
-          aria-label="SportBot Telegram preview"
-        >
-          <div class="hero-chat-card">
-            <div class="hero-chat-top">
-              <span class="hero-chat-avatar">SB</span>
-              <div>
-                <strong class="i18n" data-key="hero-card-title"
-                  >SportBot у Telegram</strong
-                >
-                <span
-                  class="i18n hero-card-subtitle"
-                  data-key="hero-card-subtitle"
-                  >бот онлайн</span
-                >
-              </div>
-            </div>
-            <div class="tg-chat"></div>
-          </div>
-        </div>
       </header>
 
       <section
@@ -1382,32 +1377,6 @@
     <!-- AOS Scroll Animations JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
-    <script>
-function runTgChat(){
-  const chat=document.querySelector('.tg-chat');
-  if(!chat)return;
-  chat.innerHTML='';
-  [{cls:'user',text:'Біг 30 хвилин, віджимання 4×20',at:400},
-   {cls:'typing',at:1000},
-   {cls:'bot',text:'✅ Збережено: 2 вправи\n🌙 +20 монет\nБаланс: 55\n⭐ +20 XP',at:2000}
-  ].forEach(({cls,text,at})=>{
-    setTimeout(()=>{
-      const b=document.createElement('div');
-      b.className='tg-bubble '+cls;
-      if(cls==='typing'){
-        b.innerHTML='<span></span><span></span><span></span>';
-        chat.appendChild(b);
-        setTimeout(()=>b.remove(),800);
-      }else{
-        b.innerText=text;
-        chat.appendChild(b);
-      }
-    },at);
-  });
-  setTimeout(runTgChat,5000);
-}
-document.addEventListener('DOMContentLoaded',runTgChat);
-</script>
     <script>
 (function(){
   const replies={

@@ -18,12 +18,6 @@ const tr = {
     "hero-chip-2": "Запис за 10 секунд",
     "hero-chip-3": "Графіки в чаті",
     "hero-chip-4": "Без реклами",
-    "hero-card-title": "SportBot у Telegram",
-    "hero-card-subtitle": "Демо-перегляд",
-    "hero-card-line-1": "Записав: жим 80×8",
-    "hero-card-line-2": "Прогрес: +12% за місяць",
-    "hero-card-line-3": "готовий",
-    "hero-card-note": "Відстежуй тренування без зайвих меню",
     "why-kicker": "Порівняння",
     "why-title": "Чому саме ми?",
     "why-1-title": "Завжди під рукою",
@@ -199,12 +193,6 @@ const tr = {
     "hero-chip-2": "Log in 10 seconds",
     "hero-chip-3": "Charts in chat",
     "hero-chip-4": "No ads",
-    "hero-card-title": "SportBot in Telegram",
-    "hero-card-subtitle": "Demo preview",
-    "hero-card-line-1": "Logged: bench 80×8",
-    "hero-card-line-2": "Progress: +12% this month",
-    "hero-card-line-3": "ready",
-    "hero-card-note": "Track workouts without extra menus",
     "why-kicker": "Comparison",
     "why-title": "Why choose us?",
     "why-1-title": "Always at hand",
@@ -522,6 +510,51 @@ function initMobileCtaDock() {
   pageCtas.forEach((cta) => observer.observe(cta));
 }
 
+function initHeroVideo() {
+  const video = document.querySelector(".hero-video");
+  if (!video) return;
+
+  const sources = [...video.querySelectorAll("source[data-src]")];
+  const desktopViewport = window.matchMedia("(min-width: 901px)");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const showPosterFallback = () => {
+    video.pause();
+    video.classList.add("is-unavailable");
+  };
+
+  video.addEventListener("error", showPosterFallback);
+  sources.forEach((source) => {
+    source.addEventListener("error", showPosterFallback);
+  });
+
+  const updateSourceLoading = () => {
+    const shouldLoad = desktopViewport.matches && !reducedMotion.matches;
+    const sourcesAreLoaded = sources.every((source) =>
+      source.hasAttribute("src"),
+    );
+
+    if (shouldLoad && !sourcesAreLoaded) {
+      video.classList.remove("is-unavailable");
+      sources.forEach((source) => {
+        source.src = source.dataset.src;
+      });
+      video.load();
+    } else if (
+      !shouldLoad &&
+      sources.some((source) => source.hasAttribute("src"))
+    ) {
+      video.pause();
+      sources.forEach((source) => source.removeAttribute("src"));
+      video.load();
+    }
+  };
+
+  updateSourceLoading();
+  desktopViewport.addEventListener("change", updateSourceLoading);
+  reducedMotion.addEventListener("change", updateSourceLoading);
+  window.addEventListener("resize", updateSourceLoading, { passive: true });
+}
+
 document.querySelectorAll(".lang-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     const targetLang = btn.dataset.lang;
@@ -546,6 +579,7 @@ updateThemeButton();
 setLanguage(localStorage.getItem("lang") || "ua", false);
 initMagneticButtons();
 initMobileCtaDock();
+initHeroVideo();
 
 // Add theme transition animation
 root.classList.add("transition");

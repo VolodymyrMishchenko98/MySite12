@@ -39,14 +39,53 @@ a:focus-visible {
 }
 
 .hero-background {
-  background-image: url("hero-collage.jpg");
-  background-image: image-set(
-    url("hero-collage.webp") type("image/webp"),
-    url("hero-collage.jpg") type("image/jpeg")
-  );
-  background-size: 300% auto;
-  background-position: center top;
+  background-color: #0b0c0f;
+  background-image:
+    radial-gradient(
+      ellipse 38% 72% at 14% 66%,
+      rgba(214, 87, 28, 0.28),
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 30% 48% at 53% 54%,
+      rgba(119, 88, 178, 0.18),
+      transparent 74%
+    ),
+    linear-gradient(112deg, #0b0c0f 0%, #111116 56%, #0d0e12 100%);
+  background-size: 100% 100%;
+  background-position: center;
   will-change: auto;
+}
+
+.hero-video {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  pointer-events: none;
+}
+
+.hero-video-frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+@media (min-width: 901px) {
+  .hero-video-frame {
+    left: 48%;
+    right: 0;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%);
+    mask-image: linear-gradient(90deg, transparent, #000 14%);
+  }
+}
+
+.hero-video.is-unavailable {
+  display: none;
 }
 
 .popup-card {
@@ -1180,15 +1219,17 @@ html.transition body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-video {
+    display: none;
+  }
+
   .reveal-on-scroll {
     opacity: 1;
     transform: none;
     transition: none;
   }
 
-  .pulse-btn,
-  .tg-bubble,
-  .tg-bubble.typing span {
+  .pulse-btn {
     animation: none !important;
   }
 
@@ -1829,11 +1870,12 @@ html:not(.dark) #hero::before {
   background:
     linear-gradient(
       90deg,
-      rgba(0, 0, 0, 0.82) 0%,
-      rgba(0, 0, 0, 0.57) 48%,
-      rgba(0, 0, 0, 0.24) 100%
+      rgba(0, 0, 0, 0.62) 0%,
+      rgba(0, 0, 0, 0.42) 34%,
+      rgba(0, 0, 0, 0.14) 60%,
+      rgba(0, 0, 0, 0.05) 100%
     ),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(5, 5, 5, 0.72));
+    linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(5, 5, 5, 0.28));
 }
 
 html:not(.dark) .hero-kicker {
@@ -1866,44 +1908,6 @@ html:not(.dark) .hero-chips span {
   color: rgba(255, 255, 255, 0.78) !important;
   background: transparent;
   border-color: transparent;
-}
-
-html:not(.dark) .hero-chat-card {
-  background: #171615;
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-html:not(.dark) .hero-chat-top strong {
-  color: #fff;
-}
-
-html:not(.dark) .hero-chat-row.user {
-  background: var(--sb-violet);
-}
-
-html:not(.dark) .hero-chat-row.bot {
-  background: #2a2826;
-  color: #fff;
-}
-
-html:not(.dark) .hero-chat-row {
-  color: #fff;
-}
-
-html:not(.dark) .hero-card-subtitle {
-  color: rgba(255, 255, 255, 0.58) !important;
-}
-
-html:not(.dark) .hero-card-note {
-  color: rgba(255, 255, 255, 0.62) !important;
-}
-
-html:not(.dark) .hero-progress {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-html:not(.dark) .hero-progress span {
-  background: linear-gradient(90deg, var(--sb-orange), var(--sb-violet-2));
 }
 
 html:not(.dark) #hero h1 {
@@ -2422,10 +2426,6 @@ html:not(.dark) #chart-section article p {
   color: #6f6258 !important;
 }
 
-html:not(.dark) .hero-chat-card code {
-  background: rgba(209, 213, 219, 0.25);
-}
-
 html:not(.dark) #mobile-menu .mob-lang-switcher .lang-btn {
   color: #6f6258 !important;
   background: rgba(65, 45, 30, 0.04) !important;
@@ -2770,8 +2770,7 @@ main {
   gap: clamp(1.5rem, 3.2vw, 3.25rem);
 }
 
-.hero-content,
-.hero-visual {
+.hero-content {
   position: relative;
   z-index: 2;
 }
@@ -2867,97 +2866,11 @@ main {
   font-weight: 600;
 }
 
-.hero-visual {
-  flex: 0 1 380px;
-  width: min(380px, 43%);
-  justify-self: end;
-}
-
-.hero-chat-card {
-  padding: 0.9rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 1rem;
-  background: #171615;
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.3);
-}
-
-.hero-chat-top {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding-bottom: 0.85rem;
-  margin-bottom: 0.85rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.hero-chat-avatar {
-  display: inline-flex;
-  width: 2.5rem;
-  height: 2.5rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: var(--sb-orange);
-  color: #fff;
-  font-size: 0.8rem;
-  font-weight: 900;
-}
-
-.hero-chat-top strong {
-  display: block;
-  color: #fff;
-  font-size: 0.95rem;
-}
-
-.hero-card-subtitle {
-  display: block;
-  margin-top: 0.15rem;
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 0.78rem;
-}
-
-.hero-chat-row {
-  max-width: 92%;
-  margin-bottom: 0.65rem;
-  padding: 0.7rem 0.8rem;
-  border-radius: 1rem;
-  color: #fff;
-  font-size: 0.9rem;
-  line-height: 1.35;
-}
-
-.hero-chat-row.user {
-  margin-left: auto;
-  background: #504783;
-}
-
-.hero-chat-row.bot {
-  background: #2a2826;
-}
-
-.hero-progress {
-  height: 0.55rem;
-  overflow: hidden;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.hero-progress span {
-  display: block;
-  width: 74%;
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, var(--sb-orange), var(--sb-violet-2));
-}
-
-.hero-card-note {
-  margin: 0.85rem 0 0;
-  color: rgba(255, 255, 255, 0.62);
-  font-size: 0.82rem;
-  line-height: 1.45;
-}
-
 @media (max-width: 900px) {
+  .hero-video {
+    display: none;
+  }
+
   #hero {
     flex-direction: column;
     justify-content: center !important;
@@ -2967,8 +2880,8 @@ main {
     min-height: 0;
     padding-top: 3rem;
     padding-bottom: 3rem;
-    background-size: auto 200%;
-    background-position: center top;
+    background-size: 100% 100%;
+    background-position: center;
   }
 
   .hero-content {
@@ -2992,10 +2905,6 @@ main {
     justify-content: center;
   }
 
-  .hero-visual {
-    flex-basis: auto;
-    width: min(380px, 100%);
-  }
 }
 
 @media (max-width: 640px) {
@@ -4064,17 +3973,6 @@ html:not(.dark) .lc-investor-btn .footer-link-title {
 .modal-open .modal-content {
   transform: scale(1) !important;
 }
-
-.tg-chat { display:flex; flex-direction:column; gap:8px; padding:12px 14px; min-height:110px; }
-.tg-bubble { max-width:82%; padding:8px 13px; font-size:13px; line-height:1.4; color:#fff; white-space:pre-line; border-radius:18px; opacity:0; animation:tgFade 0.3s ease forwards; }
-.tg-bubble.user { background:#5865F2; border-radius:18px 18px 4px 18px; align-self:flex-end; }
-.tg-bubble.bot  { background:#2d2d4e; border-radius:18px 18px 18px 4px; align-self:flex-start; }
-.tg-bubble.typing { background:#2d2d4e; border-radius:18px 18px 18px 4px; align-self:flex-start; display:flex; gap:4px; align-items:center; padding:10px 16px; }
-.tg-bubble.typing span { width:5px; height:5px; background:#aaa; border-radius:50%; animation:tgDot 0.6s infinite; }
-.tg-bubble.typing span:nth-child(2) { animation-delay:0.15s; }
-.tg-bubble.typing span:nth-child(3) { animation-delay:0.30s; }
-@keyframes tgFade { from{opacity:0;transform:translateY(5px)} to{opacity:1;transform:translateY(0)} }
-@keyframes tgDot { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
 
 /* Product demonstrations and comparison */
 #bot-demo,

@@ -40,6 +40,10 @@ a:focus-visible {
 
 .hero-background {
   background-image: url("hero-collage.jpg");
+  background-image: image-set(
+    url("hero-collage.webp") type("image/webp"),
+    url("hero-collage.jpg") type("image/jpeg")
+  );
   background-size: 300% auto;
   background-position: center top;
   will-change: auto;
@@ -125,20 +129,6 @@ code {
   pointer-events: auto !important;
 }
 
-/* Стилі для Social Toast */
-#social-toast {
-  position: fixed;
-  bottom: 2rem;
-  left: 2rem;
-  z-index: 100;
-  transform: translateX(-120%);
-  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-#social-toast.show {
-  transform: translateX(0);
-}
-
 /* Theme transition animation */
 body {
   transition:
@@ -150,23 +140,6 @@ html.transition body {
   transition:
     background-color 0.5s cubic-bezier(0.23, 1, 0.32, 1),
     color 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important;
-}
-
-.glass-toast {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  transform: translateY(10px);
-  transition:
-    opacity 0.4s ease,
-    transform 0.4s ease;
-}
-
-#social-toast.show .glass-toast {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .i18n {
@@ -481,6 +454,13 @@ html.transition body {
   color: #655c54;
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+#bot-demo > .demo-disclaimer,
+#try-it > .demo-disclaimer {
+  margin: -1.5rem auto 2rem;
+  color: var(--sb-muted);
+  font-size: 0.8rem;
 }
 
 .dark .pain-points-section {
@@ -1271,8 +1251,7 @@ html.transition body {
     backdrop-filter: none !important; /* Убираем тяжелый блюр на мобильных */
   }
 
-  .popup-card,
-  .glass-toast {
+  .popup-card {
     backdrop-filter: none !important;
   }
 
@@ -1675,14 +1654,26 @@ html.transition body {
   }
 
   .mobile-cta-dock.fixed {
-    position: static;
-    bottom: auto;
-    left: auto;
+    position: fixed;
+    right: 0;
+    bottom: calc(0.75rem + env(safe-area-inset-bottom));
+    left: 0;
     width: 100%;
-    margin-top: 1.25rem;
-    padding-inline: 1rem;
-    z-index: auto;
-    pointer-events: auto;
+    margin-top: 0;
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-left: max(1rem, env(safe-area-inset-left));
+    z-index: 50;
+    pointer-events: none;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      visibility 0.2s;
+  }
+
+  .mobile-cta-dock.is-obscured {
+    opacity: 0;
+    transform: translateY(calc(100% + env(safe-area-inset-bottom)));
+    visibility: hidden;
   }
 
   #back-to-top {
@@ -3318,23 +3309,6 @@ input[type="range"] {
   background: transparent;
 }
 
-#social-toast .glass-toast {
-  border-color: var(--sb-line-warm);
-  border-radius: 1rem;
-  background: rgba(14, 10, 8, 0.88);
-  opacity: 0;
-  transform: translateY(10px);
-  transition:
-    opacity 0.4s ease,
-    transform 0.4s ease;
-}
-
-html:not(.dark) #social-toast .glass-toast {
-  background: rgba(255, 250, 243, 0.95) !important;
-  border-color: rgba(65, 45, 30, 0.14) !important;
-  box-shadow: 0 10px 30px rgba(72, 43, 21, 0.1) !important;
-}
-
 @media (max-width: 900px) {
   #main-nav {
     top: 0.5rem !important;
@@ -3624,8 +3598,7 @@ html:not(.dark) #social-toast .glass-toast {
   }
 
   .mobile-sticky-cta {
-    left: 0.85rem;
-    right: 0.85rem;
+    width: min(100%, 24rem);
     max-width: none !important;
     border-radius: 0.85rem !important;
     min-height: 3.5rem;
@@ -3646,7 +3619,7 @@ html:not(.dark) #social-toast .glass-toast {
   }
 
   body {
-    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom));
   }
 
   .proof-grid {

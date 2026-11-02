@@ -34,6 +34,13 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="icon" type="image/png" sizes="48x48" href="logo.png" />
     <link rel="icon" type="image/png" sizes="96x96" href="logo.png" />
+    <link
+      rel="preload"
+      as="image"
+      href="hero-collage.webp"
+      type="image/webp"
+      fetchpriority="high"
+    />
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -102,7 +109,7 @@
     </style>
 
     <!-- Structured Data (Schema.org) -->
-    <script type="application/ld-json">
+    <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -133,10 +140,10 @@
           },
           {
             "@type": "Question",
-            "name": "Чи безпечні мої персональні дані?",
+            "name": "Де дізнатися, як обробляються мої дані?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Так, ми серйозно ставимося до конфіденційності. Усі дані вашого профілю (вага, зріст, історія занять) використовуються виключно для розрахунку вашої особистої статистики всередині бота і ніколи не передаються третім особам. Ви в будь-який момент можете змінити або видалити їх."
+              "text": "Інформація про дані, які ми збираємо, їх використання та передачу наведена в Політиці конфіденційності SportBot."
             }
           }
         ]
@@ -401,36 +408,6 @@
         </div>
       </header>
 
-      <section class="proof-section px-6 py-8" aria-label="SportBot statistics">
-        <div class="proof-grid max-w-5xl mx-auto">
-          <div class="proof-item reveal-on-scroll reveal-delay-1">
-<strong class="proof-number" data-count="1000" data-suffix="+"
-               >1000+</strong
-             >
-             <span class="i18n proof-label" data-key="proof-athletes"
-               >активних атлетів</span
-             >
-           </div>
-           <div class="proof-item reveal-on-scroll reveal-delay-2">
-             <strong class="proof-number" data-count="50000" data-suffix="+"
-               >50 000+</strong
-             >
-             <span class="i18n proof-label" data-key="proof-workouts"
-               >записаних тренувань</span
-             >
-           </div>
-           <div class="proof-item reveal-on-scroll reveal-delay-3">
-             <strong class="proof-number" data-count="98" data-suffix="%"
-               >98%</strong
-             >
-             <span class="i18n proof-label" data-key="proof-reviews"
-               >позитивних відгуків</span
-             >
-           </div>
-         </div>
-<p class="proof-date">станом на червень 2025</p>
-       </section>
-
       <section
         class="pain-points-section px-6 py-12 bg-white dark:bg-[#050505] transition-colors overflow-hidden"
       >
@@ -520,17 +497,20 @@
        </section>
 
        <section id="bot-demo">
-         <p>Бот в дії</p>
+         <p class="i18n" data-key="demo-kicker">Локальна демонстрація</p>
          <h2>Як це виглядає в Telegram</h2>
          <p>Просто пишеш команду — бот робить решту</p>
+         <p class="i18n demo-disclaimer" data-key="demo-note">
+           Фіксовані приклади, а не live-з’єднання з Telegram-ботом.
+         </p>
 
          <div class="demo-grid">
 
            <div class="demo-card">
              <div class="demo-tag">/workout</div>
              <div class="demo-chat">
-               <div class="dm user">Біг 30 хвилин, Віджимання 4х20</div>
-               <div class="dm bot">Збережено: 2<br>🌙 +20 монет<br>Баланс: 55<br>⭐ +20 XP</div>
+               <div class="dm user">Біг 30 хвилин, віджимання 4×20</div>
+               <div class="dm bot">✅ Збережено: 2 вправи<br>🌙 +20 монет<br>Баланс: 55<br>⭐ +20 XP</div>
              </div>
              <p class="demo-label">Запис тренування</p>
            </div>
@@ -691,9 +671,12 @@
        </section>
 
        <section id="try-it">
-         <p>Інтерактивно</p>
+         <p class="i18n" data-key="demo-kicker">Локальна демонстрація</p>
          <h2>Спробуй команду прямо тут</h2>
          <p>Введи команду як у Telegram і побач відповідь</p>
+         <p class="i18n demo-disclaimer" data-key="demo-note">
+           Фіксовані приклади, а не live-з’єднання з Telegram-ботом.
+         </p>
          
          <div id="tryChat" class="try-chat">
            <div class="tr-bubble bot">
@@ -714,140 +697,6 @@
            <button class="try-chip" data-cmd="/help">/help</button>
          </div>
        </section>
-
-       <section id="testimonials" class="testimonials-section px-6 py-14">
-         <div class="max-w-5xl mx-auto">
-           <div class="text-center mb-10">
-             <p
-               class="i18n text-sm font-bold uppercase tracking-wide text-indigo-500 mb-2"
-               data-key="testimonials-kicker"
-             >
-               Реальні відгуки
-             </p>
-             <h2
-               class="i18n text-3xl md:text-4xl font-bold"
-               data-key="testimonials-title"
-             >
-               Що кажуть справжні користувачі SportBot
-             </h2>
-           </div>
-           <div class="testimonials-grid">
-             <article class="testimonial-card">
-               <p class="testimonial-mark" aria-hidden="true">"</p>
-               <p class="i18n testimonial-text" data-key="testimonial-1-text">
-                 Раніше закидав тренування через тиждень, бо забував, що робив
-                 минулого разу. З SportBot все в телефоні — бачу свій прогрес у
-                 цифрах, і це реально заводить.
-               </p>
-               <div class="testimonial-user">
-                 <img
-                   src="user-1.jpg"
-                   alt="User avatar: Максим, SportBot user"
-                   class="testimonial-avatar"
-                 />
-                 <div>
-                   <p
-                     class="i18n testimonial-name"
-                     data-key="testimonial-1-name"
-                   >
-                     Максим
-                   </p>
-                   <p
-                     class="i18n testimonial-meta"
-                     data-key="testimonial-1-meta"
-                   >
-                     Тренується в залі · 4 місяці з SportBot
-                   </p>
-                 </div>
-               </div>
-             </article>
-             <article class="testimonial-card">
-               <p class="testimonial-mark" aria-hidden="true">"</p>
-               <p class="i18n testimonial-text" data-key="testimonial-2-text">
-                 Найзручніше — це статистика. Коли бот малює графік твого успіху,
-                 лінуватися стає соромно. Рекомендую усім, хто хоче бачити
-                 реальні зміни.
-               </p>
-               <div class="testimonial-user">
-                 <img
-                   src="user-2.jpg"
-                   alt="User avatar: Марія, SportBot user"
-                   class="testimonial-avatar"
-                 />
-                 <div>
-                   <p
-                     class="i18n testimonial-name"
-                     data-key="testimonial-2-name"
-                   >
-                     Марія
-                   </p>
-                   <p
-                     class="i18n testimonial-meta"
-                     data-key="testimonial-2-meta"
-                   >
-                     Домашні тренування · 2 місяці з SportBot
-                   </p>
-                 </div>
-               </div>
-             </article>
-             <article class="testimonial-card">
-               <p class="testimonial-mark" aria-hidden="true">"</p>
-               <p class="i18n testimonial-text" data-key="testimonial-3-text">
-                 Бот замінив мені паперовий щоденник і навіть частково тренера.
-                 Все чітко, лаконічно і завжди під рукою. Бот — вогонь! 🔥
-               </p>
-               <div class="testimonial-user">
-                 <img
-                   src="user-3.jpg"
-                   alt="User avatar: Дмитро, SportBot user"
-                   class="testimonial-avatar"
-                 />
-                 <div>
-                   <p
-                     class="i18n testimonial-name"
-                     data-key="testimonial-3-name"
-                   >
-                     Дмитро
-                   </p>
-                   <p
-                     class="i18n testimonial-meta"
-                     data-key="testimonial-3-meta"
-                   >
-                     Силові тренування · 6 місяців з SportBot
-                   </p>
-                 </div>
-               </div>
-             </article>
-           </div>
-         </div>
-       </section>
-
-       <section id="comparison">
-         <p>Порівняння</p>
-         <h2>SportBot vs інші рішення</h2>
-         <div>
-        <table class="compare-table">
-          <thead>
-            <tr>
-              <th>Критерій</th>
-              <th>Паперовий щоденник</th>
-              <th>Фітнес-додаток</th>
-              <th class="highlight-col">SportBot ✓</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Потрібне встановлення</td><td><span class="emoji-cell">❌</span></td><td><span class="emoji-cell">✅</span></td><td class="highlight-col"><span class="emoji-cell">❌</span></td></tr>
-            <tr><td>Реклама</td><td><span class="emoji-cell">❌</span></td><td><span class="emoji-cell">✅</span></td><td class="highlight-col"><span class="emoji-cell">❌</span></td></tr>
-            <tr><td>Графіки прогресу</td><td><span class="emoji-cell">❌</span></td><td><span class="emoji-cell">✅</span></td><td class="highlight-col"><span class="emoji-cell">✅</span></td></tr>
-            <tr><td>Завжди під рукою</td><td><span class="emoji-cell">⚠️</span></td><td><span class="emoji-cell">⚠️</span></td><td class="highlight-col"><span class="emoji-cell">✅</span></td></tr>
-            <tr><td>Безкоштовно</td><td><span class="emoji-cell">✅</span></td><td><span class="emoji-cell">⚠️</span></td><td class="highlight-col"><span class="emoji-cell">✅</span></td></tr>
-          </tbody>
-        </table>
-        </div>
-        <p>
-          * Порівняння станом на червень 2025. Дані базуються на публічній інформації.
-        </p>
-      </section>
 
       <section
         id="game-format"
@@ -1154,6 +1003,8 @@
                 src="set language.png"
                 alt="Telegram bot interface: Set language command preview"
                 class="block w-full"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -1202,6 +1053,8 @@
                 src="profile.png"
                 alt="Telegram bot interface: User profile setup and edit commands"
                 class="block w-full"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -1250,6 +1103,8 @@
                 src="workout.png"
                 alt="Telegram bot interface: Workout tracking command demonstration"
                 class="block w-full"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -1291,6 +1146,8 @@
                 src="goal.png"
                 alt="Telegram bot interface: Goal setting and progress tracking command"
                 class="block w-full"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -1431,7 +1288,7 @@
                 class="faq-toggle w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-base md:text-lg hover:text-indigo-500 transition-colors focus:outline-none"
               >
                 <span class="i18n" data-key="faq-q4"
-                  >Чи безпечні мої персональні дані?</span
+                  >Де дізнатися, як обробляються мої дані?</span
                 >
                 <span
                   class="faq-icon text-xl text-indigo-500 transition-transform duration-300"
@@ -1445,11 +1302,9 @@
                   class="i18n p-6 pt-0 text-sm md:text-base text-gray-600 dark:text-gray-400 border-t border-gray-150 dark:border-white/5 leading-relaxed"
                   data-key="faq-a4"
                 >
-                  Так, ми серйозно ставимося до конфіденційності. Усі дані
-                  вашого профілю (вага, зріст, історія занять) використовуються
-                  виключно для розрахунку вашої особистої статистики всередині
-                  бота і ніколи не передаються третім особам. Ви в будь-який
-                  момент можете змінити або видалити їх.
+                  Інформація про дані, які ми збираємо, їх використання та
+                  передачу наведена в
+                  <a href="privacy.html" class="underline">Політиці конфіденційності SportBot</a>.
                 </p>
               </div>
             </div>
@@ -1524,16 +1379,6 @@
       </svg>
     </button>
 
-    <!-- Social Proof Toast -->
-    <div id="social-toast" class="hidden md:block">
-      <div
-        class="glass-toast flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-medium"
-      >
-        <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-        <span id="toast-text" class="text-gray-800 dark:text-gray-200"></span>
-      </div>
-    </div>
-
     <!-- AOS Scroll Animations JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
@@ -1542,9 +1387,9 @@ function runTgChat(){
   const chat=document.querySelector('.tg-chat');
   if(!chat)return;
   chat.innerHTML='';
-  [{cls:'user',text:'/workout chest 💪',at:400},
+  [{cls:'user',text:'Біг 30 хвилин, віджимання 4×20',at:400},
    {cls:'typing',at:1000},
-   {cls:'bot',text:'✅ Жим лежачи — 80кг × 8\nЗаписано! Рекорд +5% 🔥',at:2000}
+   {cls:'bot',text:'✅ Збережено: 2 вправи\n🌙 +20 монет\nБаланс: 55\n⭐ +20 XP',at:2000}
   ].forEach(({cls,text,at})=>{
     setTimeout(()=>{
       const b=document.createElement('div');
@@ -1566,10 +1411,10 @@ document.addEventListener('DOMContentLoaded',runTgChat);
     <script>
 (function(){
   const replies={
-    '/workout':'✅ Збережено!\nБіг 30 хв, Віджимання 4×20\n🌙 +20 монет  ⭐ +20 XP',
-    '/stats':'📊 Статистика\nДнів тренування: 12\n🔥 Серія: 5 днів\n⭐ Рівень: 3\n🥇 Ранг: Атлет\nXP: 340 / 500',
-    '/chart':'📈 Оберіть графік:\n⚖️ Weight  🏆 Workouts\n🔥 Streak  📦 Volume\n\n→ Команда відкриває графік у реальному боті',
-    '/help':'📋 Команди SportBot:\n/workout — записати тренування\n/stats — статистика\n/chart — графіки\n/goal — встановити ціль\n/daily — щоденне завдання',
+    '/workout':'✅ Збережено: 2 вправи\n🌙 +20 монет\nБаланс: 55\n⭐ +20 XP',
+    '/stats':'📊 Статистика\nДнів тренування: 1\n🔥 Серія: 0 днів\n🔥 Калорій всього: ~136\n⭐ Рівень: 1\n🥇 Ранг: Новачок\nXP: 15 / 100 ░░░░░░░░░░ 15%',
+    '/chart':'📊 Оберіть графік:\n⚖️ Weight  🏆 Workouts\n🔥 Streak  📦 Volume\n\nЦе ілюстративний приклад, а не відповідь бота.',
+    '/help':'📋 Приклади команд у цій демонстрації:\n/workout\n/stats\n/chart',
     'default':'🤔 Команда не розпізнана.\nСпробуй: /workout /stats /chart /help'
   };
   

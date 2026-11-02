@@ -19,14 +19,11 @@ const tr = {
     "hero-chip-3": "Графіки в чаті",
     "hero-chip-4": "Без реклами",
     "hero-card-title": "SportBot у Telegram",
-    "hero-card-subtitle": "бот онлайн",
+    "hero-card-subtitle": "Демо-перегляд",
     "hero-card-line-1": "Записав: жим 80×8",
     "hero-card-line-2": "Прогрес: +12% за місяць",
     "hero-card-line-3": "готовий",
     "hero-card-note": "Відстежуй тренування без зайвих меню",
-    "proof-athletes": "активних атлетів",
-    "proof-workouts": "записаних тренувань",
-    "proof-reviews": "позитивних відгуків",
     "why-kicker": "Порівняння",
     "why-title": "Чому саме ми?",
     "why-1-title": "Завжди під рукою",
@@ -46,6 +43,9 @@ const tr = {
     "quick-3-title": "Train",
     "quick-3-text": "Запиши перше тренування через <code>/workout</code>.",
     "features-title": "Функціонал бота",
+    "demo-kicker": "Локальна демонстрація",
+    "demo-note":
+      "Фіксовані приклади, а не live-з’єднання з Telegram-ботом.",
     "feature-chip-1": "Запис в 1 клік",
     "feature-chip-2": "Авто-статистика",
     "feature-chip-3": "Графіки прогресу",
@@ -116,24 +116,10 @@ const tr = {
     "faq-q3": "Як працює аналітика прогресу?",
     "faq-a3":
       "Коли ви регулярно записуєте підходи, алгоритм автоматично вираховує сумарний тоннаж, кількість робочих серій та вашу робочу вагу. Використовуючи команду <code>/chart</code>, ви зможете миттєво згенерувати наочний візуальний графік вашого прогресу прямо в чаті.",
-    "faq-q4": "Чи безпечні мої персональні дані?",
+    "faq-q4": "Де дізнатися, як обробляються мої дані?",
     "faq-a4":
-      "Так, ми серйозно ставимося до конфіденційності. Усі дані вашого профілю (вага, зріст, історія занять) використовуються виключно для розрахунку вашої особистої статистики всередині бота і ніколи не передаються третім особам. Ви в будь-який момент можете змінити або видалити їх.",
+      'Інформація про дані, які ми збираємо, їх використання та передачу наведена в <a href="privacy.html" class="underline">Політиці конфіденційності SportBot</a>.',
 
-    "testimonials-kicker": "Реальні відгуки",
-    "testimonials-title": "Що кажуть справжні користувачі SportBot",
-    "testimonial-1-text":
-      "Раніше закидав тренування через тиждень, бо забував, що робив минулого разу. З SportBot все в телефоні — бачу свій прогрес у цифрах, і це реально заводить.",
-    "testimonial-1-name": "Максим",
-    "testimonial-1-meta": "Реальний користувач SportBot",
-    "testimonial-2-text":
-      "Найзручніше — це статистика. Коли бот малює графік твого успіху, лінуватися стає соромно. Рекомендую всім, хто хоче бачити реальні зміни.",
-    "testimonial-2-name": "Марія",
-    "testimonial-2-meta": "Реальний користувач SportBot",
-    "testimonial-3-text":
-      "Бот замінив мені паперовий щоденник і навіть частково тренера. Все чітко, лаконічно і завжди під рукою. Бот — вогонь! 🔥",
-    "testimonial-3-name": "Дмитро",
-    "testimonial-3-meta": "Реальний користувач SportBot",
     "how-title": "Як працюють команди",
     "how-intro":
       "Записуй тренування в звичному месенджері. Бот рахує статистику, показує прогрес і допомагає не пропускати цілі.",
@@ -214,14 +200,11 @@ const tr = {
     "hero-chip-3": "Charts in chat",
     "hero-chip-4": "No ads",
     "hero-card-title": "SportBot in Telegram",
-    "hero-card-subtitle": "bot online",
+    "hero-card-subtitle": "Demo preview",
     "hero-card-line-1": "Logged: bench 80×8",
     "hero-card-line-2": "Progress: +12% this month",
     "hero-card-line-3": "ready",
     "hero-card-note": "Track workouts without extra menus",
-    "proof-athletes": "active athletes",
-    "proof-workouts": "logged workouts",
-    "proof-reviews": "positive reviews",
     "why-kicker": "Comparison",
     "why-title": "Why choose us?",
     "why-1-title": "Always at hand",
@@ -240,6 +223,9 @@ const tr = {
     "quick-3-title": "Train",
     "quick-3-text": "Log your first workout with <code>/workout</code>.",
     "features-title": "Bot Features",
+    "demo-kicker": "Local demo",
+    "demo-note":
+      "Fixed examples, not a live connection to the Telegram bot.",
     "feature-chip-1": "1-click logging",
     "feature-chip-2": "Auto stats",
     "feature-chip-3": "Progress charts",
@@ -310,24 +296,10 @@ const tr = {
     "faq-q3": "How does progress analytics work?",
     "faq-a3":
       "When you regularly log your sets, the algorithm automatically calculates total tonnage, number of work sets, and your working weight. Using the <code>/chart</code> command, you can instantly generate a clear visual graph of your progress right in the chat.",
-    "faq-q4": "Are my personal data safe?",
+    "faq-q4": "Where can I learn how my data is handled?",
     "faq-a4":
-      "Yes, we take privacy seriously. All your profile data (weight, height, workout history) are used exclusively to calculate your personal statistics inside the bot and are never shared with third parties. You can edit or delete them at any time.",
+      'Information about the data we collect, how we use it, and how it may be shared is provided in the <a href="privacy.html" class="underline">SportBot Privacy Policy</a>.',
 
-    "testimonials-kicker": "Real reviews",
-    "testimonials-title": "What real SportBot users say",
-    "testimonial-1-text":
-      "I used to quit training after a week because I forgot what I did last time. With SportBot, everything is on my phone - I see my progress in numbers, and that really keeps me going.",
-    "testimonial-1-name": "Maksym",
-    "testimonial-1-meta": "Real SportBot user",
-    "testimonial-2-text":
-      "The most convenient part is the statistics. When the bot shows your progress chart, skipping workouts feels much harder. I recommend it to anyone who wants to see real changes.",
-    "testimonial-2-name": "Maria",
-    "testimonial-2-meta": "Real SportBot user",
-    "testimonial-3-text":
-      "The bot replaced my paper workout journal and even partly replaced a coach. Everything is clear, concise, and always at hand. SportBot is fire!",
-    "testimonial-3-name": "Dmytro",
-    "testimonial-3-meta": "Real SportBot user",
     "how-title": "How it works",
     "how-intro":
       "Log workouts in the messenger you already use. The bot calculates stats, shows progress, and helps you stay consistent.",
@@ -525,9 +497,29 @@ function initMagneticButtons() {
   });
 }
 
-// --- SOCIAL PROOF TOAST ---
-function initSocialToast() {
-  return;
+function initMobileCtaDock() {
+  const dock = document.querySelector(".mobile-cta-dock");
+  const pageCtas = document.querySelectorAll(
+    ".hero-primary-cta, .calculator-cta",
+  );
+  if (!dock || !("IntersectionObserver" in window)) return;
+
+  const visibleCtas = new Set();
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.2) {
+          visibleCtas.add(entry.target);
+        } else {
+          visibleCtas.delete(entry.target);
+        }
+      });
+      dock.classList.toggle("is-obscured", visibleCtas.size > 0);
+    },
+    { threshold: [0, 0.2] },
+  );
+
+  pageCtas.forEach((cta) => observer.observe(cta));
 }
 
 document.querySelectorAll(".lang-btn").forEach((btn) => {
@@ -553,7 +545,7 @@ if (savedTheme === "light") {
 updateThemeButton();
 setLanguage(localStorage.getItem("lang") || "ua", false);
 initMagneticButtons();
-initSocialToast();
+initMobileCtaDock();
 
 // Add theme transition animation
 root.classList.add("transition");
@@ -739,42 +731,6 @@ const revealObserver = new IntersectionObserver(
 document
   .querySelectorAll(".reveal-on-scroll")
   .forEach((el) => revealObserver.observe(el));
-
-// --- ЛОГИКА АНИМИРОВАННЫХ ЦИФР (ИЗЮМИНКА) ---
-function animateNumbers(el) {
-  const target = parseInt(el.dataset.count);
-  const suffix = el.dataset.suffix || "";
-  let start = 0;
-  const duration = 2000;
-  const step = target / (duration / 16);
-
-  function update() {
-    start += step;
-    if (start < target) {
-      el.textContent = Math.floor(start).toLocaleString() + suffix;
-      requestAnimationFrame(update);
-    } else {
-      el.textContent = target.toLocaleString() + suffix;
-    }
-  }
-  update();
-}
-
-const statsObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting && !entry.target.classList.contains("counted")) {
-        entry.target.classList.add("counted");
-        animateNumbers(entry.target);
-      }
-    });
-  },
-  { threshold: 0.5 },
-);
-
-document
-  .querySelectorAll(".proof-number")
-  .forEach((el) => statsObserver.observe(el));
 
 const heightVal = document.getElementById("calc-height-val");
 const weightVal = document.getElementById("calc-weight-val");

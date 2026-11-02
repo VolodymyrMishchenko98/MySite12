@@ -18,6 +18,10 @@
       element.hidden = element.dataset.lang !== selected;
     });
 
+    document.querySelectorAll("img[data-ua-alt][data-en-alt]").forEach((image) => {
+      image.alt = image.dataset[selected === "ua" ? "uaAlt" : "enAlt"];
+    });
+
     const fixedLabels = {
       "Progress & Gamification": { ua: "Прогрес і гейміфікація", en: "Progress & Gamification" },
       "SportBot Tutorials": { ua: "Інструкції SportBot", en: "SportBot Tutorials" },

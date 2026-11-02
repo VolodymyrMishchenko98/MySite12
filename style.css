@@ -70,6 +70,7 @@ a:focus-visible {
 
 .hero-video-frame {
   position: absolute;
+  z-index: 2;
   inset: 0;
   overflow: hidden;
   pointer-events: none;

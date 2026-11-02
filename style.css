@@ -1244,9 +1244,9 @@ html.transition body {
     --mobile-nav-height: 4rem;
   }
 
-  body {
+  body:not(.legal-page) {
     font-size: 15px;
-      padding-bottom: calc(6rem + env(safe-area-inset-bottom));
+    padding-bottom: calc(6rem + env(safe-area-inset-bottom));
   }
 
   body.mobile-menu-open {
@@ -2947,7 +2947,7 @@ main > section > .max-w-6xl {
   width: min(100%, 1120px);
 }
 
-main > section:not(.proof-section) {
+main > section:not(.proof-section):not(.legal-hero) {
   padding-top: clamp(3.75rem, 6vw, 5.25rem) !important;
   padding-bottom: clamp(3.75rem, 6vw, 5.25rem) !important;
 }
@@ -2973,7 +2973,7 @@ main .uppercase.text-indigo-500 {
 #calculator-section,
 #how-it-works,
 #faq-section,
-.site-footer {
+.site-footer:not(.legal-footer) {
   background: transparent !important;
 }
 
@@ -3528,7 +3528,7 @@ input[type="range"] {
     box-shadow: none !important;
   }
 
-  body {
+  body:not(.legal-page) {
     padding-bottom: calc(5rem + env(safe-area-inset-bottom));
   }
 
@@ -3542,7 +3542,7 @@ input[type="range"] {
     min-height: 6.8rem;
   }
 
-  main > section:not(.proof-section) {
+  main > section:not(.proof-section):not(.legal-hero) {
     padding-top: 4.5rem !important;
     padding-bottom: 4.5rem !important;
   }
@@ -3578,6 +3578,34 @@ input[type="range"] {
 
   #game-format .grid {
     grid-template-columns: 1fr;
+  }
+}
+
+.footer-links--legal {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.footer-disclaimer-en {
+  display: none;
+}
+
+html[lang="en"] .footer-disclaimer-uk {
+  display: none;
+}
+
+html[lang="en"] .footer-disclaimer-en {
+  display: inline;
+}
+
+@media (max-width: 900px) {
+  .footer-links--legal {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-links--legal {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 

@@ -187,7 +187,6 @@ html.transition body {
     opacity 0.2s ease,
     filter 0.2s ease,
     transform 0.2s ease;
-  will-change: opacity, filter, transform;
 }
 
 .i18n-changing {
@@ -1248,6 +1247,16 @@ html:not(.dark) .fitness-calculator__range {
 @media (prefers-reduced-motion: reduce) {
   .hero-video {
     display: none;
+  }
+
+  #hero-canvas {
+    display: none;
+  }
+
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 
   .reveal-on-scroll {
@@ -2895,6 +2904,10 @@ main {
 
 @media (max-width: 900px) {
   .hero-video {
+    display: none;
+  }
+
+  #hero-canvas {
     display: none;
   }
 

@@ -12,7 +12,7 @@
   var s=d.createElement("script");
   s.async=true;
   s.referrerPolicy="strict-origin-when-cross-origin";
-  s.src="https://a.plerdy.com/public/js/click/main.js?v="+Math.random();
+  s.src="https://a.plerdy.com/public/js/click/main.js";
   d.head.appendChild(s);
 })(window,document);
 </script>
@@ -55,20 +55,16 @@
     </title>
     <link rel="canonical" href="https://sportbot.pages.dev/" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="icon" type="image/png" sizes="48x48" href="logo.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="logo.png" />
     <link
       rel="preload"
       as="image"
-      href="assets/video/hero-poster.webp"
+      href="assets/video/hero-poster-optimized.webp"
       type="image/webp"
       fetchpriority="high"
+      media="(min-width: 901px) and (prefers-reduced-motion: no-preference)"
     />
     <link rel="stylesheet" href="style.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = { darkMode: "class" };
-    </script>
+    <link rel="stylesheet" href="tailwind.generated.css" />
 
     <style>
       .nav-link {
@@ -211,7 +207,18 @@
       gtag("config", "G-WY7BQKG0NT");
     </script>
     <!-- AOS Scroll Animations CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+        rel="stylesheet"
+      />
+    </noscript>
   </head>
   <body
     class="bg-gray-50 dark:bg-[#050505] text-gray-900 dark:text-white transition-colors duration-300"
@@ -243,7 +250,13 @@
           class="flex items-center gap-2 shrink-0"
           aria-label="SportBot home"
         >
-          <img src="logo.png" alt="SportBot logo" class="h-9 md:h-12 w-auto" />
+          <img
+            src="logo.webp"
+            alt="SportBot logo"
+            class="h-9 md:h-12 w-auto"
+            width="176"
+            height="96"
+          />
           <div class="text-2xl md:text-4xl font-bold italic whitespace-nowrap">
             Sport<span class="text-indigo-500">Bot</span>
           </div>
@@ -315,7 +328,14 @@
             class="theme-btn"
             aria-label="Switch theme"
           >
-            <img id="theme-icon" src="sun.png" alt="" class="theme-btn-icon" />
+            <img
+              id="theme-icon"
+              src="sun.webp"
+              alt=""
+              class="theme-btn-icon"
+              width="64"
+              height="64"
+            />
           </button>
           <a
             href="https://t.me/SportsForYou_bot"
@@ -412,7 +432,7 @@
             loop
             playsinline
             preload="none"
-            poster="assets/video/hero-poster.webp"
+            data-poster="assets/video/hero-poster-optimized.webp"
             tabindex="-1"
           >
             <source
@@ -1057,6 +1077,8 @@
                 class="block w-full"
                 loading="lazy"
                 decoding="async"
+                width="551"
+                height="98"
               />
             </div>
           </div>
@@ -1107,6 +1129,8 @@
                 class="block w-full"
                 loading="lazy"
                 decoding="async"
+                width="463"
+                height="208"
               />
             </div>
           </div>
@@ -1157,6 +1181,8 @@
                 class="block w-full"
                 loading="lazy"
                 decoding="async"
+                width="549"
+                height="145"
               />
             </div>
           </div>
@@ -1200,6 +1226,8 @@
                 class="block w-full"
                 loading="lazy"
                 decoding="async"
+                width="448"
+                height="211"
               />
             </div>
           </div>
@@ -1442,8 +1470,8 @@
     </button>
 
     <!-- AOS Scroll Animations JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="script.js" defer></script>
     <script>
 (function(){
   const replies={

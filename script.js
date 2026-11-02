@@ -411,7 +411,7 @@ function setLanguage(lang, animate = true) {
 function updateThemeButton() {
   const isDark = root.classList.contains("dark");
   themeIcons.forEach((icon) => {
-    icon.src = isDark ? "sun.png" : "moon.png";
+    icon.src = isDark ? "sun.webp" : "moon.webp";
   });
   themeButtons.forEach((btn) => {
     btn.setAttribute(
@@ -523,6 +523,8 @@ function initHeroVideo() {
   const sources = [...video.querySelectorAll("source[data-src]")];
   const desktopViewport = window.matchMedia("(min-width: 901px)");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const connection = navigator.connection;
+  let pageReadyForVideo = false;
   const showPosterFallback = () => {
     video.pause();
     video.classList.add("is-unavailable");
@@ -534,10 +536,23 @@ function initHeroVideo() {
   });
 
   const updateSourceLoading = () => {
-    const shouldLoad = desktopViewport.matches && !reducedMotion.matches;
+    const shouldShowPoster = desktopViewport.matches && !reducedMotion.matches;
+    const isDataConstrained =
+      connection &&
+      (connection.saveData ||
+        connection.effectiveType === "slow-2g" ||
+        connection.effectiveType === "2g");
+    const shouldLoad =
+      shouldShowPoster && !isDataConstrained && pageReadyForVideo;
     const sourcesAreLoaded = sources.every((source) =>
       source.hasAttribute("src"),
     );
+
+    if (shouldShowPoster) {
+      video.poster = video.dataset.poster;
+    } else {
+      video.removeAttribute("poster");
+    }
 
     if (shouldLoad && !sourcesAreLoaded) {
       video.classList.remove("is-unavailable");
@@ -556,9 +571,30 @@ function initHeroVideo() {
   };
 
   updateSourceLoading();
+  const startVideoWhenIdle = () => {
+    const enableVideo = () => {
+      pageReadyForVideo = true;
+      updateSourceLoading();
+    };
+
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(enableVideo, { timeout: 2000 });
+    } else {
+      window.setTimeout(enableVideo, 1200);
+    }
+  };
+
+  if (document.readyState === "complete") {
+    startVideoWhenIdle();
+  } else {
+    window.addEventListener("load", startVideoWhenIdle, { once: true });
+  }
+
   desktopViewport.addEventListener("change", updateSourceLoading);
   reducedMotion.addEventListener("change", updateSourceLoading);
-  window.addEventListener("resize", updateSourceLoading, { passive: true });
+  if (connection && typeof connection.addEventListener === "function") {
+    connection.addEventListener("change", updateSourceLoading);
+  }
 }
 
 document.querySelectorAll(".lang-btn").forEach((btn) => {

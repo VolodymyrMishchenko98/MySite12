@@ -109,7 +109,7 @@
       );
       themeButton.setAttribute("aria-pressed", String(isDark));
     }
-    if (themeIcon) themeIcon.src = isDark ? "../sun.png" : "../moon.png";
+    if (themeIcon) themeIcon.src = isDark ? "../sun.webp" : "../moon.webp";
     localStorage.setItem("theme", isDark ? "dark" : "light");
   }
 

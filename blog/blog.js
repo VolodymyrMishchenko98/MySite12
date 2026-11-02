@@ -7,15 +7,15 @@
   const description = document.querySelector('meta[name="description"][data-ua][data-en]');
 
   function setLanguage(language) {
-    const selected = language === "en" ? "en" : "ua";
-    root.lang = selected === "ua" ? "uk" : "en";
+    const selected = language === "en" ? "en" : (document.querySelector('[data-lang="uk"]') ? "uk" : "ua");
+    root.lang = selected === "ua" ? "uk" : selected;
     document.querySelectorAll("[data-lang]").forEach((element) => {
       element.hidden = element.dataset.lang !== selected;
     });
     languageButtons.forEach((button) => {
       button.setAttribute(
         "aria-pressed",
-        String(button.dataset.blogLanguage === selected),
+        String(button.dataset.blogLanguage === selected || (selected === "uk" && button.dataset.blogLanguage === "ua")),
       );
     });
     document.querySelectorAll("[data-ua][data-en]").forEach((element) => {
@@ -83,7 +83,7 @@
     updateActiveSection();
   }
 
-  const preferredLanguage = localStorage.getItem("lang") || "ua";
+  const preferredLanguage = localStorage.getItem("lang") || "uk";
   const preferredTheme =
     localStorage.getItem("theme") ||
     (window.matchMedia("(prefers-color-scheme: dark)").matches

@@ -55,4 +55,14 @@
     <lastmod>2026-11-02</lastmod>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://sportbot.pages.dev/blog/sportbot-guides.html</loc>
+    <lastmod>2026-11-02</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sportbot.pages.dev/blog/progress-gamification.html</loc>
+    <lastmod>2026-11-02</lastmod>
+    <priority>0.7</priority>
+  </url>
 </urlset>

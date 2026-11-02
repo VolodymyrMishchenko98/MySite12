@@ -95,6 +95,30 @@
       .nav-link.active-nav::after {
         transform: scaleX(1);
       }
+      .knowledge-nav-link {
+        border: 1px solid rgba(99, 102, 241, 0.28);
+        border-radius: 999px;
+        padding: 0.42rem 0.72rem;
+        color: #5b52a7;
+        background: rgba(99, 102, 241, 0.08);
+        transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+      }
+      .knowledge-nav-link:hover {
+        color: #4f46a5;
+        border-color: rgba(99, 102, 241, 0.48);
+        background: rgba(99, 102, 241, 0.14);
+        transform: translateY(-1px);
+      }
+      .dark .knowledge-nav-link {
+        color: #b8b0ee;
+        background: rgba(129, 117, 214, 0.12);
+        border-color: rgba(167, 157, 236, 0.3);
+      }
+      .dark .knowledge-nav-link:hover {
+        color: #d2cdf9;
+        background: rgba(129, 117, 214, 0.2);
+        border-color: rgba(167, 157, 236, 0.52);
+      }
       /* Сховати кнопку "Вгору" при відкритому мобільному меню */
       .mobile-menu-open #back-to-top {
         opacity: 0 !important;
@@ -225,7 +249,7 @@
           </div>
         </a>
 
-        <div class="hidden md:flex items-center gap-6 font-semibold text-sm">
+        <div class="hidden md:flex items-center gap-4 font-semibold text-sm">
           <a
             href="#quick-start"
             class="nav-link i18n text-gray-600 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-indigo-500"
@@ -256,6 +280,11 @@
           >
             <span class="i18n" data-key="nav-faq">FAQ</span>
           </a>
+          <a
+            href="blog/index.html"
+            class="nav-link knowledge-nav-link i18n whitespace-nowrap"
+            data-key="nav-knowledge"
+          >База знань</a>
         </div>
 
         <div class="flex items-center gap-3 md:gap-4">
@@ -345,6 +374,11 @@
       >
         <span class="i18n" data-key="nav-faq">FAQ</span>
       </a>
+      <a
+        href="blog/index.html"
+        class="mobile-close knowledge-nav-link i18n block text-lg font-semibold"
+        data-key="nav-knowledge"
+      >База знань</a>
       <div class="pt-6 border-t border-white/20 space-y-4">
         <div class="mob-lang-switcher" aria-label="Language switcher">
           <button class="lang-btn lang-ua i18n" type="button" data-lang="ua">
@@ -1367,12 +1401,6 @@
               <span class="footer-disclaimer-uk" lang="uk">Межі використання інформації</span>
               <span class="footer-disclaimer-en" lang="en">Limits of the information</span>
             </span>
-          </a>
-          <a href="blog/index.html" class="footer-link">
-            <span class="footer-link-title i18n" data-key="footer-blog">База знань</span>
-            <span class="footer-link-note i18n" data-key="footer-blog-note"
-              >Практичні статті про тренування</span
-            >
           </a>
         </nav>
         <p class="i18n footer-copy" data-key="footer-text"></p>

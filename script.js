@@ -7,6 +7,7 @@ const tr = {
     "nav-how": "Як працює",
     "nav-novelty": "Гейміфікація",
     "nav-faq": "FAQ",
+    "nav-knowledge": "База знань",
     "btn-bot": "Відкрити в Telegram",
     "hero-title":
       "Тренуйся розумно<br>з <span class='text-indigo-500'>SportBot</span>",
@@ -184,6 +185,7 @@ const tr = {
     "nav-how": "How it works",
     "nav-novelty": "Gamification",
     "nav-faq": "FAQ",
+    "nav-knowledge": "Knowledge Base",
     "btn-bot": "Open in Telegram",
     "hero-title":
       "Train smart<br>with <span class='text-indigo-500'>SportBot</span>",

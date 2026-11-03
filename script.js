@@ -313,16 +313,11 @@ function setLanguage(lang, animate = true) {
       const key = el.dataset.key;
       if (tr[selectedLang][key]) el.innerHTML = tr[selectedLang][key];
     });
-    document
-      .querySelectorAll(".lang-ua")
-      .forEach((el) =>
-        el.classList.toggle("text-indigo-500", selectedLang === "ua"),
-      );
-    document
-      .querySelectorAll(".lang-en")
-      .forEach((el) =>
-        el.classList.toggle("text-indigo-500", selectedLang === "en"),
-      );
+    document.querySelectorAll(".lang-btn").forEach((el) => {
+      const isSelected = el.dataset.lang === selectedLang;
+      el.classList.toggle("text-indigo-500", isSelected);
+      el.setAttribute("aria-pressed", String(isSelected));
+    });
   };
 
   if (!animate) {
@@ -615,8 +610,12 @@ document.querySelectorAll(".mobile-close").forEach((link) => {
 });
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
+  if (
+    event.key === "Escape" &&
+    mobBtn.getAttribute("aria-expanded") === "true"
+  ) {
     closeMenu(mobMenu, mobBtn);
+    mobBtn.focus();
   }
 });
 

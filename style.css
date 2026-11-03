@@ -2929,6 +2929,10 @@ main {
     display: none;
   }
 
+  .hero-content-enter {
+    animation: none;
+  }
+
   #hero-canvas {
     display: none;
   }

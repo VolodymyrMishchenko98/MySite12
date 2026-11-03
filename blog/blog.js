@@ -8,9 +8,7 @@
   const title = document.querySelector("title[data-ua][data-en]");
   const translatableMeta = document.querySelectorAll("meta[data-ua][data-en]");
 
-  const brand = document.querySelector(".blog-brand");
   const controls = document.querySelector(".blog-controls");
-  if (brand) brand.href = "https://sportbot.pages.dev/";
   if (controls && !document.querySelector(".blog-main-site-link")) {
     const mainSiteLink = document.createElement("a");
     mainSiteLink.className = "blog-main-site-link";
@@ -49,11 +47,15 @@
       if (label) element.textContent = label[selected];
     });
 
-    languageButtons.forEach((button) => {
-      button.setAttribute(
-        "aria-pressed",
-        String(normalizeLanguage(button.dataset.blogLanguage) === selected),
-      );
+    languageButtons.forEach((control) => {
+      const isSelected = normalizeLanguage(control.dataset.blogLanguage) === selected;
+      if (control instanceof HTMLButtonElement) {
+        control.setAttribute("aria-pressed", String(isSelected));
+      } else if (isSelected) {
+        control.setAttribute("aria-current", "page");
+      } else {
+        control.removeAttribute("aria-current");
+      }
     });
 
     translatableMeta.forEach((element) => {

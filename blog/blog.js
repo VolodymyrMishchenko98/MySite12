@@ -6,6 +6,19 @@
   const title = document.querySelector("title[data-ua][data-en]");
   const translatableMeta = document.querySelectorAll("meta[data-ua][data-en]");
 
+  const brand = document.querySelector(".blog-brand");
+  const controls = document.querySelector(".blog-controls");
+  if (brand) brand.href = "https://sportbot.pages.dev/";
+  if (controls && !document.querySelector(".blog-main-site-link")) {
+    const mainSiteLink = document.createElement("a");
+    mainSiteLink.className = "blog-main-site-link";
+    mainSiteLink.href = "https://sportbot.pages.dev/";
+    mainSiteLink.setAttribute("data-ua-label", "Основний сайт");
+    mainSiteLink.setAttribute("data-en-label", "Main Website");
+    mainSiteLink.innerHTML = '<span data-lang="ua">← Основний сайт</span><span data-lang="en" hidden>← Main Website</span>';
+    controls.parentElement.insertBefore(mainSiteLink, controls);
+  }
+
   function normalizeLanguage(language) {
     return language === "en" ? "en" : "ua";
   }

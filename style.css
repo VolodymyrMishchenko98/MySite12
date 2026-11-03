@@ -140,9 +140,9 @@ code {
 
 .menu-transition {
   transition:
-    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 0.3s;
+    opacity 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.22s;
 }
 
 .menu-hidden {
@@ -167,6 +167,10 @@ code {
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: auto !important;
+}
+
+.faq-content {
+  transition: max-height 0.22s ease-out;
 }
 
 /* Theme transition animation */
@@ -200,20 +204,16 @@ html.transition body {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transform: scale(0.98);
+  transform: none;
   transition:
-    max-height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1),
-    opacity 0.3s ease,
-    transform 0.3s ease,
-    margin-top 0.3s ease,
-    padding 0.3s ease;
+    max-height 0.24s ease-out,
+    opacity 0.18s ease-out;
 }
 
 .sub-list.active,
 .feature-content.active {
   max-height: 500px;
   opacity: 1;
-  transform: scale(1);
   margin-top: 1rem;
   padding: 1rem;
   background: rgba(255, 255, 255, 0.035);
@@ -1269,6 +1269,15 @@ html:not(.dark) .fitness-calculator__range {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .menu-transition,
+  .faq-content,
+  .sub-list,
+  .feature-content,
+  #mobile-menu-btn,
+  #mobile-menu-btn span {
+    transition: none !important;
+  }
+
   .hero-video {
     display: none;
   }
@@ -3401,6 +3410,10 @@ code {
   #mobile-menu-btn {
     flex-direction: column;
     gap: 6px;
+    transition:
+      background-color 0.18s ease,
+      border-color 0.18s ease,
+      color 0.18s ease;
   }
 
   #mobile-menu-btn span {
@@ -3408,7 +3421,9 @@ code {
     width: 22px;
     height: 2px;
     background-color: var(--sb-orange);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition:
+      transform 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.18s ease;
     border-radius: 2px;
   }
 

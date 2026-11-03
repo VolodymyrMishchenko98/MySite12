@@ -25,16 +25,20 @@ a {
 }
 
 button:focus-visible,
-a:focus-visible {
-  outline: 3px solid rgba(249, 115, 22, 0.65);
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--sb-focus);
   outline-offset: 3px;
+  box-shadow: 0 0 0 2px var(--sb-focus-ring);
 }
 
 .faq-toggle:focus-visible,
 .feature-header:focus-visible,
 .try-chip:focus-visible,
 #tryBtn:focus-visible {
-  outline: 3px solid var(--sb-violet-2);
+  outline: 3px solid var(--sb-focus);
   outline-offset: 3px;
 }
 
@@ -566,7 +570,7 @@ html.transition body {
   min-height: 3rem;
   padding: 0.8rem 1.25rem;
   border-radius: 999px;
-  background: var(--sb-orange) !important;
+  background: var(--sb-action-orange) !important;
   color: #fff !important;
   box-shadow: none;
   font-weight: 900;
@@ -679,7 +683,7 @@ html:not(.dark) .fitness-calculator__range {
 }
 
 .fitness-calculator__range:focus-visible {
-  outline: 2px solid var(--sb-orange-2);
+  outline: 3px solid var(--sb-focus);
   outline-offset: 2px;
 }
 
@@ -1858,8 +1862,8 @@ html:not(.dark) .lang-btn.text-indigo-500,
 html:not(.dark) .lang-ua.text-indigo-500,
 html:not(.dark) .lang-en.text-indigo-500 {
   color: #fff !important;
-  background: var(--sb-orange) !important;
-  border-color: var(--sb-orange) !important;
+  background: var(--sb-action-orange) !important;
+  border-color: var(--sb-action-orange) !important;
   text-shadow: none !important;
 }
 
@@ -1956,7 +1960,7 @@ html:not(.dark) .hero-subtitle {
 }
 
 html:not(.dark) .hero-primary-cta {
-  background: var(--sb-orange) !important;
+  background: var(--sb-action-orange) !important;
   color: #fff !important;
   box-shadow: none;
 }
@@ -2014,8 +2018,8 @@ html:not(.dark) #mobile-menu .mobile-menu-cta {
   border: 1px solid rgba(255, 114, 20, 0.42);
   background: linear-gradient(
     180deg,
-    var(--sb-orange-2),
-    var(--sb-orange)
+    var(--sb-action-orange),
+    var(--sb-action-orange-hover)
   ) !important;
   color: #fff !important;
 }
@@ -2172,6 +2176,11 @@ html:not(.dark) .lc-investor-btn .footer-link-title {
   --sb-muted: #b8b0a8;
   --sb-orange: #ed6a1a;
   --sb-orange-2: #f2873a;
+  --sb-action-orange: #c2410c;
+  --sb-action-orange-hover: #9a3412;
+  --sb-action-orange-active: #7c2d12;
+  --sb-focus: #fff7ed;
+  --sb-focus-ring: #fff7ed;
   --sb-violet: #5d50a6;
   --sb-violet-2: #978bd0;
   --sb-radius: 0.8rem;
@@ -2189,6 +2198,11 @@ html:not(.dark) {
   --sb-muted: #6d6258;
   --sb-orange: #c94f0b;
   --sb-orange-2: #e5671b;
+  --sb-action-orange: #c2410c;
+  --sb-action-orange-hover: #9a3412;
+  --sb-action-orange-active: #7c2d12;
+  --sb-focus: #fffdf9;
+  --sb-focus-ring: #111827;
   --sb-violet: #51458e;
   --sb-violet-2: #6558a7;
 }
@@ -2504,7 +2518,11 @@ html:not(.dark) #mobile-menu .mob-lang-switcher {
 }
 
 html:not(.dark) .mobile-sticky-cta {
-  background: linear-gradient(180deg, var(--sb-orange-2), var(--sb-orange)) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sb-action-orange),
+    var(--sb-action-orange-hover)
+  ) !important;
   color: #fff !important;
   box-shadow: 0 16px 36px rgba(255, 114, 20, 0.38);
 }
@@ -2571,8 +2589,8 @@ html:not(.dark) .lang-btn.text-indigo-500,
 html:not(.dark) .lang-ua.text-indigo-500,
 html:not(.dark) .lang-en.text-indigo-500 {
   color: #fff !important;
-  background: var(--sb-orange) !important;
-  border-color: var(--sb-orange) !important;
+  background: var(--sb-action-orange) !important;
+  border-color: var(--sb-action-orange) !important;
   text-shadow: none !important;
 }
 
@@ -2718,8 +2736,8 @@ html:not(.dark) #main-nav a[aria-label="SportBot home"] > div {
 .lang-ua.text-indigo-500,
 .lang-en.text-indigo-500 {
   color: #fff !important;
-  background: var(--sb-orange) !important;
-  border-color: var(--sb-orange) !important;
+  background: var(--sb-action-orange) !important;
+  border-color: var(--sb-action-orange) !important;
   box-shadow: 0 4px 12px rgba(255, 114, 20, 0.3);
   text-shadow: none !important;
 }
@@ -2739,7 +2757,7 @@ html:not(.dark) #main-nav a[aria-label="SportBot home"] > div {
 .mobile-sticky-cta,
 a[data-key="btn-bot"] {
   border-radius: 0.65rem !important;
-  background: var(--sb-orange) !important;
+  background: var(--sb-action-orange) !important;
   color: #fff !important;
   box-shadow: none !important;
 }
@@ -2901,7 +2919,7 @@ main {
 
 .hero-primary-cta:hover {
   transform: translateY(-2px);
-  background: #d65b12 !important;
+  background: var(--sb-action-orange-hover) !important;
 }
 
 .hero-secondary-cta {
@@ -3534,7 +3552,7 @@ code {
   }
 
   .mob-lang-switcher .lang-btn.text-indigo-500 {
-    background: var(--sb-orange) !important;
+    background: var(--sb-action-orange) !important;
     color: #fff !important;
     border-radius: 0.85rem !important;
     border-color: rgba(255, 255, 255, 0.2);
@@ -3586,8 +3604,8 @@ code {
     border: 1px solid rgba(255, 114, 20, 0.42);
     background: linear-gradient(
       180deg,
-      var(--sb-orange-2),
-      var(--sb-orange)
+      var(--sb-action-orange),
+      var(--sb-action-orange-hover)
     ) !important;
     color: #fff !important;
     font-weight: 900;
@@ -3709,6 +3727,43 @@ code {
   #game-format .grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Contrast-safe interactive states. Keep the orange brand, but reserve
+   darker action tones for white button labels and keyboard focus. */
+html:not(.dark) input::placeholder,
+html:not(.dark) textarea::placeholder {
+  color: #6b625a !important;
+  opacity: 1;
+}
+
+.pulse-btn:hover,
+.mobile-sticky-cta:hover,
+a[data-key="btn-bot"]:hover,
+.calculator-cta:hover,
+#mobile-menu .mobile-menu-cta:hover,
+.try-input-row button:hover {
+  background: var(--sb-action-orange-hover) !important;
+}
+
+.pulse-btn:active,
+.mobile-sticky-cta:active,
+a[data-key="btn-bot"]:active,
+.calculator-cta:active,
+#mobile-menu .mobile-menu-cta:active,
+.try-input-row button:active,
+.lang-btn.text-indigo-500:active {
+  background: var(--sb-action-orange-active) !important;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--sb-focus) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 2px var(--sb-focus-ring) !important;
 }
 
 .footer-links--legal {
@@ -4325,7 +4380,7 @@ html:not(.dark) .lc-investor-btn .footer-link-title {
 
 .try-input-row input:focus-visible {
   border-color: var(--sb-violet-2);
-  outline: 2px solid rgba(151, 139, 208, 0.35);
+  outline: 3px solid var(--sb-focus);
   outline-offset: 2px;
 }
 
@@ -4334,7 +4389,7 @@ html:not(.dark) .lc-investor-btn .footer-link-title {
   min-height: 2.9rem;
   border: 0;
   border-radius: 0.55rem;
-  background: var(--sb-orange);
+  background: var(--sb-action-orange);
   color: #fff;
   font-size: 1.2rem;
   font-weight: 750;
@@ -4343,7 +4398,7 @@ html:not(.dark) .lc-investor-btn .footer-link-title {
 }
 
 .try-input-row button:hover {
-  background: #d65b12;
+  background: var(--sb-action-orange-hover);
 }
 
 .try-chip-row {

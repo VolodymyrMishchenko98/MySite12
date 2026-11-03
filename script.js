@@ -818,7 +818,8 @@ if (heightInput && weightInput) {
   calculateFitness();
 }
 // --- ЛОГИКА СЕКЦИИ FAQ (АККОРДЕОН С КНОПКАМИ НАВИГАЦИИ) ---
-document.querySelectorAll(".faq-toggle").forEach((toggle) => {
+/*
+  document.querySelectorAll(".faq-toggle").forEach((toggle) => {
   toggle.addEventListener("click", () => {
     const item = toggle.parentElement;
     const content = toggle.nextElementSibling;
@@ -870,6 +871,74 @@ if (collapseAllBtn) {
 }
 
 // --- ЛОГИКА ИНТЕРАКТИВНОГО ФОНА (ЧАСТИЦЫ) ---
+*/
+
+const faqItems = Array.from(document.querySelectorAll(".faq-item"));
+
+function setFaqInert(content, isInert) {
+  content.inert = isInert;
+  if (isInert) {
+    content.setAttribute("inert", "");
+  } else {
+    content.removeAttribute("inert");
+  }
+}
+
+function setFaqState(item, isOpen) {
+  const toggle = item.querySelector(".faq-toggle");
+  const content = item.querySelector(".faq-content");
+  const icon = item.querySelector(".faq-icon");
+
+  if (!toggle || !content) return;
+
+  if (isOpen) {
+    // The answer must become keyboard-accessible before its height is opened.
+    setFaqInert(content, false);
+    toggle.setAttribute("aria-expanded", "true");
+    content.style.maxHeight = content.scrollHeight + "px";
+    item.classList.add("border-indigo-500/40");
+    if (icon) icon.textContent = "\u00d7";
+    return;
+  }
+
+  // Move focus before applying inert, so focus never remains in a closed answer.
+  if (content.contains(document.activeElement)) {
+    toggle.focus();
+  }
+  toggle.setAttribute("aria-expanded", "false");
+  setFaqInert(content, true);
+  content.style.maxHeight = "0px";
+  item.classList.remove("border-indigo-500/40");
+  if (icon) icon.textContent = "\u002b";
+}
+
+faqItems.forEach((item) => {
+  const toggle = item.querySelector(".faq-toggle");
+  if (!toggle) return;
+
+  toggle.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+
+    faqItems.forEach((faqItem) => {
+      setFaqState(faqItem, faqItem === item ? !isOpen : false);
+    });
+  });
+});
+
+const expandAllBtn = document.getElementById("faq-expand-all");
+if (expandAllBtn) {
+  expandAllBtn.addEventListener("click", () => {
+    faqItems.forEach((item) => setFaqState(item, true));
+  });
+}
+
+const collapseAllBtn = document.getElementById("faq-collapse-all");
+if (collapseAllBtn) {
+  collapseAllBtn.addEventListener("click", () => {
+    faqItems.forEach((item) => setFaqState(item, false));
+  });
+}
+
 function initHeroParticles() {
   const canvas = document.getElementById("hero-canvas");
   const heroSection = document.getElementById("hero");

@@ -1,4 +1,7 @@
 (() => {
+  if (window.__sportbotAnalyticsInitialized) return;
+  window.__sportbotAnalyticsInitialized = true;
+
   const measurementId = "G-WY7BQKG0NT";
   const clarityId = "z7azswjs1b";
 

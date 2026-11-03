@@ -2981,16 +2981,35 @@ main {
     background-position: center top;
     background-image:
       radial-gradient(
-        ellipse 76% 38% at 50% 34%,
-        rgba(210, 91, 35, 0.22),
+        ellipse 108% 58% at 50% 24%,
+        rgba(255, 120, 47, 0.54) 0%,
+        rgba(230, 93, 38, 0.36) 36%,
         transparent 76%
       ),
       radial-gradient(
-        ellipse 78% 48% at 94% 88%,
-        rgba(119, 88, 178, 0.16),
-        transparent 74%
+        ellipse 88% 48% at 79% 40%,
+        rgba(143, 101, 211, 0.4) 0%,
+        rgba(104, 68, 158, 0.28) 42%,
+        transparent 78%
       ),
-      linear-gradient(155deg, #0b0c0f 0%, #111116 52%, #0c0d12 100%);
+      radial-gradient(
+        ellipse 82% 43% at 53% 39%,
+        rgba(67, 31, 55, 0.34) 0%,
+        rgba(43, 24, 44, 0.2) 56%,
+        transparent 84%
+      ),
+      radial-gradient(
+        ellipse 120% 90% at 50% 36%,
+        transparent 40%,
+        rgba(4, 5, 8, 0.5) 100%
+      ),
+      linear-gradient(
+        180deg,
+        #131116 0%,
+        #111116 52%,
+        #090a0d 82%,
+        #050506 100%
+      );
   }
 
   #hero::before,

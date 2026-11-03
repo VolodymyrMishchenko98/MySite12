@@ -79,8 +79,9 @@ body.blog-page main.blog-wrap > .blog-related {
   align-items: center;
   min-height: 2.5rem;
   padding: 0.45rem 0.7rem;
-  border: 1px solid transparent;
+  border: 0;
   border-radius: 0.65rem;
+  background: transparent;
   color: var(--sb-muted);
   font-size: 0.82rem;
   font-weight: 750;
@@ -89,8 +90,6 @@ body.blog-page main.blog-wrap > .blog-related {
 }
 
 .blog-main-site-link:hover {
-  border-color: color-mix(in srgb, var(--sb-orange) 45%, var(--sb-line));
-  background: color-mix(in srgb, var(--sb-orange) 7%, transparent);
   color: var(--sb-orange-2);
 }
 
@@ -121,7 +120,7 @@ body.blog-page main.blog-wrap > .blog-related {
 }
 
 .blog-controls button,
-.blog-controls a {
+.blog-languages a {
   display: inline-grid;
   min-width: 2.5rem;
   min-height: 2.5rem;
@@ -139,8 +138,8 @@ body.blog-page main.blog-wrap > .blog-related {
 
 .blog-controls button:hover,
 .blog-controls button[aria-pressed="true"],
-.blog-controls a:hover,
-.blog-controls a[aria-current="page"] {
+.blog-languages a:hover,
+.blog-languages a[aria-current="page"] {
   border-color: color-mix(in srgb, var(--sb-orange) 65%, var(--sb-line));
   color: var(--sb-orange-2);
 }

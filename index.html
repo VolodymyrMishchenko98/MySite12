@@ -706,9 +706,10 @@
            </div>
          </div>
 
+         <label for="tryInput" class="try-input-label i18n" data-key="demo-command-label">Команда</label>
          <div class="try-input-row">
            <input id="tryInput" type="text" placeholder="Введи /workout або /stats..." />
-           <button id="tryBtn">→</button>
+           <button id="tryBtn" type="button"><span class="visually-hidden i18n" data-key="demo-send">Надіслати команду</span><span aria-hidden="true">→</span></button>
          </div>
 
          <div class="try-chip-row">
@@ -881,10 +882,11 @@
               <div class="fitness-calculator__sliders">
                 <div class="fitness-calculator__slider-group">
                   <div class="fitness-calculator__slider-header">
-                    <span
+                    <label
                       class="i18n fitness-calculator__slider-label"
                       data-key="calc-height"
-                      >Зріст</span
+                      for="input-height"
+                      >Зріст</label
                     >
                     <span class="fitness-calculator__slider-value"
                       ><span id="calc-height-val">175</span> см</span
@@ -902,10 +904,11 @@
 
                 <div class="fitness-calculator__slider-group">
                   <div class="fitness-calculator__slider-header">
-                    <span
+                    <label
                       class="i18n fitness-calculator__slider-label"
                       data-key="calc-weight"
-                      >Вага</span
+                      for="input-weight"
+                      >Вага</label
                     >
                     <span class="fitness-calculator__slider-value"
                       ><span id="calc-weight-val">70</span> кг</span

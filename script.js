@@ -29,6 +29,8 @@ const tr = {
     "demo-kicker": "Локальна демонстрація",
     "demo-note":
       "Фіксовані приклади, а не live-з’єднання з Telegram-ботом.",
+    "demo-command-label": "Команда",
+    "demo-send": "Надіслати команду",
     "feature-chip-1": "Запис в 1 клік",
     "feature-chip-2": "Авто-статистика",
     "feature-chip-3": "Графіки прогресу",
@@ -169,6 +171,8 @@ const tr = {
     "demo-kicker": "Local demo",
     "demo-note":
       "Fixed examples, not a live connection to the Telegram bot.",
+    "demo-command-label": "Command",
+    "demo-send": "Send command",
     "feature-chip-1": "1-click logging",
     "feature-chip-2": "Auto stats",
     "feature-chip-3": "Progress charts",

@@ -547,23 +547,32 @@ initMagneticButtons();
 initMobileCtaDock();
 initHeroVideo();
 
-// Add theme transition animation
-root.classList.add("transition");
-let transitionTimeout;
-function startThemeTransition() {
-  root.classList.add("transition");
-  if (transitionTimeout) clearTimeout(transitionTimeout);
-  transitionTimeout = setTimeout(() => {
-    root.classList.remove("transition");
-  }, 600);
-}
+document.body.addEventListener("transitionend", (event) => {
+  if (
+    event.target === document.body &&
+    event.propertyName === "background-color"
+  ) {
+    root.classList.remove("theme-switching");
+  }
+});
 
 themeButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
-    startThemeTransition();
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    root.classList.add("theme-switching");
     const isNowDark = root.classList.toggle("dark");
     localStorage.setItem("theme", isNowDark ? "dark" : "light");
     updateThemeButton();
+
+    if (reducedMotion) {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          root.classList.remove("theme-switching");
+        });
+      });
+    }
   });
 });
 

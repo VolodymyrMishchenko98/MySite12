@@ -177,17 +177,20 @@ code {
   transition: max-height 0.22s ease-out;
 }
 
-/* Theme transition animation */
-body {
-  transition:
-    background-color 0.4s ease,
-    color 0.4s ease !important;
+html.theme-switching body * {
+  transition: none !important;
 }
 
-html.transition body {
+html.theme-switching body {
   transition:
-    background-color 0.5s cubic-bezier(0.23, 1, 0.32, 1),
-    color 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important;
+    background-color 0.18s ease,
+    color 0.18s ease !important;
+}
+
+html.theme-switching #main-nav {
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease !important;
 }
 
 .i18n {
@@ -1273,6 +1276,8 @@ html:not(.dark) .fitness-calculator__range {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html.theme-switching body,
+  html.theme-switching #main-nav,
   .menu-transition,
   .faq-content,
   .sub-list,

@@ -1,5 +1,7 @@
 (() => {
   const root = document.documentElement;
+  const fixedPageLanguage = root.dataset.pageLanguage || "";
+  const assetPrefix = root.dataset.assetPrefix || "../";
   const languageButtons = document.querySelectorAll("[data-blog-language]");
   const themeButton = document.querySelector("[data-blog-theme]");
   const themeIcon = themeButton?.querySelector("img");
@@ -24,7 +26,7 @@
   }
 
   function setLanguage(language) {
-    const selected = normalizeLanguage(language);
+    const selected = fixedPageLanguage || normalizeLanguage(language);
     root.lang = selected === "ua" ? "uk" : "en";
 
     document.querySelectorAll("[data-lang]").forEach((element) => {
@@ -122,7 +124,7 @@
       );
       themeButton.setAttribute("aria-pressed", String(isDark));
     }
-    if (themeIcon) themeIcon.src = isDark ? "../sun.webp" : "../moon.webp";
+    if (themeIcon) themeIcon.src = `${assetPrefix}${isDark ? "sun.webp" : "moon.webp"}`;
     localStorage.setItem("theme", isDark ? "dark" : "light");
   }
 
@@ -152,6 +154,6 @@
   }
 
   const storedLanguage = localStorage.getItem("lang");
-  setLanguage(storedLanguage === "en" ? "en" : "ua");
+  setLanguage(fixedPageLanguage || (storedLanguage === "en" ? "en" : "ua"));
   setTheme(localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
 })();

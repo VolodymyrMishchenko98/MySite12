@@ -120,7 +120,8 @@ body.blog-page main.blog-wrap > .blog-related {
   gap: 0.35rem;
 }
 
-.blog-controls button {
+.blog-controls button,
+.blog-controls a {
   display: inline-grid;
   min-width: 2.5rem;
   min-height: 2.5rem;
@@ -137,7 +138,9 @@ body.blog-page main.blog-wrap > .blog-related {
 }
 
 .blog-controls button:hover,
-.blog-controls button[aria-pressed="true"] {
+.blog-controls button[aria-pressed="true"],
+.blog-controls a:hover,
+.blog-controls a[aria-current="page"] {
   border-color: color-mix(in srgb, var(--sb-orange) 65%, var(--sb-line));
   color: var(--sb-orange-2);
 }

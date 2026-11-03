@@ -90,8 +90,10 @@ body.blog-page main.blog-wrap > .blog-related {
   transition: color 160ms ease, border-color 160ms ease, background 160ms ease, transform 160ms ease;
 }
 
-.blog-main-site-link:hover {
+.blog-main-site-link:hover,
+.blog-main-site-link:focus-visible {
   border-color: color-mix(in srgb, var(--sb-orange) 60%, var(--sb-line));
+  background: var(--sb-bg-soft);
   color: var(--sb-orange-2);
 }
 
@@ -863,11 +865,8 @@ body.blog-page main.blog-wrap > .blog-related {
   .blog-main-site-link {
     grid-area: main;
     justify-self: start;
-    min-height: 2.5rem;
-    padding-inline: 0.1rem;
-    border: 0;
-    background: transparent;
-    color: var(--sb-muted);
+    min-height: 2.75rem;
+    padding-inline: 0.75rem;
   }
 
   .blog-primary-nav {

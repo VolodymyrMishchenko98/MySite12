@@ -97,9 +97,18 @@ body.blog-page main.blog-wrap > .blog-related {
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
+  min-width: 0;
+  flex: 1 1 auto;
   font-size: 1.35rem;
   font-weight: 850;
   letter-spacing: -0.035em;
+}
+
+.blog-brand > span {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .blog-brand img {
@@ -117,6 +126,10 @@ body.blog-page main.blog-wrap > .blog-related {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+}
+
+.blog-controls {
+  flex: 0 0 auto;
 }
 
 .blog-controls button,
@@ -764,38 +777,48 @@ body.blog-page main.blog-wrap > .blog-related {
   }
 
   .blog-topbar__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 0.5rem;
+    row-gap: 0.25rem;
     min-height: 4rem;
-  }
-
-  .blog-brand {
-    gap: 0.45rem;
-    font-size: 1.05rem;
-  }
-
-  .blog-brand img {
-    width: 4.1rem;
-    height: 2.25rem;
-  }
-
-  .blog-controls {
-    gap: 0.25rem;
-  }
-
-  .blog-main-site-link {
-    order: 3;
-    width: 100%;
-    justify-content: center;
-    border-top: 1px solid var(--sb-line);
-    border-radius: 0;
-  }
-
-  .blog-topbar__inner {
-    flex-wrap: wrap;
     padding-block: 0.45rem;
   }
 
-  .blog-topbar__inner > .blog-main-site-link {
-    flex-basis: 100%;
+  .blog-brand {
+    grid-column: 1;
+    grid-row: 1;
+    gap: 0.3rem;
+    font-size: 0.86rem;
+  }
+
+  .blog-brand img {
+    width: 3.25rem;
+    height: 1.8rem;
+  }
+
+  .blog-controls {
+    grid-column: 2;
+    grid-row: 1;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    gap: 0.25rem;
+    justify-self: end;
+    white-space: nowrap;
+  }
+
+  .blog-languages {
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .blog-main-site-link {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: center;
+    border-top: 1px solid var(--sb-line);
+    border-radius: 0;
   }
 
   .blog-controls button,
@@ -805,6 +828,42 @@ body.blog-page main.blog-wrap > .blog-related {
     min-width: 2.25rem;
     height: 2.25rem;
     min-height: 2.25rem;
+  }
+
+  @media (max-width: 360px) {
+    .blog-topbar__inner {
+      gap: 0.35rem;
+    }
+
+    .blog-brand {
+      gap: 0.25rem;
+      font-size: 0.68rem;
+      letter-spacing: -0.055em;
+    }
+
+    .blog-brand img {
+      width: 2.6rem;
+      height: 1.45rem;
+    }
+
+    .blog-controls {
+      gap: 0.15rem;
+    }
+
+    .blog-controls button,
+    .blog-controls .blog-languages > a,
+    .blog-controls .blog-theme-toggle {
+      width: 2rem;
+      min-width: 2rem;
+      height: 2rem;
+      min-height: 2rem;
+      font-size: 0.68rem;
+    }
+
+    .blog-theme-toggle img {
+      width: 1rem;
+      height: 1rem;
+    }
   }
 
   .blog-hero {

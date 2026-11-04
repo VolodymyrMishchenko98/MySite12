@@ -301,6 +301,7 @@ const resultCalories = document.getElementById("result-calories");
 const mobBtn = document.getElementById("mobile-menu-btn");
 const mobMenu = document.getElementById("mobile-menu");
 const mobBackdrop = document.getElementById("menu-backdrop");
+let refreshMagneticButtonRects = () => {};
 
 function makeCodeCopyable() {
   document.querySelectorAll("code").forEach((code) => {
@@ -325,6 +326,7 @@ function setLanguage(lang, animate = true) {
       el.classList.toggle("text-indigo-500", isSelected);
       el.setAttribute("aria-pressed", String(isSelected));
     });
+    refreshMagneticButtonRects();
     makeCodeCopyable();
   };
 
@@ -407,18 +409,33 @@ function initMagneticButtons() {
   const buttons = document.querySelectorAll(".pulse-btn");
   if (window.innerWidth < 1024) return;
 
-  buttons.forEach((btn) => {
-    document.addEventListener("mousemove", (e) => {
-      const rect = btn.getBoundingClientRect();
-      const x = e.clientX - (rect.left + rect.width / 2);
-      const y = e.clientY - (rect.top + rect.height / 2);
+  const buttonRects = new Map();
+  refreshMagneticButtonRects = () => {
+    buttons.forEach((button) => {
+      const rect = button.getBoundingClientRect();
+      buttonRects.set(button, {
+        centerX: rect.left + rect.width / 2 + window.scrollX,
+        centerY: rect.top + rect.height / 2 + window.scrollY,
+      });
+    });
+  };
+
+  refreshMagneticButtonRects();
+  window.addEventListener("resize", refreshMagneticButtonRects);
+
+  document.addEventListener("mousemove", (event) => {
+    buttons.forEach((button) => {
+      const rect = buttonRects.get(button);
+      if (!rect) return;
+
+      const x = event.clientX + window.scrollX - rect.centerX;
+      const y = event.clientY + window.scrollY - rect.centerY;
       const distance = Math.sqrt(x * x + y * y);
 
-      if (distance < 120) {
-        btn.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.02)`;
-      } else {
-        btn.style.transform = `translate(0px, 0px) scale(1)`;
-      }
+      button.style.transform =
+        distance < 120
+          ? `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.02)`
+          : "translate(0px, 0px) scale(1)";
     });
   });
 }
@@ -901,7 +918,7 @@ function setFaqInert(content, isInert) {
   }
 }
 
-function setFaqState(item, isOpen) {
+function setFaqState(item, isOpen, contentHeight) {
   const toggle = item.querySelector(".faq-toggle");
   const content = item.querySelector(".faq-content");
   const icon = item.querySelector(".faq-icon");
@@ -912,7 +929,7 @@ function setFaqState(item, isOpen) {
     // The answer must become keyboard-accessible before its height is opened.
     setFaqInert(content, false);
     toggle.setAttribute("aria-expanded", "true");
-    content.style.maxHeight = content.scrollHeight + "px";
+    content.style.maxHeight = (contentHeight ?? content.scrollHeight) + "px";
     item.classList.add("border-indigo-500/40");
     if (icon) icon.textContent = "\u00d7";
     return;
@@ -945,7 +962,13 @@ faqItems.forEach((item) => {
 const expandAllBtn = document.getElementById("faq-expand-all");
 if (expandAllBtn) {
   expandAllBtn.addEventListener("click", () => {
-    faqItems.forEach((item) => setFaqState(item, true));
+    const itemsWithHeights = faqItems.map((item) => ({
+      item,
+      height: item.querySelector(".faq-content")?.scrollHeight,
+    }));
+    itemsWithHeights.forEach(({ item, height }) =>
+      setFaqState(item, true, height),
+    );
   });
 }
 
@@ -1104,9 +1127,11 @@ const mouseGlow = document.getElementById("mouse-glow");
 if (mouseGlow) {
   // Only for desktop (md breakpoint is 768px in Tailwind by default)
   if (window.innerWidth >= 768) {
+    const glowHalfWidth = mouseGlow.offsetWidth / 2;
+    const glowHalfHeight = mouseGlow.offsetHeight / 2;
     document.addEventListener("mousemove", (e) => {
       // Center the glow on the cursor
-      mouseGlow.style.transform = `translate(${e.clientX - mouseGlow.offsetWidth / 2}px, ${e.clientY - mouseGlow.offsetHeight / 2}px)`;
+      mouseGlow.style.transform = `translate(${e.clientX - glowHalfWidth}px, ${e.clientY - glowHalfHeight}px)`;
       mouseGlow.style.opacity = "1"; // Ensure it's visible when mouse moves
     });
 

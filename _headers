@@ -1,3 +1,7 @@
+/*
+  Strict-Transport-Security: max-age=31536000
+  X-Frame-Options: SAMEORIGIN
+
 /*.webp
   Cache-Control: public, max-age=86400
 

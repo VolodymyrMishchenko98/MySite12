@@ -4454,7 +4454,7 @@ html:not(.dark) .lc-investor-btn .footer-link-title {
 }
 
 .try-chip {
-  min-height: 2.5rem;
+  min-height: 2.75rem;
   padding: 0.5rem 0.8rem;
   border: 1px solid var(--sb-line);
   border-radius: 0.5rem;
@@ -4464,6 +4464,11 @@ html:not(.dark) .lc-investor-btn .footer-link-title {
   font-size: 0.8rem;
   cursor: pointer;
   transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+#faq-expand-all,
+#faq-collapse-all {
+  min-height: 44px;
 }
 
 .try-chip:hover,

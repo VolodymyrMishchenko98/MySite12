@@ -152,7 +152,7 @@ body.blog-page main.blog-wrap > .blog-related {
 
 .blog-primary-nav a {
   display: inline-flex;
-  min-height: 2.5rem;
+  min-height: 2.75rem;
   align-items: center;
   padding: 0.5rem 0.7rem;
   border-radius: 0.55rem;
@@ -197,10 +197,10 @@ body.blog-page main.blog-wrap > .blog-related {
 .blog-controls .blog-languages > a,
 .blog-controls .blog-theme-toggle {
   display: inline-grid;
-  width: 2.2rem;
-  min-width: 2.2rem;
-  height: 2.15rem;
-  min-height: 2.15rem;
+  width: 2.75rem;
+  min-width: 2.75rem;
+  height: 2.75rem;
+  min-height: 2.75rem;
   place-items: center;
   padding: 0;
   border: 1px solid transparent;
@@ -228,10 +228,10 @@ body.blog-page main.blog-wrap > .blog-related {
 }
 
 .blog-controls .blog-theme-toggle {
-  width: 2.5rem;
-  min-width: 2.5rem;
-  height: 2.5rem;
-  min-height: 2.5rem;
+  width: 2.75rem;
+  min-width: 2.75rem;
+  height: 2.75rem;
+  min-height: 2.75rem;
   border: 1px solid var(--sb-line);
   border-radius: 0.65rem;
   background: var(--sb-panel);
@@ -734,7 +734,7 @@ body.blog-page main.blog-wrap > .blog-related {
   padding: 0.7rem 1rem;
   border-radius: 0.55rem;
   background: var(--sb-orange);
-  color: #fff !important;
+  color: #171717 !important;
   font-size: 0.88rem;
   font-weight: 800;
   transition: background 160ms ease, transform 160ms ease;
@@ -886,7 +886,7 @@ body.blog-page main.blog-wrap > .blog-related {
   }
 
   .blog-primary-nav a {
-    min-height: 2.5rem;
+    min-height: 2.75rem;
     flex: 0 0 auto;
     padding-inline: 0.7rem;
   }

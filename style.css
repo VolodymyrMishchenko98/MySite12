@@ -26,6 +26,7 @@ a {
 
 button:focus-visible,
 a:focus-visible,
+code[role="button"]:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {

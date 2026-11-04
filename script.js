@@ -302,6 +302,13 @@ const mobBtn = document.getElementById("mobile-menu-btn");
 const mobMenu = document.getElementById("mobile-menu");
 const mobBackdrop = document.getElementById("menu-backdrop");
 
+function makeCodeCopyable() {
+  document.querySelectorAll("code").forEach((code) => {
+    code.tabIndex = 0;
+    code.setAttribute("role", "button");
+  });
+}
+
 function setLanguage(lang, animate = true) {
   const selectedLang = tr[lang] ? lang : "ua";
   const elements = document.querySelectorAll(".i18n");
@@ -318,6 +325,7 @@ function setLanguage(lang, animate = true) {
       el.classList.toggle("text-indigo-500", isSelected);
       el.setAttribute("aria-pressed", String(isSelected));
     });
+    makeCodeCopyable();
   };
 
   if (!animate) {
@@ -615,6 +623,7 @@ document.addEventListener("click", (event) => {
 document.querySelectorAll(".mobile-close").forEach((link) => {
   link.addEventListener("click", () => {
     closeMenu(mobMenu, mobBtn);
+    window.setTimeout(() => mobBtn.focus(), 0);
   });
 });
 
@@ -1114,6 +1123,19 @@ if (document.readyState === "loading") {
 }
 
 // --- ЛОГІКА КОПІЮВАННЯ КОМАНД ПРИ КЛІКУ ---
+document.addEventListener("keydown", (event) => {
+  if (
+    (event.key === "Enter" || event.key === " ") &&
+    event.target instanceof Element
+  ) {
+    const code = event.target.closest('code[role="button"]');
+    if (!code) return;
+
+    event.preventDefault();
+    code.click();
+  }
+});
+
 document.addEventListener("click", (e) => {
   const code = e.target.closest("code");
   if (!code || code.dataset.copying) return;

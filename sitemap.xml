@@ -6,22 +6,22 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://sportbot.pages.dev/privacy.html</loc>
+    <loc>https://sportbot.pages.dev/privacy</loc>
     <lastmod>2026-11-02</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sportbot.pages.dev/terms.html</loc>
+    <loc>https://sportbot.pages.dev/terms</loc>
     <lastmod>2026-11-02</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sportbot.pages.dev/copyright.html</loc>
+    <loc>https://sportbot.pages.dev/copyright</loc>
     <lastmod>2026-11-02</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sportbot.pages.dev/disclaimer.html</loc>
+    <loc>https://sportbot.pages.dev/disclaimer</loc>
     <lastmod>2026-11-02</lastmod>
     <priority>0.5</priority>
   </url>
@@ -31,37 +31,42 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sportbot.pages.dev/blog/workout-diary.html</loc>
+    <loc>https://sportbot.pages.dev/blog/workout-diary</loc>
     <lastmod>2026-11-02</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://sportbot.pages.dev/blog/track-workout-progress.html</loc>
+    <loc>https://sportbot.pages.dev/en/blog/workout-diary</loc>
     <lastmod>2026-11-02</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://sportbot.pages.dev/blog/workout-plan.html</loc>
+    <loc>https://sportbot.pages.dev/blog/track-workout-progress</loc>
     <lastmod>2026-11-02</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://sportbot.pages.dev/blog/training-volume.html</loc>
+    <loc>https://sportbot.pages.dev/blog/workout-plan</loc>
     <lastmod>2026-11-02</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://sportbot.pages.dev/blog/telegram-workout-tracker.html</loc>
+    <loc>https://sportbot.pages.dev/blog/training-volume</loc>
     <lastmod>2026-11-02</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://sportbot.pages.dev/blog/sportbot-guides.html</loc>
+    <loc>https://sportbot.pages.dev/blog/telegram-workout-tracker</loc>
+    <lastmod>2026-11-02</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sportbot.pages.dev/blog/sportbot-guides</loc>
     <lastmod>2026-11-02</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sportbot.pages.dev/blog/progress-gamification.html</loc>
+    <loc>https://sportbot.pages.dev/blog/progress-gamification</loc>
     <lastmod>2026-11-02</lastmod>
     <priority>0.7</priority>
   </url>

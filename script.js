@@ -7,62 +7,61 @@ const tr = {
     "nav-faq": "FAQ",
     "nav-knowledge": "База знань",
     "btn-bot": "Відкрити в Telegram",
-    "hero-title":
-      "Тренуйся розумно<br>з <span class='text-indigo-500'>SportBot</span>",
+    "hero-title": "Записуй тренування й переглядай прогрес у Telegram",
     "hero-kicker": "Telegram-бот",
     "hero-subtitle":
-      "Telegram-бот для запису тренувань, графіків прогресу та мотивації — без установки додатків.",
+      "Записуй тренування та переглядай статистику й графіки за допомогою команд SportBot у Telegram.",
     "hero-secondary-cta": "Як це працює",
-    "hero-chip-1": "Без установки",
-    "hero-chip-2": "Запис за 10 секунд",
-    "hero-chip-3": "Графіки в чаті",
-    "hero-chip-4": "Без реклами",
-    "quick-kicker": "Quick Start",
+    "hero-preview-label": "Приклад команди /workout",
+    "hero-preview-workout": "Запис тренування",
+    "hero-preview-chart": "Графіки прогресу",
+    "hero-preview-note": "Статичний приклад інтерфейсу, не live-з’єднання з ботом",
+    "quick-kicker": "Швидкий старт",
     "quick-title": "Почни за 3 прості кроки",
-    "quick-1-title": "Connect",
+    "quick-1-title": "Під’єднання",
     "quick-1-text": 'Натисни "Відкрити в Telegram" і відкрий SportBot у Telegram.',
-    "quick-2-title": "Setup",
+    "quick-2-title": "Налаштування",
     "quick-2-text": "Налаштуй профіль через <code>/edit_profile</code>.",
-    "quick-3-title": "Train",
+    "quick-3-title": "Тренування",
     "quick-3-text": "Запиши перше тренування через <code>/workout</code>.",
     "features-title": "Функціонал бота",
     "demo-kicker": "Локальна демонстрація",
     "demo-note":
-      "Фіксовані приклади, а не live-з’єднання з Telegram-ботом.",
+      "Ілюстративні приклади, а не live-відповіді бота чи статистика реальних користувачів.",
     "demo-command-label": "Команда",
     "demo-send": "Надіслати команду",
-    "feature-chip-1": "Запис в 1 клік",
+    "feature-chip-1": "Запис тренувань",
     "feature-chip-2": "Авто-статистика",
     "feature-chip-3": "Графіки прогресу",
     "feature-chip-4": "Монети та бонуси",
-    "f1-title": "👤 Профіль та налаштування",
+    "f1-title": "Профіль та налаштування",
     "f1-body":
       "<code>/profile</code> - Перегляд<br><code>/edit_profile</code> - Змінити дані<br><code>/set_language</code> - Змінити мову",
-    "f2-title": "💪 Тренування",
+    "f2-title": "Тренування",
     "f2-body":
       "<code>/workout</code> - Запис вправи<br><code>/suggest</code> - Підбір тренування",
-    "f3-title": "📊 Статистика",
+    "f3-title": "Статистика",
     "f3-body":
       "<code>/stats</code> - Аналіз прогресу<br><code>/goal</code> - Твої цілі",
-    "f4-title": "🔥 Мотивація",
+    "f4-title": "Мотивація",
     "f4-body":
       "<code>/motivate</code> - Цитати<br><code>/challenge</code> - Виклики",
-    "f5-title": "🪙 Монети та бонуси",
+    "f5-title": "Монети та бонуси",
     "f5-body":
       "<code>/wallet</code> - Баланс монет<br><code>/shop</code> - Магазин бонусів<br><code>/daily</code> - Завдання для монет",
     "game-kicker": "Гейміфікація",
     "game-title": "Гейміфікація та аналітика",
     "game-desc":
-      "Тренуйтеся, виконуйте завдання, збирайте монети та отримуйте круті бонуси!",
-    "game-card-1-title": "Заробляйте монети",
+      "Переглядайте прогрес тренувань, виконуйте завдання та використовуйте ігрові механіки SportBot.",
+    "game-card-1-title": "XP і монети",
     "game-card-1-text":
-      "Виконуйте щоденні тренування, досягайте цілей та збирайте бонусні монети за кожен вдалий день",
-    "game-card-2-title": "Щоденні завдання",
+      "Запис тренування додає XP і монети відповідно до кількості вправ.",
+    "game-card-2-title": "Завдання та челенджі",
     "game-card-2-text":
-      "Виконуйте спеціальні завдання через команду <code>/daily</code> та отримуйте цінні нагороди",
-    "game-card-3-title": "Магазин бонусів",
+      "Команда <code>/daily</code> показує завдання та кнопку перегляду прогресу.",
+    "game-card-3-title": "Магазин",
     "game-card-3-text":
-      "Обмінюйте монети на корисні інсайти, підказки та ексклюзивні фічі",
+      "Команда <code>/shop</code> показує товари; бот перевіряє рівень і баланс перед покупкою.",
     "game-card-4-title": "Графіки прогресу",
     "game-card-4-text":
       "Команда <code>/chart</code> показує обсяг, вагу, серії та динаміку тренувань.",
@@ -74,9 +73,9 @@ const tr = {
     "calc-height": "Зріст",
     "calc-weight": "Вага",
     "calc-bmi": "Твій ІМТ:",
-    "calc-calories": "Норма калорій:",
-    "calc-btn": "Скласти план у боті",
-    "calc-note": "Отримай персональні цілі в Telegram",
+    "calc-calories": "Орієнтовні калорії:",
+    "calc-btn": "Відкрити SportBot",
+    "calc-note": "Результати калькулятора є приблизними оцінками",
     "bmi-low": "Дефіцит ваги",
     "bmi-normal": "НОРМА",
     "bmi-warn": "Надмірна вага",
@@ -86,34 +85,34 @@ const tr = {
     "faq-section-title": "Відповіді на популярні запитання",
     "faq-btn-expand": "Розгорнути всі",
     "faq-btn-collapse": "Згорнути всі",
-    "faq-q1": "Чи безкоштовний цей Telegram-бот?",
+    "faq-q1": "Що можна робити в SportBot?",
     "faq-a1":
-      "Так! Базовий функціонал бота (запис тренувань, фіксація ваги та перегляд профілю) повністю безкоштовний. Ви також можете заробляти внутрішні монети за активність і відкривати додаткові фічі без реальних витрат.",
+      "У боті можна записувати тренування через <code>/workout</code>, переглядати активність командою <code>/stats</code> і відкривати графіки через <code>/chart</code>.",
     "faq-q2": "Чи підійде бот для домашніх тренувань?",
     "faq-a2":
-      "Абсолютно. Команда <code>/workout</code> розроблена так, щоб ви могли записувати будь-які вправи: від підтягувань на турніку та віджимань вдома до професійних жимів у тренажерному залі. Бот адаптується під ваш формат підходів та повторень.",
+      "Команда <code>/workout</code> приймає одну або кілька вправ, розділених комами. У прикладах є біг і відтискування.",
     "faq-q3": "Як працює аналітика прогресу?",
     "faq-a3":
-      "Коли ви регулярно записуєте підходи, алгоритм автоматично вираховує сумарний тоннаж, кількість робочих серій та вашу робочу вагу. Використовуючи команду <code>/chart</code>, ви зможете миттєво згенерувати наочний візуальний графік вашого прогресу прямо в чаті.",
+      "Команда <code>/stats</code> показує дні тренувань, серію, калорії, XP і рівень. Команда <code>/chart</code> відкриває графіки ваги, тренувань, серії та обсягу.",
     "faq-q4": "Де дізнатися, як обробляються мої дані?",
     "faq-a4":
       'Інформація про дані, які ми збираємо, їх використання та передачу наведена в <a href="privacy.html" class="underline">Політиці конфіденційності SportBot</a>.',
 
     "how-title": "Як працюють команди",
     "how-intro":
-      "Записуй тренування в звичному месенджері. Бот рахує статистику, показує прогрес і допомагає не пропускати цілі.",
-    "how-point-1": "10 секунд на запис",
-    "how-point-2": "Графіки без таблиць",
+      "Записуй тренування в Telegram. Команди <code>/stats</code> і <code>/chart</code> показують активність і графіки прогресу.",
+    "how-point-1": "Звіт за сьогодні",
+    "how-point-2": "Графіки прогресу",
     "how-point-3": "Цілі з прогрес-баром",
     "step1-t": "Команда <code>/profile</code>",
     "step1-d":
       "Тут ви можете бачити свої персональні дані, поточну вагу та загальний прогрес.",
     "step2-t": "Команда <code>/workout</code>",
     "step2-d":
-      "Швидкий запис будь-якої вправи. Бот автоматично розпізнає кількість підходів та вагу.",
+      "Надішли одну або кілька вправ, розділених комами, командою <code>/workout</code>.",
     "step3-t": "Команда <code>/goal</code>",
     "step3-d":
-      "Встановлюйте амбітні цілі та спостерігайте, як заповнюється ваш прогрес-бар.",
+      "Задай кількість тренувальних днів на тиждень через <code>/set_goal</code> і перевір її командою <code>/goal</code>.",
     "step4-t": "Команда <code>/set_language</code>",
     "step4-d":
       "Зручне перемикання між українською та англійською мовами прямо в чаті бота.",
@@ -131,36 +130,35 @@ const tr = {
     "footer-copyright-note": "Права та матеріали SportBot",
     "footer-text": "© 2026 SportBot. Всі права захищені.",
     "pain-kicker": "Знайомо?",
-    "pain-title": "Без щоденників і зайвих меню",
+    "pain-title": "Запис тренувань і статистика в Telegram",
     "pain-card-1-title": "Підходи губляться",
     "pain-card-1-text": "Не треба пам'ятати, що робив минулого разу.",
     "pain-card-2-title": "Прогрес не видно",
     "pain-card-2-text": "Бот показує динаміку графіками прямо в чаті.",
-    "pain-card-3-title": "Додатки зайві",
-    "pain-card-3-text": "Все працює в Telegram, без завантажень і реклами.",
+    "pain-card-3-title": "Тренування в Telegram",
+    "pain-card-3-text": "Тренування можна записувати командами в Telegram.",
     "value-title-short": "Персональний фітнес-щоденник прямо в Telegram",
     "value-desc-short": "Записуй підходи, вагу та повторення в Telegram. Бот сам рахує статистику і показує прогрес графіками.",
   },
   en: {
-    "nav-quick": "Quick Start",
+    "nav-quick": "Quick start",
     "nav-features": "Features",
     "nav-how": "How it works",
     "nav-novelty": "Gamification",
     "nav-faq": "FAQ",
     "nav-knowledge": "Knowledge Base",
     "btn-bot": "Open in Telegram",
-    "hero-title":
-      "Train smart<br>with <span class='text-indigo-500'>SportBot</span>",
+    "hero-title": "Log workouts and follow your progress in Telegram",
     "hero-kicker": "Telegram bot",
     "hero-subtitle":
-      "A Telegram bot for logging workouts, progress charts, and motivation — no app install needed.",
+      "Log workouts and view statistics and progress charts with SportBot commands in Telegram.",
     "hero-secondary-cta": "How it works",
-    "hero-chip-1": "No install",
-    "hero-chip-2": "Log in 10 seconds",
-    "hero-chip-3": "Charts in chat",
-    "hero-chip-4": "No ads",
+    "hero-preview-label": "Example /workout command",
+    "hero-preview-workout": "Workout log",
+    "hero-preview-chart": "Progress charts",
+    "hero-preview-note": "Static interface example, not a live bot connection",
     "quick-title": "Start in 3 simple steps",
-    "quick-kicker": "Quick Start",
+    "quick-kicker": "Quick start",
     "quick-1-title": "Connect",
     "quick-1-text": 'Click "Open in Telegram" and open SportBot in Telegram.',
     "quick-2-title": "Setup",
@@ -170,41 +168,41 @@ const tr = {
     "features-title": "Bot Features",
     "demo-kicker": "Local demo",
     "demo-note":
-      "Fixed examples, not a live connection to the Telegram bot.",
+      "Illustrative examples, not live bot replies or real user statistics.",
     "demo-command-label": "Command",
     "demo-send": "Send command",
-    "feature-chip-1": "1-click logging",
+    "feature-chip-1": "Workout logging",
     "feature-chip-2": "Auto stats",
     "feature-chip-3": "Progress charts",
     "feature-chip-4": "Coins & bonuses",
-    "f1-title": "👤 Profile & Settings",
+    "f1-title": "Profile & Settings",
     "f1-body":
       "<code>/profile</code> - View<br><code>/edit_profile</code> - Edit data<br><code>/set_language</code> - Change language",
-    "f2-title": "💪 Workouts",
+    "f2-title": "Workouts",
     "f2-body":
       "<code>/workout</code> - Log exercise<br><code>/suggest</code> - Get suggestions",
-    "f3-title": "📊 Statistics",
+    "f3-title": "Statistics",
     "f3-body":
       "<code>/stats</code> - Progress analysis<br><code>/goal</code> - Your goals",
-    "f4-title": "🔥 Motivation",
+    "f4-title": "Motivation",
     "f4-body":
       "<code>/motivate</code> - Quotes<br><code>/challenge</code> - Daily challenges",
-    "f5-title": "🪙 Coins & Bonuses",
+    "f5-title": "Coins & Bonuses",
     "f5-body":
       "<code>/wallet</code> - Your balance<br><code>/shop</code> - Bonus shop<br><code>/daily</code> - Coin tasks",
     "game-kicker": "Gamification",
     "game-title": "Game Format",
     "game-desc":
-      "Train, complete tasks, collect coins, and earn amazing bonuses!",
-    "game-card-1-title": "Earn Coins",
+      "Review workout progress, complete tasks, and use SportBot’s game mechanics.",
+    "game-card-1-title": "XP and coins",
     "game-card-1-text":
-      "Complete daily workouts, reach your goals, and collect bonus coins for every successful session",
-    "game-card-2-title": "Daily Tasks",
+      "Workout entries add XP and coins based on the number of exercises.",
+    "game-card-2-title": "Tasks and challenges",
     "game-card-2-text":
-      "Complete special tasks with <code>/daily</code> command and get great rewards",
-    "game-card-3-title": "Bonus Shop",
+      "The <code>/daily</code> command shows a task and a button to view progress.",
+    "game-card-3-title": "Shop",
     "game-card-3-text":
-      "Exchange coins for bonuses: advanced analytics, personal coaching tips, and exclusive features",
+      "The <code>/shop</code> command lists items; the bot checks your level and balance before purchase.",
     "game-card-4-title": "Progress charts",
     "game-card-4-text":
       "The <code>/chart</code> command shows volume, weight, sets, and workout dynamics.",
@@ -216,9 +214,9 @@ const tr = {
     "calc-height": "Height",
     "calc-weight": "Weight",
     "calc-bmi": "Your BMI:",
-    "calc-calories": "Calorie Norm:",
-    "calc-btn": "Create Plan in Bot",
-    "calc-note": "Get personal goals in Telegram",
+    "calc-calories": "Estimated calories:",
+    "calc-btn": "Open SportBot",
+    "calc-note": "Calculator results are estimates",
     "bmi-low": "Underweight",
     "bmi-normal": "Normal",
     "bmi-warn": "Overweight",
@@ -228,33 +226,34 @@ const tr = {
     "faq-section-title": "Answers to Popular Questions",
     "faq-btn-expand": "Expand All",
     "faq-btn-collapse": "Collapse All",
-    "faq-q1": "Is this Telegram bot free?",
+    "faq-q1": "What can I do in SportBot?",
     "faq-a1":
-      "Yes! The basic functionality of the bot (logging workouts, weight tracking, and viewing profile) is completely free. You can also earn internal coins for activity and unlock premium features without real spending.",
+      "Log workouts with <code>/workout</code>, review activity with <code>/stats</code>, and open charts with <code>/chart</code>.",
     "faq-q2": "Is the bot suitable for home workouts?",
     "faq-a2":
-      "Absolutely. The <code>/workout</code> command is designed so you can log any exercise: from pull-ups and home push-ups to professional bench presses in the gym. The bot adapts to your format of sets and reps.",
+      "The <code>/workout</code> command accepts one or more exercises separated by commas. The examples include running and push-ups.",
     "faq-q3": "How does progress analytics work?",
     "faq-a3":
-      "When you regularly log your sets, the algorithm automatically calculates total tonnage, number of work sets, and your working weight. Using the <code>/chart</code> command, you can instantly generate a clear visual graph of your progress right in the chat.",
+      "The <code>/stats</code> command shows workout days, streak, calories, XP, and level. <code>/chart</code> opens charts for weight, workouts, streak, and volume.",
     "faq-q4": "Where can I learn how my data is handled?",
     "faq-a4":
       'Information about the data we collect, how we use it, and how it may be shared is provided in the <a href="privacy.html" class="underline">SportBot Privacy Policy</a>.',
 
     "how-title": "How it works",
     "how-intro":
-      "Log workouts in the messenger you already use. The bot calculates stats, shows progress, and helps you stay consistent.",
-    "how-point-1": "10 seconds to log",
-    "how-point-2": "Charts without spreadsheets",
+      "Log workouts in Telegram. Use <code>/stats</code> and <code>/chart</code> to view activity and progress charts.",
+    "how-point-1": "Today’s report",
+    "how-point-2": "Progress charts",
     "how-point-3": "Goals with progress bars",
     "step1-t": "Command <code>/profile</code>",
     "step1-d":
       "Here you can see your personal data, current weight, and overall progress.",
     "step2-t": "Command <code>/workout</code>",
     "step2-d":
-      "Quickly log any exercise. The bot automatically detects sets and weight.",
+      "Send one or more exercises, separated by commas, with the <code>/workout</code> command.",
     "step3-t": "Command <code>/goal</code>",
-    "step3-d": "Set ambitious goals and watch your progress bar fill up.",
+    "step3-d":
+      "Set workout days per week with <code>/set_goal</code> and check progress with <code>/goal</code>.",
     "step4-t": "Command <code>/set_language</code>",
     "step4-d":
       "Easily switch between Ukrainian and English languages directly in the bot.",
@@ -272,13 +271,13 @@ const tr = {
     "footer-copyright-note": "SportBot rights and materials",
     "footer-text": "© 2026 SportBot. All rights reserved.",
     "pain-kicker": "Sound familiar?",
-    "pain-title": "No journals or extra menus",
+    "pain-title": "Workout logs and stats in Telegram",
     "pain-card-1-title": "Sets get lost",
     "pain-card-1-text": "No need to remember what you did last time.",
     "pain-card-2-title": "Progress is invisible",
     "pain-card-2-text": "The bot shows your dynamics with charts right in chat.",
-    "pain-card-3-title": "Apps are extra",
-    "pain-card-3-text": "Everything works in Telegram, without downloads or ads.",
+    "pain-card-3-title": "Workout commands in Telegram",
+    "pain-card-3-text": "Log workouts with commands in Telegram.",
     "value-title-short": "Your personal fitness diary right in Telegram",
     "value-desc-short": "Log sets, weight, and reps in Telegram. The bot calculates stats and shows progress with charts.",
   },
@@ -321,6 +320,11 @@ function setLanguage(lang, animate = true) {
       const key = el.dataset.key;
       if (tr[selectedLang][key]) el.innerHTML = tr[selectedLang][key];
     });
+    document
+      .querySelectorAll("[data-ua-alt][data-en-alt]")
+      .forEach((image) => {
+        image.alt = image.dataset[`${selectedLang}Alt`];
+      });
     document.querySelectorAll(".lang-btn").forEach((el) => {
       const isSelected = el.dataset.lang === selectedLang;
       el.classList.toggle("text-indigo-500", isSelected);
@@ -1121,26 +1125,6 @@ function initHeroParticles() {
   }
 }
 
-// --- ЛОГИКА ЭФФЕКТА "СТЕКЛЯННОГО СВЕЧЕНИЯ" (GLASSMORPHISM + GLOW) ---
-const mouseGlow = document.getElementById("mouse-glow");
-
-if (mouseGlow) {
-  // Only for desktop (md breakpoint is 768px in Tailwind by default)
-  if (window.innerWidth >= 768) {
-    const glowHalfWidth = mouseGlow.offsetWidth / 2;
-    const glowHalfHeight = mouseGlow.offsetHeight / 2;
-    document.addEventListener("mousemove", (e) => {
-      // Center the glow on the cursor
-      mouseGlow.style.transform = `translate(${e.clientX - glowHalfWidth}px, ${e.clientY - glowHalfHeight}px)`;
-      mouseGlow.style.opacity = "1"; // Ensure it's visible when mouse moves
-    });
-
-    document.addEventListener("mouseleave", () => {
-      mouseGlow.style.opacity = "0"; // Fade out when mouse leaves the document
-    });
-  }
-}
-
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", initHeroParticles);
 } else {
@@ -1170,7 +1154,7 @@ document.addEventListener("click", (e) => {
 
   navigator.clipboard.writeText(text).then(() => {
     code.dataset.copying = "true";
-    code.innerHTML = '<span class="text-green-500">Copied!</span>';
+    code.innerHTML = '<span class="text-green-500">Copied</span>';
 
     setTimeout(() => {
       code.innerHTML = originalHtml;

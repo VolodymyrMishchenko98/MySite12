@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="SportBot — безкоштовний Telegram-бот для запису тренувань, аналітики прогресу та мотивації. Тренуйся розумно з наочними графіками прямо у месенджері."
+      content="SportBot — Telegram-бот для запису тренувань і перегляду статистики та графіків прогресу."
     />
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website" />
@@ -39,14 +39,6 @@
     </title>
     <link rel="canonical" href="https://sportbot.pages.dev/" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link
-      rel="preload"
-      as="image"
-      href="assets/video/hero-poster-optimized.webp"
-      type="image/webp"
-      fetchpriority="high"
-      media="(min-width: 901px) and (prefers-reduced-motion: no-preference)"
-    />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="tailwind.generated.css" />
 
@@ -63,41 +55,43 @@
         left: 0;
         width: 100%;
         height: 2px;
-        background-color: #978bd0;
+        background-color: var(--sb-orange);
         transform: scaleX(0);
         transform-origin: bottom center;
         transition: transform 0.3s ease;
       }
       /* Активное состояние кнопки */
       .nav-link.active-nav {
-        color: #978bd0 !important;
+        color: var(--sb-orange) !important;
       }
       .nav-link.active-nav::after {
         transform: scaleX(1);
       }
       .knowledge-nav-link {
-        border: 1px solid rgba(99, 102, 241, 0.28);
-        border-radius: 999px;
-        padding: 0.42rem 0.72rem;
-        color: #5b52a7;
-        background: rgba(99, 102, 241, 0.08);
-        transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+        border: 1px solid var(--sb-line);
+        border-radius: 0.5rem;
+        padding: 0.375rem 0.625rem;
+        color: var(--sb-muted);
+        background: transparent;
+        transition:
+          color 160ms ease,
+          border-color 160ms ease,
+          background-color 160ms ease;
       }
       .knowledge-nav-link:hover {
-        color: #4f46a5;
-        border-color: rgba(99, 102, 241, 0.48);
-        background: rgba(99, 102, 241, 0.14);
-        transform: translateY(-1px);
+        color: var(--sb-text);
+        border-color: var(--sb-line);
+        background: var(--sb-panel);
       }
       .dark .knowledge-nav-link {
-        color: #b8b0ee;
-        background: rgba(129, 117, 214, 0.12);
-        border-color: rgba(167, 157, 236, 0.3);
+        color: var(--sb-muted);
+        background: transparent;
+        border-color: var(--sb-line);
       }
       .dark .knowledge-nav-link:hover {
-        color: #d2cdf9;
-        background: rgba(129, 117, 214, 0.2);
-        border-color: rgba(167, 157, 236, 0.52);
+        color: var(--sb-text);
+        background: var(--sb-panel);
+        border-color: var(--sb-line);
       }
       /* Сховати кнопку "Вгору" при відкритому мобільному меню */
       .mobile-menu-open #back-to-top {
@@ -124,7 +118,7 @@
         transition: color 0.2s ease;
       }
       code:hover {
-        color: #b0a5ec !important;
+        color: var(--sb-orange) !important;
       }
       /* Тінь хедера при скролі */
       .nav-scrolled {
@@ -143,10 +137,10 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Чи безкоштовний цей Telegram-бот?",
+            "name": "Що можна робити в SportBot?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Так! Базовий функціонал бота (запис тренувань, фіксація ваги та перегляд профілю) повністю безкоштовний. Ви також можете заробляти внутрішні монети за активність і відкривати додаткові фічі без реальних витрат."
+              "text": "У SportBot можна записувати тренування та переглядати статистику і графіки за допомогою команд Telegram."
             }
           },
           {
@@ -184,11 +178,6 @@
       id="scroll-progress"
       class="fixed top-0 left-0 h-1 bg-orange-500 z-[60] w-0"
     ></div>
-    <div
-      id="mouse-glow"
-      class="fixed top-0 left-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none z-[-1] opacity-0 transition-opacity duration-500"
-    ></div>
-
     <!-- Мобільний фон для меню -->
     <div
       id="menu-backdrop"
@@ -214,9 +203,7 @@
             width="176"
             height="96"
           />
-          <div class="text-2xl md:text-4xl font-bold italic whitespace-nowrap">
-            Sport<span class="text-indigo-500">Bot</span>
-          </div>
+          <div class="brand-wordmark">SportBot</div>
         </a>
 
         <div class="hidden md:flex items-center gap-4 font-semibold text-sm">
@@ -263,7 +250,7 @@
             aria-label="Language switcher"
           >
             <button
-              class="lang-btn lang-ua transition hover:scale-110"
+              class="lang-btn lang-ua"
               type="button"
               aria-label="Перемкнути на українську"
               data-lang="ua"
@@ -271,7 +258,7 @@
               UA
             </button>
             <button
-              class="lang-btn lang-en transition hover:scale-110"
+              class="lang-btn lang-en"
               type="button"
               aria-label="Switch to English"
               data-lang="en"
@@ -298,7 +285,7 @@
             href="https://t.me/SportsForYou_bot"
             target="_blank"
             rel="noopener noreferrer"
-            class="i18n hidden sm:block bg-gradient-to-r from-indigo-600 to-indigo-500 text-white px-3 md:px-5 py-2 rounded-full font-bold hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300 text-sm md:text-base whitespace-nowrap active:scale-95 pulse-btn"
+            class="i18n nav-cta hidden sm:block whitespace-nowrap"
             data-key="btn-bot"
             >Відкрити в Telegram</a
           >
@@ -382,35 +369,14 @@
         id="hero"
         class="relative w-full h-[350px] md:h-[550px] flex items-center justify-center overflow-hidden hero-background"
       >
-        <div class="hero-video-frame" aria-hidden="true">
-          <video
-            class="hero-video"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="none"
-            data-poster="assets/video/hero-poster-optimized.webp"
-            tabindex="-1"
-          >
-            <source
-              data-src="assets/video/hero-video.mp4?v=20261104"
-              type="video/mp4"
-            />
-          </video>
-        </div>
-        <canvas id="hero-canvas" class="absolute inset-0 z-0"></canvas>
-        <div
-          class="absolute inset-0 bg-black/40 dark:bg-black/60 transition-colors duration-500"
-        ></div>
         <div class="hero-content hero-content-enter">
           <p class="i18n hero-kicker" data-key="hero-kicker">Telegram-бот</p>
           <h1 class="i18n" data-key="hero-title">
-            Тренуйся розумно з <span class="text-indigo-500">SportBot</span>
+            Записуй тренування й переглядай прогрес у Telegram
           </h1>
           <p class="i18n hero-subtitle" data-key="hero-subtitle">
-            Telegram-бот для запису тренувань, графіків прогресу та мотивації —
-            без установки додатків.
+            Записуй тренування та переглядай статистику й графіки за допомогою
+            команд SportBot у Telegram.
           </p>
           <div class="hero-actions">
             <a
@@ -428,14 +394,36 @@
               >Як це працює</a
             >
           </div>
-          <div class="hero-chips" aria-label="SportBot advantages">
-            <span class="i18n" data-key="hero-chip-1">Без установки</span>
-            <span class="i18n" data-key="hero-chip-2">Запис за 10 секунд</span>
-            <span class="i18n" data-key="hero-chip-3">Графіки в чаті</span>
-            <span class="i18n" data-key="hero-chip-4">Без реклами</span>
-          </div>
         </div>
-
+        <aside class="hero-preview" aria-label="SportBot interface example">
+          <div class="hero-preview-header">
+            <span class="hero-preview-brand">SportBot</span>
+            <span class="hero-preview-platform">Telegram</span>
+          </div>
+          <div class="hero-preview-content">
+            <p class="i18n hero-preview-label" data-key="hero-preview-label">
+              Приклад команди /workout
+            </p>
+            <figure class="hero-preview-shot">
+              <img
+                src="workout.png"
+                alt="Приклад команди /workout у Telegram"
+                data-ua-alt="Приклад команди /workout у Telegram"
+                data-en-alt="Example of the /workout command in Telegram"
+                width="551"
+                height="128"
+                fetchpriority="high"
+              />
+            </figure>
+            <div class="hero-preview-commands">
+              <span><code>/workout</code><span class="i18n" data-key="hero-preview-workout">Запис тренування</span></span>
+              <span><code>/chart</code><span class="i18n" data-key="hero-preview-chart">Графіки прогресу</span></span>
+            </div>
+            <p class="i18n hero-preview-note" data-key="hero-preview-note">
+              Статичний приклад інтерфейсу, не live-з’єднання з ботом
+            </p>
+          </div>
+        </aside>
       </header>
 
       <section
@@ -452,7 +440,7 @@
             class="i18n text-3xl md:text-4xl font-bold mb-6"
             data-key="pain-title"
           >
-            Без щоденників і зайвих меню
+            Запис тренувань і статистика в Telegram
           </h2>
 <div class="pain-grid">
              <article class="pain-card reveal-on-scroll reveal-delay-1">
@@ -472,9 +460,9 @@
                </p>
              </article>
              <article class="pain-card reveal-on-scroll reveal-delay-3">
-               <h3 class="i18n" data-key="pain-card-3-title">Додатки зайві</h3>
+               <h3 class="i18n" data-key="pain-card-3-title">Тренування в Telegram</h3>
                <p class="i18n" data-key="pain-card-3-text">
-                 Все працює в Telegram, без завантажень і реклами.
+                 Тренування можна записувати командами в Telegram.
                </p>
              </article>
            </div>
@@ -500,7 +488,6 @@
            <div class="quick-grid">
              <article class="quick-card reveal-on-scroll reveal-delay-1">
                <span class="quick-step">1</span>
-               <span class="quick-icon" aria-hidden="true">↗</span>
                <h3 class="i18n quick-title" data-key="quick-1-title">Connect</h3>
                <p class="i18n quick-text" data-key="quick-1-text">
                  Натисни "Відкрити в Telegram" і відкрий SportBot у Telegram.
@@ -508,7 +495,6 @@
              </article>
              <article class="quick-card reveal-on-scroll reveal-delay-2">
                <span class="quick-step">2</span>
-               <span class="quick-icon" aria-hidden="true">⚙</span>
                <h3 class="i18n quick-title" data-key="quick-2-title">Setup</h3>
                <p class="i18n quick-text" data-key="quick-2-text">
                  Налаштуй профіль через <code>/edit_profile</code>.
@@ -516,7 +502,6 @@
              </article>
              <article class="quick-card reveal-on-scroll reveal-delay-3">
                <span class="quick-step">3</span>
-               <span class="quick-icon" aria-hidden="true">✓</span>
                <h3 class="i18n quick-title" data-key="quick-3-title">Train</h3>
                <p class="i18n quick-text" data-key="quick-3-text">
                  Запиши перше тренування через <code>/workout</code>.
@@ -531,7 +516,7 @@
          <h2>Як це виглядає в Telegram</h2>
          <p>Просто пишеш команду — бот робить решту</p>
          <p class="i18n demo-disclaimer" data-key="demo-note">
-           Фіксовані приклади, а не live-з’єднання з Telegram-ботом.
+           Ілюстративні приклади, а не live-відповіді бота чи статистика реальних користувачів.
          </p>
 
          <div class="demo-grid">
@@ -540,7 +525,7 @@
              <div class="demo-tag">/workout</div>
              <div class="demo-chat">
                <div class="dm user">Біг 30 хвилин, віджимання 4×20</div>
-               <div class="dm bot">✅ Збережено: 2 вправи<br>🌙 +20 монет<br>Баланс: 55<br>⭐ +20 XP</div>
+               <div class="dm bot">Збережено: 2 вправи<br>+20 монет<br>Баланс: 55<br>+20 XP</div>
              </div>
              <p class="demo-label">Запис тренування</p>
            </div>
@@ -549,7 +534,7 @@
              <div class="demo-tag">/stats</div>
              <div class="demo-chat">
                <div class="dm user">/stats</div>
-               <div class="dm bot">📊 Статистика<br>Днів тренування: 1<br>🔥 Серія: 0 днів<br>🔥 Калорій всього: ~136<br>⭐ Рівень: 1<br>🥇 Ранг: Новачок<br>XP: 15 / 100 ░░░░░░░░░░ 15%</div>
+               <div class="dm bot">Статистика<br>Днів тренувань: 1<br>Серія: 1 день<br>Калорії: приблизно 136<br>Рівень: 1<br>XP: 20</div>
              </div>
              <p class="demo-label">Статистика та прогрес</p>
            </div>
@@ -558,7 +543,7 @@
              <div class="demo-tag">/chart</div>
              <div class="demo-chat">
                <div class="dm user">/chart</div>
-               <div class="dm bot">📊 Оберіть графік:<br>⚖️ Weight  🏆 Workouts<br>🔥 Streak  📦 Volume<br><br>Workouts → показує графік тренувань по датах</div>
+               <div class="dm bot">Оберіть графік:<br>Вага · Тренування<br>Серія · Обсяг<br><br>Тренування показує активність за датами</div>
              </div>
              <p class="demo-label">Графіки прогресу</p>
            </div>
@@ -575,7 +560,7 @@
          </h2>
 
          <div class="feature-chips mb-10" aria-label="Ключові переваги SportBot">
-           <span class="i18n" data-key="feature-chip-1">Запис в 1 клік</span>
+           <span class="i18n" data-key="feature-chip-1">Запис тренувань</span>
            <span class="i18n" data-key="feature-chip-2">Авто-статистика</span>
            <span class="i18n" data-key="feature-chip-3">Графіки прогресу</span>
            <span class="i18n" data-key="feature-chip-4">Монети та бонуси</span>
@@ -616,7 +601,7 @@
                class="feature-header w-full flex justify-between items-center text-left font-bold text-xl"
              >
                <span class="i18n" data-key="f1-title"
-                 >👤 Профіль та налаштування</span
+                   >Профіль та налаштування</span
                >
                <span class="toggle-icon text-gray-400" aria-hidden="true"
                  >▼</span
@@ -634,7 +619,7 @@
                type="button"
                class="feature-header w-full flex justify-between items-center text-left font-bold text-xl"
              >
-               <span class="i18n" data-key="f2-title">💪 Тренування</span>
+               <span class="i18n" data-key="f2-title">Тренування</span>
                <span class="toggle-icon text-gray-400" aria-hidden="true"
                  >▼</span
                >
@@ -651,7 +636,7 @@
                type="button"
                class="feature-header w-full flex justify-between items-center text-left font-bold text-xl"
              >
-               <span class="i18n" data-key="f3-title">📊 Статистика</span>
+               <span class="i18n" data-key="f3-title">Статистика</span>
                <span class="toggle-icon text-gray-400" aria-hidden="true"
                  >▼</span
                >
@@ -668,7 +653,7 @@
                type="button"
                class="feature-header w-full flex justify-between items-center text-left font-bold text-xl"
              >
-               <span class="i18n" data-key="f4-title">🔥 Мотивація</span>
+               <span class="i18n" data-key="f4-title">Мотивація</span>
                <span class="toggle-icon text-gray-400" aria-hidden="true"
                  >▼</span
                >
@@ -685,7 +670,7 @@
                type="button"
                class="feature-header w-full flex justify-between items-center text-left font-bold text-xl"
              >
-               <span class="i18n" data-key="f5-title">🪙 Монети та бонуси</span>
+               <span class="i18n" data-key="f5-title">Монети та бонуси</span>
                <span class="toggle-icon text-gray-400" aria-hidden="true"
                  >▼</span
                >
@@ -703,12 +688,12 @@
          <h2>Спробуй команду прямо тут</h2>
          <p>Введи команду як у Telegram і побач відповідь</p>
          <p class="i18n demo-disclaimer" data-key="demo-note">
-           Фіксовані приклади, а не live-з’єднання з Telegram-ботом.
+           Ілюстративні приклади, а не live-відповіді бота чи статистика реальних користувачів.
          </p>
          
          <div id="tryChat" class="try-chat">
            <div class="tr-bubble bot">
-             👋 Привіт! Спробуй одну з команд:<br>
+             Спробуй одну з команд:<br>
              <span>/workout /stats /chart /help</span>
            </div>
          </div>
@@ -746,11 +731,10 @@
               Мотивація та досягнення
             </h2>
             <p
-              class="i18n text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
-              data-key="game-desc"
+             class="i18n text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+             data-key="game-desc"
             >
-              Тренуйтеся із задоволенням, отримуйте нагороди та покращуйте свої
-              результати щодня.
+             Переглядайте прогрес тренувань, виконуйте завдання та використовуйте ігрові механіки SportBot.
             </p>
           </div>
 
@@ -758,21 +742,15 @@
             <article
               class="game-card reveal-on-scroll reveal-delay-1 flex flex-col sm:flex-row items-start sm:items-center gap-5 p-6 rounded-2xl border border-indigo-500/20 bg-white dark:bg-[#0a0a0a] hover:border-indigo-500/50 hover:shadow-md transition duration-300"
             >
-              <div
-                class="text-3xl p-3 bg-indigo-500/10 text-indigo-500 rounded-xl shrink-0"
-              >
-                🪙
-              </div>
               <div class="space-y-1">
                 <h3 class="i18n text-lg font-bold" data-key="game-card-1-title">
-                  Заробляйте монети
+                  XP і монети
                 </h3>
                 <p
                   class="i18n text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
                   data-key="game-card-1-text"
                 >
-                  Виконуйте тренування та збирайте бонусні монети за кожен
-                  активний день.
+                  Запис тренування додає XP і монети відповідно до кількості вправ.
                 </p>
               </div>
             </article>
@@ -780,21 +758,15 @@
             <article
               class="game-card reveal-on-scroll reveal-delay-2 flex flex-col sm:flex-row items-start sm:items-center gap-5 p-6 rounded-2xl border border-indigo-500/20 bg-white dark:bg-[#0a0a0a] hover:border-indigo-500/50 hover:shadow-md transition duration-300"
             >
-              <div
-                class="text-3xl p-3 bg-indigo-500/10 text-indigo-500 rounded-xl shrink-0"
-              >
-                🎯
-              </div>
               <div class="space-y-1">
                 <h3 class="i18n text-lg font-bold" data-key="game-card-2-title">
-                  Щоденні завдання
+                  Завдання та челенджі
                 </h3>
                 <p
                   class="i18n text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
                   data-key="game-card-2-text"
                 >
-                  Комплітуйте завдання через <code>/daily</code> та отримуйте
-                  цінні нагороди.
+                  Команда <code>/daily</code> показує завдання та кнопку перегляду прогресу.
                 </p>
               </div>
             </article>
@@ -802,21 +774,15 @@
             <article
               class="game-card reveal-on-scroll reveal-delay-3 flex flex-col sm:flex-row items-start sm:items-center gap-5 p-6 rounded-2xl border border-indigo-500/20 bg-white dark:bg-[#0a0a0a] hover:border-indigo-500/50 hover:shadow-md transition duration-300"
             >
-              <div
-                class="text-3xl p-3 bg-indigo-500/10 text-indigo-500 rounded-xl shrink-0"
-              >
-                🛒
-              </div>
               <div class="space-y-1">
                 <h3 class="i18n text-lg font-bold" data-key="game-card-3-title">
-                  Магазин бонусів
+                  Магазин
                 </h3>
                 <p
                   class="i18n text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
                   data-key="game-card-3-text"
                 >
-                  Обмінюйте монети на корисні інсайти, підказки та ексклюзивні
-                  фічі.
+                  Команда <code>/shop</code> показує товари; бот перевіряє рівень і баланс перед покупкою.
                 </p>
               </div>
             </article>
@@ -824,11 +790,6 @@
             <article
               class="game-card reveal-on-scroll reveal-delay-1 flex flex-col sm:flex-row items-start sm:items-center gap-5 p-6 rounded-2xl border border-indigo-500/20 bg-white dark:bg-[#0a0a0a] hover:border-indigo-500/50 hover:shadow-md transition duration-300"
             >
-              <div
-                class="text-3xl p-3 bg-indigo-500/10 text-indigo-500 rounded-xl shrink-0"
-              >
-                📊
-              </div>
               <div class="space-y-1">
                 <h3 class="i18n text-lg font-bold" data-key="game-card-4-title">
                   Графіки прогресу
@@ -837,8 +798,7 @@
                   class="i18n text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
                   data-key="game-card-4-text"
                 >
-                  Команда <code>/chart</code> показує обсяг, вагу, серії та
-                  динаміку тренувань.
+                  Команда <code>/chart</code> відкриває графіки ваги, тренувань, серії та обсягу.
                 </p>
               </div>
             </article>
@@ -869,7 +829,7 @@
           <article class="fitness-calculator">
             <div class="fitness-calculator__header">
               <div class="fitness-calculator__title-row">
-                <div class="fitness-calculator__icon">🧮</div>
+                <div class="fitness-calculator__icon" aria-hidden="true">BMI</div>
                 <div class="fitness-calculator__title-block">
                   <h3
                     class="i18n fitness-calculator__title"
@@ -952,7 +912,7 @@
                 <span
                   class="i18n fitness-calculator__result-label"
                   data-key="calc-calories"
-                  >Норма калорій:</span
+                  >Орієнтовні калорії:</span
                 >
                 <span
                   id="result-calories"
@@ -971,13 +931,13 @@
               rel="noopener noreferrer"
               class="i18n inline-flex items-center justify-center calculator-cta"
               data-key="calc-btn"
-              >Скласти план у боті</a
+              >Відкрити SportBot</a
             >
             <p
               class="i18n mt-3 text-sm text-gray-500 dark:text-gray-400"
               data-key="calc-note"
             >
-              Отримай персональні цілі в Telegram
+              Результати калькулятора є приблизними оцінками
             </p>
           </div>
         </div>
@@ -1001,15 +961,15 @@
               class="i18n text-gray-700 dark:text-gray-300 text-lg relative z-10 leading-relaxed"
               data-key="how-intro"
             >
-              Записуй тренування в звичному месенджері. Бот рахує статистику,
-              показує прогрес і допомагає не пропускати цілі.
+              Записуй тренування в Telegram. Команди <code>/stats</code> і
+              <code>/chart</code> показують активність і графіки прогресу.
             </p>
             <div class="how-mini-points mt-5">
               <span class="i18n" data-key="how-point-1"
-                >10 секунд на запис</span
+                >Звіт за сьогодні</span
               >
               <span class="i18n" data-key="how-point-2"
-                >Графіки без таблиць</span
+                >Графіки прогресу</span
               >
               <span class="i18n" data-key="how-point-3"
                 >Цілі з прогрес-баром</span
@@ -1242,7 +1202,7 @@
                 class="faq-toggle w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-base md:text-lg hover:text-indigo-500 transition-colors focus:outline-none"
               >
                 <span class="i18n" data-key="faq-q1"
-                  >Чи безкоштовний цей Telegram-бот?</span
+                  >Що можна робити в SportBot?</span
                 >
                 <span
                   class="faq-icon text-xl text-indigo-500 transition-transform duration-300"
@@ -1259,10 +1219,9 @@
                   class="i18n p-6 pt-0 text-sm md:text-base text-gray-600 dark:text-gray-400 border-t border-gray-150 dark:border-white/5 leading-relaxed"
                   data-key="faq-a1"
                 >
-                  Так! Базовий функціонал бота (запис тренувань, фіксація ваги
-                  та перегляд профілю) повністю безкоштовний. Ви також можете
-                  заробляти внутрішні монети за активність і відкривати
-                  додаткові фічі без реальних витрат.
+                  У боті можна записувати тренування через
+                  <code>/workout</code>, переглядати активність командою
+                  <code>/stats</code> і відкривати графіки через <code>/chart</code>.
                 </p>
               </div>
             </div>
@@ -1294,10 +1253,8 @@
                   class="i18n p-6 pt-0 text-sm md:text-base text-gray-600 dark:text-gray-400 border-t border-gray-150 dark:border-white/5 leading-relaxed"
                   data-key="faq-a2"
                 >
-                  Абсолютно. Команда <code>/workout</code> розроблена так, щоб
-                  ви могли записувати будь-які вправи: від підтягувань на
-                  турніку та віджимань вдома до професійних жимів у тренажерному
-                  залі. Бот адаптується під ваш формат підходів та повторень.
+                  Команда <code>/workout</code> приймає одну або кілька вправ,
+                  розділених комами. У прикладах є біг і відтискування.
                 </p>
               </div>
             </div>
@@ -1329,11 +1286,9 @@
                   class="i18n p-6 pt-0 text-sm md:text-base text-gray-600 dark:text-gray-400 border-t border-gray-150 dark:border-white/5 leading-relaxed"
                   data-key="faq-a3"
                 >
-                  Коли ви регулярно записуєте підходи, алгоритм автоматично
-                  вираховує сумарний тоннаж, кількість робочих серій та вашу
-                  робочу вагу. Використовуючи команду <code>/chart</code>, ви
-                  зможете миттєво згенерувати наочний візуальний графік вашого
-                  прогресу прямо в чаті.
+                  Команда <code>/stats</code> показує дні тренувань, серію,
+                  калорії, XP і рівень. Команда <code>/chart</code> відкриває
+                  графіки ваги, тренувань, серії та обсягу.
                 </p>
               </div>
             </div>
@@ -1425,7 +1380,7 @@
         href="https://t.me/SportsForYou_bot"
         target="_blank"
         rel="noopener noreferrer"
-        class="mobile-sticky-cta i18n pointer-events-auto inline-block bg-gradient-to-r from-indigo-600 to-indigo-500 text-white px-8 py-4 rounded-full font-bold shadow-2xl shadow-indigo-500/40 active:scale-95 transition-all duration-300 backdrop-blur-md border border-white/10 text-xl"
+        class="mobile-sticky-cta i18n pointer-events-auto inline-block"
         data-key="btn-bot"
         >Відкрити в Telegram</a
       >
@@ -1457,11 +1412,11 @@
     <script>
 (function(){
   const replies={
-    '/workout':'✅ Збережено: 2 вправи\n🌙 +20 монет\nБаланс: 55\n⭐ +20 XP',
-    '/stats':'📊 Статистика\nДнів тренування: 1\n🔥 Серія: 0 днів\n🔥 Калорій всього: ~136\n⭐ Рівень: 1\n🥇 Ранг: Новачок\nXP: 15 / 100 ░░░░░░░░░░ 15%',
-    '/chart':'📊 Оберіть графік:\n⚖️ Weight  🏆 Workouts\n🔥 Streak  📦 Volume\n\nЦе ілюстративний приклад, а не відповідь бота.',
-    '/help':'📋 Приклади команд у цій демонстрації:\n/workout\n/stats\n/chart',
-    'default':'🤔 Команда не розпізнана.\nСпробуй: /workout /stats /chart /help'
+    '/workout':'Збережено: 2 вправи\n+20 монет\nБаланс: 55\n+20 XP',
+    '/stats':'Статистика\nДнів тренувань: 1\nСерія: 1 день\nКалорії: приблизно 136\nРівень: 1\nXP: 20',
+    '/chart':'Оберіть графік:\nВага · Тренування\nСерія · Обсяг\n\nІлюстративний приклад, а не відповідь бота.',
+    '/help':'Приклади команд у цій демонстрації:\n/workout\n/stats\n/chart',
+    'default':'Команду не розпізнано.\nСпробуй: /workout /stats /chart /help'
   };
   
   function addBubble(text,type){

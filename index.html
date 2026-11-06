@@ -7,9 +7,10 @@
       content="Cw4g1ZBwwFXu2vGkZpLj6xKL8fAFHWAiSWq-K-KgzjA"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#141412" />
     <meta
       name="description"
-      content="SportBot — Telegram-бот для запису тренувань і перегляду статистики та графіків прогресу."
+      content="SportBot — щоденник тренувань прямо в Telegram. Записуй вправи, переглядай історію та відстежуй регулярність без окремого застосунку."
     />
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website" />
@@ -372,11 +373,11 @@
         <div class="hero-content hero-content-enter">
           <p class="i18n hero-kicker" data-key="hero-kicker">Telegram-бот</p>
           <h1 class="i18n" data-key="hero-title">
-            Записуй тренування й переглядай прогрес у Telegram
+            Твоя історія тренувань — у Telegram
           </h1>
           <p class="i18n hero-subtitle" data-key="hero-subtitle">
-            Записуй тренування та переглядай статистику й графіки за допомогою
-            команд SportBot у Telegram.
+            Записуй вправи, повертайся до історії та відстежуй регулярність.
+            SportBot зберігає тренувальний щоденник у знайомому чаті.
           </p>
           <div class="hero-actions">
             <a
@@ -414,13 +415,17 @@
                 height="128"
                 fetchpriority="high"
               />
+              <div class="hero-preview-localized-chat" aria-hidden="true">
+                <div class="hero-preview-user">/workout</div>
+                <div class="hero-preview-bot i18n" data-key="hero-preview-chat">Введи тренування.<br>Можна через кому:<br>Біг 30 хвилин, Відтискування 4x20</div>
+              </div>
             </figure>
             <div class="hero-preview-commands">
               <span><code>/workout</code><span class="i18n" data-key="hero-preview-workout">Запис тренування</span></span>
               <span><code>/chart</code><span class="i18n" data-key="hero-preview-chart">Графіки прогресу</span></span>
             </div>
             <p class="i18n hero-preview-note" data-key="hero-preview-note">
-              Статичний приклад інтерфейсу, не live-з’єднання з ботом
+              Реальний приклад відповіді бота, показаний як ілюстрація
             </p>
           </div>
         </aside>
@@ -513,8 +518,8 @@
 
        <section id="bot-demo">
          <p class="i18n" data-key="demo-kicker">Локальна демонстрація</p>
-         <h2>Як це виглядає в Telegram</h2>
-         <p>Просто пишеш команду — бот робить решту</p>
+         <h2 class="i18n" data-key="demo-title">Як це виглядає в Telegram</h2>
+         <p class="i18n" data-key="demo-intro">Просто пишеш команду — бот робить решту</p>
          <p class="i18n demo-disclaimer" data-key="demo-note">
            Ілюстративні приклади, а не live-відповіді бота чи статистика реальних користувачів.
          </p>
@@ -524,28 +529,28 @@
            <div class="demo-card">
              <div class="demo-tag">/workout</div>
              <div class="demo-chat">
-               <div class="dm user">Біг 30 хвилин, віджимання 4×20</div>
-               <div class="dm bot">Збережено: 2 вправи<br>+20 монет<br>Баланс: 55<br>+20 XP</div>
+               <div class="dm user i18n" data-key="demo-workout-user">Біг 30 хвилин, віджимання 4×20</div>
+               <div class="dm bot i18n" data-key="demo-workout-reply">Тренування збережено<br>Хочеш додати нотатку?</div>
              </div>
-             <p class="demo-label">Запис тренування</p>
+             <p class="demo-label i18n" data-key="demo-workout-label">Запис тренування</p>
+           </div>
+
+           <div class="demo-card">
+             <div class="demo-tag">/history</div>
+             <div class="demo-chat">
+               <div class="dm user">/history</div>
+               <div class="dm bot i18n" data-key="demo-history-reply">📚 Історія тренувань<br><br>1. Сьогодні — 2 вправи</div>
+             </div>
+             <p class="demo-label i18n" data-key="demo-history-label">Історія тренувань</p>
            </div>
 
            <div class="demo-card">
              <div class="demo-tag">/stats</div>
              <div class="demo-chat">
                <div class="dm user">/stats</div>
-               <div class="dm bot">Статистика<br>Днів тренувань: 1<br>Серія: 1 день<br>Калорії: приблизно 136<br>Рівень: 1<br>XP: 20</div>
+               <div class="dm bot i18n" data-key="demo-stats-reply">Сьогоднішні тренування<br>Біг 30 хвилин<br>Відтискування 4x20<br><br>Днів тренувань: 1</div>
              </div>
-             <p class="demo-label">Статистика та прогрес</p>
-           </div>
-
-           <div class="demo-card">
-             <div class="demo-tag">/chart</div>
-             <div class="demo-chat">
-               <div class="dm user">/chart</div>
-               <div class="dm bot">Оберіть графік:<br>Вага · Тренування<br>Серія · Обсяг<br><br>Тренування показує активність за датами</div>
-             </div>
-             <p class="demo-label">Графіки прогресу</p>
+             <p class="demo-label i18n" data-key="demo-stats-label">Статистика активності</p>
            </div>
 
          </div>
@@ -686,15 +691,15 @@
        <section id="try-it">
          <p class="i18n" data-key="demo-kicker">Локальна демонстрація</p>
          <h2>Спробуй команду прямо тут</h2>
-         <p>Введи команду як у Telegram і побач відповідь</p>
+         <p class="i18n" data-key="demo-subtitle">Введи команду як у Telegram і побач відповідь</p>
          <p class="i18n demo-disclaimer" data-key="demo-note">
            Ілюстративні приклади, а не live-відповіді бота чи статистика реальних користувачів.
          </p>
          
          <div id="tryChat" class="try-chat">
            <div class="tr-bubble bot">
-             Спробуй одну з команд:<br>
-             <span>/workout /stats /chart /help</span>
+             <span class="i18n" data-key="demo-try-prompt">Спробуй одну з команд:</span><br>
+             <span>/workout /history /stats</span>
            </div>
          </div>
 
@@ -706,9 +711,8 @@
 
          <div class="try-chip-row">
            <button class="try-chip" data-cmd="/workout">/workout</button>
+           <button class="try-chip" data-cmd="/history">/history</button>
            <button class="try-chip" data-cmd="/stats">/stats</button>
-           <button class="try-chip" data-cmd="/chart">/chart</button>
-           <button class="try-chip" data-cmd="/help">/help</button>
          </div>
        </section>
 
@@ -1322,11 +1326,21 @@
                 >
                   Інформація про дані, які ми збираємо, їх використання та
                   передачу наведена в
-                  <a href="/privacy" class="underline">Політиці конфіденційності SportBot</a>.
+<a href="privacy.html" class="underline">Політиці конфіденційності SportBot</a>.
                 </p>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+      <section class="final-cta-section px-6 py-20" aria-labelledby="final-cta-title">
+        <div class="final-cta-inner max-w-5xl mx-auto">
+          <div>
+            <p class="i18n final-cta-kicker" data-key="final-cta-kicker">Наступне тренування</p>
+            <h2 id="final-cta-title" class="i18n" data-key="final-cta-title">Твоє наступне тренування починається тут</h2>
+            <p class="i18n final-cta-text" data-key="final-cta-text">Відкрий SportBot і запиши перше тренування вже сьогодні.</p>
+          </div>
+          <a href="https://t.me/SportsForYou_bot" target="_blank" rel="noopener noreferrer" class="i18n final-cta-button" data-key="final-cta-button">Відкрити SportBot</a>
         </div>
       </section>
     </main>
@@ -1334,7 +1348,7 @@
     <footer class="site-footer border-t border-gray-200 dark:border-white/10">
       <div class="max-w-5xl mx-auto px-6 py-10">
         <nav class="footer-links footer-links--legal" aria-label="Footer navigation">
-          <a href="/privacy" class="footer-link">
+          <a href="privacy.html" class="footer-link">
             <span class="footer-link-title i18n" data-key="footer-privacy"
               >Конфіденційність</span
             >
@@ -1342,7 +1356,7 @@
               >Як ми працюємо з даними</span
             >
           </a>
-          <a href="/terms" class="footer-link">
+          <a href="terms.html" class="footer-link">
             <span class="footer-link-title i18n" data-key="footer-terms"
               >Умови використання</span
             >
@@ -1350,7 +1364,7 @@
               >Правила користування ботом</span
             >
           </a>
-          <a href="/copyright" class="footer-link">
+          <a href="copyright.html" class="footer-link">
             <span class="footer-link-title i18n" data-key="footer-copyright"
               >All rights reserved</span
             >
@@ -1358,7 +1372,7 @@
               >Права та матеріали SportBot</span
             >
           </a>
-          <a href="/disclaimer" class="footer-link">
+          <a href="disclaimer.html" class="footer-link">
             <span class="footer-link-title">
               <span class="footer-disclaimer-uk" lang="uk">Застереження</span>
               <span class="footer-disclaimer-en" lang="en">Disclaimer</span>
@@ -1411,13 +1425,22 @@
     <script src="analytics.js" defer></script>
     <script>
 (function(){
+  let currentLang=localStorage.getItem('lang')||'ua';
   const replies={
-    '/workout':'Збережено: 2 вправи\n+20 монет\nБаланс: 55\n+20 XP',
-    '/stats':'Статистика\nДнів тренувань: 1\nСерія: 1 день\nКалорії: приблизно 136\nРівень: 1\nXP: 20',
-    '/chart':'Оберіть графік:\nВага · Тренування\nСерія · Обсяг\n\nІлюстративний приклад, а не відповідь бота.',
-    '/help':'Приклади команд у цій демонстрації:\n/workout\n/stats\n/chart',
-    'default':'Команду не розпізнано.\nСпробуй: /workout /stats /chart /help'
+    ua:{
+      '/workout':'Введи тренування.\nМожна через кому:\nБіг 30 хвилин, Відтискування 4x20',
+      '/history':'📚 Історія тренувань\n\n1. Сьогодні — 2 вправи',
+      '/stats':'Сьогоднішні тренування\nБіг 30 хвилин\nВідтискування 4x20\n\nДнів тренувань: 1',
+      'default':'Команду не розпізнано.\nСпробуй: /workout /history /stats'
+    },
+    en:{
+      '/workout':'Enter your workout.\nYou can separate exercises with commas:\nRunning 30 min, Push ups 4x20',
+      '/history':'📚 Workout history\n\n1. Today — 2 exercises',
+      '/stats':'Today\'s workouts\nRunning 30 min\nPush ups 4x20\n\nWorkout days: 1',
+      'default':'Command not recognised.\nTry: /workout /history /stats'
+    }
   };
+  window.updateDemoLanguage=function(lang){ currentLang=lang; };
   
   function addBubble(text,type){
     const chat=document.getElementById('tryChat');
@@ -1436,7 +1459,8 @@
     const c=cmd.trim().toLowerCase();
     addBubble(cmd,'user');
     setTimeout(()=>{
-      addBubble(replies[c]||replies['default'],'bot');
+      const langReplies=replies[currentLang]||replies.ua;
+      addBubble(langReplies[c]||langReplies.default,'bot');
     },600);
   }
 
